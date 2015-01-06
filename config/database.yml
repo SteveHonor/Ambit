@@ -14,5 +14,5 @@ test:
 production:
   <<: *default
   database: ga_production
-  username: ga
+  username: kivbvcrfwwgiwo
   password: <%= ENV['GA_DATABASE_PASSWORD'] %>
