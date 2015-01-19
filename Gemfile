@@ -40,3 +40,5 @@ gem 'pry', group: [:development, :test]
 
 # Auth
 gem 'devise'
+
+gem "twitter-bootstrap-rails"
