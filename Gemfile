@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+  source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -44,3 +44,5 @@ gem 'devise'
 gem "twitter-bootstrap-rails"
 
 gem 'jquery-ui-rails'
+
+gem 'rails_12factor', group: :production
