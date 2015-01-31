@@ -22,7 +22,7 @@ module Ambit
       ]
     end)
   end
+    config.assets.initialize_on_precompile = false
 
-    config.serve_static_assets = true
   end
 end
