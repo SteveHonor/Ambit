@@ -42,3 +42,5 @@ gem 'pry', group: [:development, :test]
 gem 'devise'
 
 gem "twitter-bootstrap-rails"
+
+gem 'jquery-ui-rails'
