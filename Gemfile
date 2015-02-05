@@ -48,3 +48,5 @@ gem "twitter-bootstrap-rails"
 gem 'jquery-ui-rails'
 
 gem 'rails_12factor', group: :production
+
+gem 'jquery-datatables-rails', '~> 3.1.1'

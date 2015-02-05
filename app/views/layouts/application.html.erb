@@ -7,102 +7,114 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header class="navbar">
+  <header class="navbar">
     <div class="top-panel">
-    <div class="col-xs-1">
+      <div class="col-sm-1">
         <div class="icon-menu" id="toggle-menu">
           <i class="fa fa-bars"></i>
           <span>Menu</span>
         </div>
-        </div>
-        <div class="col-sm-1">
-         <p class="fields">AMBIT</p>
-        </div>
-        <div class="pull-right">
-          <ul class="nav navbar-nav panel-menu ">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
-                <div class="avatar">
-                  <img src="/assets/avatar.jpg" class="img-rounded" alt="avatar">
-                </div>
-                <i class="fa fa-angle-down pull-right"></i>
-                <div class="user-mini pull-right">
-                  <span class="welcome">Welcome,</span>
-                  <span>Jane Devoops</span>
-                </div>
-              </a>
-              <ul class="dropdown-menu">
-                 <li>
-                  <a href="#" class="ajax-link" id="toggle-menu">
-                    <i class="fa fa-bars"></i>
-                    <span>Menu</span>
-                  </a>
-                </li>
+      </div>
+      <div class="col-sm-1">
+       <p class="fields">AMBIT</p>
+     </div>
+     <div class="pull-right">
+      <ul class="nav navbar-nav panel-menu ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
+            <div class="avatar">
+              <img src="/assets/avatar.jpg" class="img-rounded" alt="avatar">
+            </div>
+            <i class="fa fa-angle-down pull-right"></i>
+            <div class="user-mini pull-right">
+              <span class="welcome">Welcome,</span>
+              <span>Jane Devoops</span>
+            </div>
+          </a>
+          <ul class="dropdown-menu">
+           <li>
+            <a href="#" class="ajax-link" id="toggle-menu">
+              <i class="fa fa-bars"></i>
+              <span>Menu</span>
+            </a>
+          </li>
 
-                <li>
-                  <%= link_to 'users/show' do %>
-                    <i class="fa fa-cog"></i>
-                    <span>Perfil</span>
-                  <% end %>
-                </li>
-                <li>
-                  <a href="/assets/page_messages.html" class="ajax-link">
-                    <i class="fa fa-envelope"></i>
-                    <span>Messages</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="/assets/gallery_simple.html" class="ajax-link">
-                    <i class="fa fa-picture-o"></i>
-                    <span>Albums</span>
-                  </a>
-                </li>
-                <li>
-                  <%= link_to '/users/edit' do %>
-                    <i class="fa fa-cog"></i>
-                    <span>Configurações</span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to '/users/sign_out' do %>
-                    <i class="fa fa-power-off"></i>
-                    <span>Sair</span>
-                 <% end %>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+          <li>
+            <%= link_to 'users/show' do %>
+            <i class="fa fa-cog"></i>
+            <span>Perfil</span>
+            <% end %>
+          </li>
+          <li>
+            <a href="/assets/page_messages.html" class="ajax-link">
+              <i class="fa fa-envelope"></i>
+              <span>Messages</span>
+            </a>
+          </li>
+          <li>
+            <a href="/assets/gallery_simple.html" class="ajax-link">
+              <i class="fa fa-picture-o"></i>
+              <span>Albums</span>
+            </a>
+          </li>
+          <li>
+            <%= link_to '/users/edit' do %>
+            <i class="fa fa-cog"></i>
+            <span>Configurações</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to '/users/sign_out' do %>
+            <i class="fa fa-power-off"></i>
+            <span>Sair</span>
+            <% end %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 
-        <div class="col-sm-1 pull-right">
-         <p class="fields">Assis</p>
-        </div>
+  <div class="col-sm-1 pull-right">
+   <p class="fields">Assis</p>
+ </div>
 
-        <div class="col-sm-1 pull-right">
-         <p class="fields">São Paulo</p>
-        </div>
-
-
-
-    </div></header>
+ <div class="col-sm-1 pull-right">
+   <p class="fields">São Paulo</p>
+ </div>
+</div>
+</header>
 
 
 
 <div id="menu" class="menu">
-<ul id="accordion" class="accordion">
-  <li>
-    <a href="/"><div class="link"><i class="fa fa-globe"></i>Dashboard</div></a>
-  </li>
-  <li>
-    <div class="link"><i class="fa fa-search"></i>Fiscalização<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu" style="display: none;">
-      <li><a href="/supervision/notification/new">Notificação</a></li>
-      <li><a href="#">Autuação</a></li>
-     </ul>
-  </li>
-  <li>
-</li>
-</ul>
+  <ul id="accordion" class="accordion">
+    <li>
+      <a href="/"><div class="link"><i class="fa fa-globe"></i>Dashboard</div></a>
+    </li>
+
+    <li>
+      <div class="link"><i class="fa fa-archive"></i>Cadastros<i class="fa fa-chevron-down"></i></div>
+      <ul class="submenu">
+        <li><a href="/users"><i class="fa fa-user"></i>Usuários</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <div class="link"><i class="fa fa-search"></i>Fiscalização<i class="fa fa-chevron-down"></i></div>
+      <ul class="submenu" style="display: none;">
+        <li><a href="/supervision/notification/new">Notificação</a></li>
+        <li><a href="#">Autuação</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="/users/sign_out">
+        <div class="link">
+          <i class="fa fa-power-off"></i>Sair
+        </div>
+      </a>
+    </li>
+  </ul>
 </div>
 
 <script type="text/javascript">
@@ -117,20 +129,17 @@
   });
 
   $(document).ready(function($) {
-    $('#mega-1').dcVerticalMegaMenu();
-      var effect   = 'slide';
-      var options  = { direction: 'left' };
-      var duration = 900;
+    $('#menu').toggle();
 
-    $('#menu').toggle(effect, options, duration);
+    $('#mega-1').dcVerticalMegaMenu();
   });
 </script>
 
 <script>
-$(function() {
-  var Accordion = function(el, multiple) {
-    this.el = el || {};
-    this.multiple = multiple || false;
+  $(function() {
+    var Accordion = function(el, multiple) {
+      this.el = el || {};
+      this.multiple = multiple || false;
 
     // Variables privadas
     var links = this.el.find('.link');
@@ -140,8 +149,8 @@ $(function() {
 
   Accordion.prototype.dropdown = function(e) {
     var $el = e.data.el;
-      $this = $(this),
-      $next = $this.next();
+    $this = $(this),
+    $next = $this.next();
 
     $next.slideToggle();
     $this.parent().toggleClass('open');
@@ -155,10 +164,10 @@ $(function() {
 });
 </script>
 
-  <div class="content">
-    <div class="row">
-      <%= yield %>
-     </div>
+<div class="content">
+  <div class="row">
+    <%= yield %>
   </div>
+</div>
 </body>
 </html>

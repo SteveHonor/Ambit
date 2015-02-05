@@ -1,0 +1,42 @@
+<h>Edit user</h>
+<div class="panel">
+  <div class="form-group">
+    <div class="row">
+      <%= form_for(@user, url: user_path(@user), :method=>:put) do |f| %>
+
+        <div class="field col-sm-6">
+          <%= f.label :email, class: "control-label" %>
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="field col-sm-2">
+          <%= f.label :password, class: "control-label" %>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="field col-sm-2">
+          <%= f.label :password_confirmation, class: "control-label" %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="field col-sm-2">
+          <%= f.label :current_password, class: "control-label" %>
+          <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+        </div>
+    </div>
+
+      <div class="row">
+        <div class="panel-footer">
+          <div class="actions">
+            <%= f.submit "Update", class: "btn btn-primary"  %>
+          </div>
+
+          <div class="actions pull-left">
+            <%= link_to f.button("Voltar", class: "btn"), :back, method: :get  %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

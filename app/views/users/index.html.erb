@@ -1,0 +1,43 @@
+<h>Usuários</h>
+<div class="panel">
+  <div class="form-group">
+    <div class="row">
+
+      <table id="table-users" class="table table-striped display">
+        <thead class="table-heading">
+        <tr>
+          <th width="20">Foto</th>
+          <th width="300">Name</th>
+          <th width="400">E-mail</th>
+          <th width="200">Tipo</th>
+          <th width="150">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do | user |  %>
+          <tr>
+              <td></td>
+            <td></td>
+            <td><%= user.email %></td>
+            <td></td>
+            <td align="center">
+            <%= link_to '<i class="fa fa-edit"></i> Editar'.html_safe, edit_user_path(user), class: "btn btn-primary btn-sm" %>
+              <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> Remover</button>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
+<script>
+$(document).ready(function() {
+    $('#table-users').dataTable({
+      "dom": '<"row"<"well"lf><t>ip>'
+    });
+} );
+</script>
