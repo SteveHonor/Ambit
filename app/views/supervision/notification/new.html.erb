@@ -293,16 +293,13 @@
   <div class="col-sm-12">
     <div class="col-sm-2"><label>Leis</label></div><div class="col-sm-2 pull-right" align="right"><label>Leis Escolhidas</label></div>
   </div>
-  <select id='optgroup' multiple='multiple'>
-    <optgroup label='lei federal'>
-      <option value='1'>sdasdaskdbasdhasdas</option>
-      <option value='2' selected>dasdjasdjasndjasd</option>
-    </optgroup>
 
-    <optgroup label='lei x paragrafo y'>
-      <option value='3'>asdasjdkasdkasdnjs</option>
-      <option value='4' disabled>asdjaskdjaskdjaks Vader</option>
+  <select id='optgroup' multiple='multiple'>
+    <% Law.all.each do | law | %>
+    <optgroup label="Lei: <%= law.number %>">
+        <option value='<%= law.id%>'>Artigo: <%= law.article %> | <%= law.description %></option>
     </optgroup>
+    <% end %>
   </select>
 </div>
 

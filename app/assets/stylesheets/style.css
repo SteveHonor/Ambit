@@ -323,6 +323,15 @@ background: #ebf5f8 url(../images/information.png) no-repeat 5px center;
 color: #000;
 }
 
+.dataTables_wrapper .dataTables_filter {
+  float: left !important;
+  text-align: left;
+}
+
+.dataTables_wrapper .dataTables_length {
+  float: right !important;
+  text-align: right;
+}
 
 
 
