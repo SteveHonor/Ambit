@@ -23,12 +23,12 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
             <div class="avatar">
-              <img src="/assets/avatar.jpg" class="img-rounded" alt="avatar">
+              <%= image_tag(current_user.avatar.url) %>
             </div>
             <i class="fa fa-angle-down pull-right"></i>
             <div class="user-mini pull-right">
-              <span class="welcome">Welcome,</span>
-              <span>Jane Devoops</span>
+              <span class="welcome">Bem Vindo,</span>
+              <span><%= current_user.name %></span>
             </div>
           </a>
           <ul class="dropdown-menu">
@@ -117,6 +117,15 @@
   </ul>
 </div>
 
+<div class="content">
+  <div class="row">
+    <%= yield %>
+  </div>
+</div>
+<script type="text/javascript">
+  $('#optgroup').multiSelect({ selectableOptgroup: true });
+</script>
+
 <script type="text/javascript">
   $("#toggle-menu").click(function () {
     var effect   = 'slide';
@@ -163,11 +172,5 @@
   var accordion = new Accordion($('#accordion'), false);
 });
 </script>
-
-<div class="content">
-  <div class="row">
-    <%= yield %>
-  </div>
-</div>
 </body>
 </html>

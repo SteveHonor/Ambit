@@ -6,7 +6,7 @@
       <table id="table-users" class="table table-striped display">
         <thead class="table-heading">
         <tr>
-          <th width="20">Foto</th>
+          <th width="10">Foto</th>
           <th width="300">Name</th>
           <th width="400">E-mail</th>
           <th width="200">Tipo</th>
@@ -16,8 +16,8 @@
         <tbody>
           <% @users.each do | user |  %>
           <tr>
-              <td></td>
-            <td></td>
+            <td> <%= image_tag(user.avatar.url, style: "width: 50px; display: block;") %></td>
+            <td><%= user.name %></td>
             <td><%= user.email %></td>
             <td></td>
             <td align="center">

@@ -3,26 +3,47 @@
   <div class="form-group">
     <div class="row">
       <%= form_for(@user, url: user_path(@user), :method=>:put) do |f| %>
+      <div class="col-sm-12">
 
-        <div class="field col-sm-6">
-          <%= f.label :email, class: "control-label" %>
-          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      <div class="col-sm-8">
+        <div class="row">
+            <%= f.label :name, class: "control-label" %>
+            <%= f.text_field :name, autofocus: true, class: "form-control" %>
         </div>
 
-        <div class="field col-sm-2">
-          <%= f.label :password, class: "control-label" %>
-          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+        <div class="row">
+            <%= f.label :email, class: "control-label" %>
+            <%= f.email_field :email, autofocus: true, class: "form-control" %>
         </div>
 
-        <div class="field col-sm-2">
-          <%= f.label :password_confirmation, class: "control-label" %>
-          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        <div class="row">
+            <%= f.label :password, class: "control-label" %>
+            <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
         </div>
 
-        <div class="field col-sm-2">
-          <%= f.label :current_password, class: "control-label" %>
-          <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+        <div class="row">
+            <%= f.label :password_confirmation, class: "control-label" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
         </div>
+
+
+        <div class="row">
+            <%= f.label :current_password, class: "control-label" %>
+            <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+        </div>
+      </div>
+        <div class="col-sm-4" style="padding: 0 19px; background: #F1F1F1;">
+          <div class="row">
+              <div class="sub_title">Avatar</div>
+              <%= image_tag(@user.avatar.url, style: "height: 230px; width: 100%; display: block;") %>
+          </div>
+
+          <div class="row">
+              <%=  f.file_field :avatar, class: "btn btn-primary" %>
+              <%=  f.hidden_field :avatar_cache %>
+          </div>
+        </div>
+      </div>
     </div>
 
       <div class="row">
