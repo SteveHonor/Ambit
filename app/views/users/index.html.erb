@@ -3,7 +3,7 @@
   <div class="form-group">
     <div class="row">
 
-      <table id="table-users" class="table table-striped display">
+      <table id="table-user" class="table table-striped display">
         <thead class="table-heading">
         <tr>
           <th width="10">Foto</th>
@@ -32,10 +32,18 @@
   </div>
 </div>
 
+  <div id="actin-btn" class="col-sm-2 pull-right" align="right">
+    <%= link_to '<i class="fa fa-plus"></i> Novo Usuários'.html_safe, new_user_path, class: "btn btn-primary" %>
+  </div>
+
 <script>
-$(document).ready(function() {
-    $('#table-users').dataTable({
-      "dom": '<"row"<"well"lf><t>ip>'
+  $(document).ready(function() {
+    var table = $('#table-user').dataTable({
+      "dom": '<"row"<"well"f><t><"bottom well"lp>>'
     });
-} );
+
+    var tt = new $.fn.dataTable.TableTools( table );
+
+    $( "#actin-btn" ).insertBefore('#table-user_filter');
+  } );
 </script>

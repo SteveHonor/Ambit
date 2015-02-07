@@ -1,0 +1,62 @@
+<h>Novo user</h>
+<div class="panel">
+  <div class="form-group">
+    <div class="row">
+      <%= form_for @user do |f| %>
+      <div class="col-sm-12">
+        <div class="col-sm-2" style="padding: 0px;">
+          <div class="row">
+            <div class="sub_title">Avatar</div>
+            <%= image_tag(@user.avatar.url, style: "width: 100%") %>
+
+            <span class="btn btn-primary btn-sm btn-file", style="width: 100%">
+              Escolha um foto <%=  f.file_field :avatar %>
+              <%=  f.hidden_field :avatar_cache %>
+            </span>
+          </div>
+         </div>
+
+      <div class="col-sm-10">
+        <div class="row">
+          <div class="sub_title">Dados do Usuário</div>
+        </div>
+
+        <div class="row">
+            <%= f.label :name, class: "control-label" %>
+            <%= f.text_field :name, autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="row">
+            <%= f.label :email, class: "control-label" %>
+            <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="row">
+            <%= f.label :password, class: "control-label" %>
+            <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="row">
+            <%= f.label :password_confirmation, class: "control-label" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div>
+
+      </div>
+      </div>
+    </div>
+
+      <div class="row">
+        <div class="panel-footer">
+          <div class="actions">
+            <%= f.submit "Adicionar", class: "btn btn-primary"  %>
+          </div>
+
+          <div class="actions pull-left">
+            <%= link_to f.button("Voltar", class: "btn"), :back, method: :get  %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
