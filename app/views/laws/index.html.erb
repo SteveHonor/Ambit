@@ -6,10 +6,10 @@
       <table id="table-law" class="table table-striped display">
         <thead class="table-heading">
           <tr>
-            <th width="15%">Numero</th>
-            <th width="15%">Artigo</th>
-            <th width="50%">Descrição</th>
-            <th></th>
+            <th width="auto">Numero</th>
+            <th width="auto">Artigo</th>
+            <th width="auto">Descrição</th>
+            <th width="120px"></th>
           </tr>
         </thead>
 
@@ -19,7 +19,7 @@
             <td><%= law.number %></td>
             <td><%= law.article %></td>
             <td><%= law.description %></td>
-            <td><%= link_to '<i class="fa fa-eye"></i> Show'.html_safe, law, class: "btn btn-primary btn-sm" %>
+            <td>
             <%= link_to '<i class="fa fa-edit"></i> Edit'.html_safe, edit_law_path(law), class: "btn btn-warning btn-sm" %>
             <%= link_to '<i class="fa fa-trash-o"></i> Destroy'.html_safe, law, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
           </tr>

@@ -23,7 +23,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
             <div class="avatar">
-              <%= image_tag(current_user.avatar.url) %>
+              <%= image_tag(current_user.avatar) %>
             </div>
             <i class="fa fa-angle-down pull-right"></i>
             <div class="user-mini pull-right">
@@ -32,31 +32,6 @@
             </div>
           </a>
           <ul class="dropdown-menu">
-           <li>
-            <a href="#" class="ajax-link" id="toggle-menu">
-              <i class="fa fa-bars"></i>
-              <span>Menu</span>
-            </a>
-          </li>
-
-          <li>
-            <%= link_to 'users/show' do %>
-            <i class="fa fa-cog"></i>
-            <span>Perfil</span>
-            <% end %>
-          </li>
-          <li>
-            <a href="/assets/page_messages.html" class="ajax-link">
-              <i class="fa fa-envelope"></i>
-              <span>Messages</span>
-            </a>
-          </li>
-          <li>
-            <a href="/assets/gallery_simple.html" class="ajax-link">
-              <i class="fa fa-picture-o"></i>
-              <span>Albums</span>
-            </a>
-          </li>
           <li>
             <%= link_to '/users/edit' do %>
             <i class="fa fa-cog"></i>
@@ -103,7 +78,7 @@
     <li>
       <div class="link"><i class="fa fa-search"></i>Fiscalização<i class="fa fa-chevron-down"></i></div>
       <ul class="submenu" style="display: none;">
-        <li><a href="/supervision/notification/new">Notificação</a></li>
+        <li><a href="/supervision/notification/">Notificação</a></li>
         <li><a href="#">Autuação</a></li>
       </ul>
     </li>

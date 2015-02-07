@@ -1,0 +1,38 @@
+<h>Fiscalização | Notificações</h>
+<div class="panel">
+  <div class="form-group">
+
+    <div class="row">
+      <table id="table-notification" class="table table-striped display">
+        <thead class="table-heading">
+          <tr>
+            <th width="auto">Nome</th>
+            <th width="auto">Endereço</th>
+            <th width="auto">Status</th>
+            <th width="120px"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+  <div id="actin-btn" class="col-sm-2 pull-right" align="right">
+    <%= link_to '<i class="fa fa-plus"></i> Nova Notificação'.html_safe, new_supervision_notification_path, class: "btn btn-primary" %>
+  </div>
+
+<script>
+  $(document).ready(function() {
+    var table = $('#table-notification').dataTable({
+      "dom": '<"row"<"well"f><t><"bottom well"l>ip>'
+    });
+
+    var tt = new $.fn.dataTable.TableTools( table );
+
+    $( "#actin-btn" ).insertBefore('#table-notification_filter');
+  } );
+</script>

@@ -28,7 +28,7 @@ class LawsController < ApplicationController
 
     respond_to do |format|
       if @law.save
-        format.html { redirect_to @law, notice: 'Law was successfully created.' }
+        format.html { redirect_to laws_path }
         format.json { render :show, status: :created, location: @law }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class LawsController < ApplicationController
   def update
     respond_to do |format|
       if @law.update(law_params)
-        format.html { redirect_to @law, notice: 'Law was successfully updated.' }
+        format.html { redirect_to laws_path }
         format.json { render :show, status: :ok, location: @law }
       else
         format.html { render :edit }
