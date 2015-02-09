@@ -9,12 +9,22 @@
             <th width="auto">Nome</th>
             <th width="auto">Endereço</th>
             <th width="auto">Status</th>
-            <th width="120px"></th>
+            <th width="140px"></th>
           </tr>
         </thead>
 
         <tbody>
-
+          <% @notifications.each do | notifications |  %>
+            <tr>
+              <td><%= notifications.owner_name%></td>
+              <td><%= notifications.property_address %></td>
+              <td><%= notifications.state %></td>
+              <td align="center">
+              <%= link_to '<i class="fa fa-edit"></i> Editar'.html_safe, edit_supervision_notification_path(notifications), class: "btn btn-primary btn-sm" %>
+             <%= link_to '<i class="fa fa-trash-o"></i> Deletar'.html_safe, notifications, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

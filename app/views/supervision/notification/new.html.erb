@@ -1,7 +1,6 @@
-<h>Fiscalização | Notificação<div class="pull-right">nº notificação: <%= rand(999999) %></div></h>
+<h>Fiscalização | Notificação</h>
 <div class="panel">
- <form role="form">
-
+ <form role="form" action="/supervision/notification" method="post">
 
 <div class="row">
   <div class="col-sm-12">
@@ -9,11 +8,11 @@
       <div class="pull-left">Dados do proprietário</div>
       <div class="pull-right">
         <div class="radio-inline">
-          <label><input type="radio" name="optradio" checked="checked">Pessoa Fisica</label>
+          <label><input type="radio" checked="checked">Pessoa Fisica</label>
         </div>
 
         <div class="radio-inline">
-          <label><input type="radio" name="optradio">Pessoa Juridica</label>
+          <label><input type="radio" >Pessoa Juridica</label>
         </div>
       </div>
     </div>
@@ -31,21 +30,21 @@
     <label>
       Nome do Proprietário
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="owner_name" class="form-control">
   </div>
 
   <div class="col-sm-3">
     <label>
       CPF
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="owner_identifier" class="form-control">
   </div>
 
   <div class="col-sm-2">
     <label>
       CEP
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="owner_zip_code" class="form-control">
   </div>
 </div>
 
@@ -54,28 +53,28 @@
     <label>
       Endereço
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="owner_address" class="form-control">
   </div>
 
   <div class="col-sm-1">
     <label>
       Nº
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="owner_address_number" class="form-control">
   </div>
 
   <div class="col-sm-3">
     <label>
       Complemento
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="owner_address_complement" class="form-control">
   </div>
 
   <div class="col-sm-3">
     <label>
       Bairro
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="owner_district" class="form-control">
   </div>
 </div>
 
@@ -84,42 +83,42 @@
     <label>
       Município
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="owner_city" class="form-control">
   </div>
 
   <div class="col-sm-1">
     <label>
       UF
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="owner_state" class="form-control">
   </div>
 
   <div class="col-sm-1">
     <label>
       DDD
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="owner_ddd_mobile" class="form-control">
   </div>
 
   <div class="col-sm-3">
     <label>
       Celular
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="owner_mobile" class="form-control">
   </div>
 
   <div class="col-sm-1">
     <label>
       DDD
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="owner_ddd_phone" class="form-control">
   </div>
 
   <div class="col-sm-3">
     <label>
       Telefone
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="owner_phone" class="form-control">
   </div>
 </div>
 
@@ -129,11 +128,11 @@
       <div class="pull-left">Dados do Imóvel</div>
       <div class="pull-right">
         <div class="radio-inline">
-          <label><input type="radio" name="optradio" checked="checked">Área Urbana</label>
+          <label><input type="radio" name="property_zone" checked="checked">Área Urbana</label>
         </div>
 
         <div class="radio-inline">
-          <label><input type="radio" name="optradio">Área Rural</label>
+          <label><input type="radio" name="property_zone">Área Rural</label>
         </div>
       </div>
     </div>
@@ -146,80 +145,81 @@
       Mesmo acima
     </label>
     <select class="form-control">
-      <option>Não</option>
-      <option>Sim</option>
+      <option value="N">Não</option>
+      <option value="S">Sim</option>
     </select>
-  </div>
-  <div class="col-sm-7">
-    <label>
-      Endereço
-    </label>
-    <input type="text" class="form-control">
-  </div>
-
-  <div class="col-sm-1">
-    <label>
-      Nº
-    </label>
-    <input type="text" class="form-control">
-  </div>
-
-  <div class="col-sm-3">
-    <label>
-      Complemento
-    </label>
-    <input type="text" class="form-control">
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-3">
-    <label>
-      Bairro
-    </label>
-    <input type="text" class="form-control">
-  </div>
-
-  <div class="col-sm-3">
-    <label>
-      Município
-    </label>
-    <input type="text" class="form-control">
   </div>
 
   <div class="col-sm-2">
     <label>
       CEP
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="property_zip_code" class="form-control">
+  </div>
+
+  <div class="col-sm-8">
+    <label>
+      Endereço
+    </label>
+    <input type="text" name="property_address" class="form-control">
+  </div>
+
+  <div class="col-sm-1">
+    <label>
+      Nº
+    </label>
+    <input type="text" name="property_address_number" class="form-control">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2">
+    <label>
+      Complemento
+    </label>
+    <input type="text" name="property_address_complement" class="form-control">
+  </div>
+
+  <div class="col-sm-3">
+    <label>
+      Bairro
+    </label>
+    <input type="text" name="property_district" class="form-control">
+  </div>
+
+  <div class="col-sm-3">
+    <label>
+      Município
+    </label>
+    <input type="text" name="property_city" class="form-control">
   </div>
 
   <div class="col-sm-1">
     <label>
       UF
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="property_state" class="form-control">
   </div>
 
   <div class="col-sm-1">
     <label>
       Área em M²
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="property_meter" class="form-control">
   </div>
 
   <div class="col-sm-1">
     <label>
       Quadra
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="property_block" class="form-control">
   </div>
 
   <div class="col-sm-1">
     <label>
       Lote
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name="property_allotment" class="form-control">
   </div>
 </div>
 
@@ -228,7 +228,7 @@
     <label>
       Observação
     </label>
-    <textarea rows="4" class="form-control textarea"></textarea>
+    <textarea rows="4" name="observation" class="form-control textarea"></textarea>
   </div>
 </div>
 <div class="row">

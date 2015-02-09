@@ -22,14 +22,19 @@
           </div>
 
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-5">
               <%= f.label :name, class: "control-label" %>
               <%= f.text_field :name, autofocus: true, class: "form-control" %>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-5">
               <%= f.label :email, class: "control-label" %>
               <%= f.email_field :email, autofocus: true, class: "form-control" %>
+            </div>
+
+            <div class="col-sm-2">
+              <%= f.label :admin, class: "control-label" %>
+              <%= f.select(:admin, options_for_select([["Não",false],["Sim",true]]),{}, class: "form-control") %>
             </div>
           </div>
 

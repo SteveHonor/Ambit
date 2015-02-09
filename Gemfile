@@ -54,3 +54,5 @@ gem 'jquery-datatables-rails', '~> 3.1.1'
 gem 'carrierwave'
 
 gem "pundit"
+
+gem 'state_machine'

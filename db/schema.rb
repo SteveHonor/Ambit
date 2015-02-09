@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207133301) do
+ActiveRecord::Schema.define(version: 20150208164637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,35 @@ ActiveRecord::Schema.define(version: 20150207133301) do
     t.string "number"
     t.string "article"
     t.string "description"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "owner_name"
+    t.string "owner_identifier"
+    t.string "owner_zip_code"
+    t.string "owner_address"
+    t.string "owner_address_number"
+    t.string "owner_address_complement"
+    t.string "owner_district"
+    t.string "owner_city"
+    t.string "owner_state"
+    t.string "owner_ddd_mobile"
+    t.string "owner_mobile"
+    t.string "owner_ddd_phone"
+    t.string "owner_phone"
+    t.string "property_zone"
+    t.string "property_zip_code"
+    t.string "property_address"
+    t.string "property_address_number"
+    t.string "property_address_complement"
+    t.string "property_district"
+    t.string "property_city"
+    t.string "property_state"
+    t.string "property_meter"
+    t.string "property_block"
+    t.string "property_allotment"
+    t.string "observation"
+    t.string "state"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,6 +67,7 @@ ActiveRecord::Schema.define(version: 20150207133301) do
     t.string   "avatar"
     t.string   "name"
     t.boolean  "status",                 default: false
+    t.boolean  "admin",                  default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
