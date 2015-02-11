@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :laws
 
   namespace :supervision do
-    resources :notification
+    resources :notifications
   end
 end
