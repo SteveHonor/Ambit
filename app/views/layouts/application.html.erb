@@ -90,6 +90,7 @@
   </ul>
 </div>
 
+  <div id="map-canvas"></div>
 <div class="content">
   <div class="row">
     <%= yield %>
@@ -111,7 +112,10 @@
   });
 
   $(document).ready(function($) {
+  if (location.pathname+location.search != "/"){
+
     $('#menu').toggle();
+  }
 
     $('#mega-1').dcVerticalMegaMenu();
   });

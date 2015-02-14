@@ -198,62 +198,45 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="sub_title">Penalidades</div>
-    </div>
+ <div class="row">
+  <div class="col-sm-12">
+    <div class="sub_title">Penalidades</div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="col-sm-2"><label>Leis</label></div><div class="col-sm-2 pull-right" align="right"><label>Leis Escolhidas</label></div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-3">
-      <label>
-        Prazo de regularização
-      </label>
-      <input type="text" class="form-control">
-    </div>
-
-    <div class="col-sm-3">
-      <label>
-        Multa R$
-      </label>
-      <input type="text" class="form-control">
-    </div>
-
-    <div class="col-sm-3">
-      <label>
-        Artigo
-      </label>
-      <input type="text" class="form-control">
-    </div>
-
-    <div class="col-sm-3">
-      <label>
-        Lei Municipal
-      </label>
-      <input type="text" class="form-control">
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="sub_title">Tipo De Infração</div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="col-sm-2"><label>Leis</label></div><div class="col-sm-2 pull-right" align="right"><label>Leis Escolhidas</label></div>
-    </div>
-
-    <select id='optgroup' multiple='multiple'>
-      <% Law.all.each do | law | %>
-      <optgroup label="Lei: <%= law.number %>">
+  <div class="col-sm-12">
+  <select id='optgroup' multiple='multiple' class="form-control">
+    <% Law.all.each do | law | %>
+    <optgroup label="Lei: <%= law.number %>">
         <option value='<%= law.id%>'>Artigo: <%= law.article %> | <%= law.description %></option>
-      </optgroup>
-      <% end %>
-    </select>
+    </optgroup>
+    <% end %>
+  </select>
   </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-2  pull-right">
+    <label>
+      Multa R$
+    </label>
+    <input type="text" class="form-control">
+  </div>
+
+  <div class="col-sm-2  pull-right">
+    <label>
+      Prazo de regularização
+    </label>
+    <input type="text" class="form-control">
+  </div>
+</div>
+
 
   <div class="panel-footer">
     <div class="actions">
