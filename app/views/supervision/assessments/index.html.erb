@@ -1,0 +1,129 @@
+<%= @notification.inspect %>
+<%= @fine.inspect %>
+<div class="row">
+  <div class="col-sm-10">
+    <div class="sub_title">Auto de Infração</div>
+  </div>
+  <div class="col-sm-2">
+    <div class="sub_title">Valor</div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+  <strong>Imposição de penalidade de multas</strong>
+  </div>
+
+  <div class="col-sm-2">
+    <small>Processo Nº</small><br>
+    <strong><%= @notification.id.to_s.rjust(6, '0') %></strong>
+  </div>
+
+  <div class="col-sm-2">
+    <small>Data:</small><br>
+    <strong><%= Time.now.strftime("%d/%m/%Y") %></strong>
+  </div>
+
+  <div class="col-sm-2">
+      <h3><strong>R$ <%= @fine.price || '00.00' %></strong></h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="sub_title">Idendificação do infrator</div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-10">
+    <small>Nome</small></br>
+  <strong><%= @notification.owner_name %></strong>
+  </div>
+
+  <div class="col-sm-2">
+    <small>Identificação</small></br>
+  <strong><%= @notification.owner_identifier %></strong>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <small>Logadouro</small></br>
+  <strong><%= @notification.owner_address %></strong>
+  </div>
+
+  <div class="col-sm-2">
+    <small>Numero</small></br>
+  <strong><%= @notification.owner_address_number %></strong>
+  </div>
+
+  <div class="col-sm-2">
+    <small>Bairro</small></br>
+  <strong><%= @notification.owner_district %></strong>
+  </div>
+
+  <div class="col-sm-2">
+    <small>CEP</small></br>
+  <strong><%= @notification.owner_zip_code %></strong>
+  </div>
+
+  <div class="col-sm-2">
+    <small>Municipio</small></br>
+  <strong><%= @notification.owner_city %></strong>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="sub_title">Atividade Principal</div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-12">
+        <small>Descrição</small></br>
+      <strong>dfsjdhfjsdjfhsdj</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="sub_title">Irregularidades</div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <small>Data da Infração</small></br>
+  <strong><%= @notification.created_at.strftime("%d/%m/%Y") %></strong>
+  </div>
+
+  <div class="col-sm-2">
+    <small>Hora da Infração</small></br>
+  <strong><%= @notification.created_at.strftime("%H:%M") %></strong>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <small>Descrição da Infração</small></br>
+  <strong><%= @notification.notify_description %></strong>
+  </div>
+</div
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="sub_title">Enquadrameto</div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+  <strong>dfsjdhfjsdasdmasmdk ksandansjd jnjasdjasjdbaj asdasdaskknkjfhsdj</strong>
+  </div>
+</div>
