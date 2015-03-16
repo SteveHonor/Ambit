@@ -12,10 +12,15 @@ module Supervision
 
     def edit
       @notification = Supervision::Notification.find(params[:id])
+      @fine         = Fine.where(notification_id: params[:id])
     end
 
-    def created
-      @notification = Supervision::Notification.new(notification_params.merge({state: :notified}))
+    def create
+      notification = notification_params.merge({state: :notified})
+      laws         = params.delete(:laws)
+
+      @notification = Supervision::Notification.new(notification)
+
       respond_to do |format|
         if @notification.save
           format.html { redirect_to supervision_notifications_path }
@@ -25,9 +30,16 @@ module Supervision
           format.json { render json: @notification.errors, status: :unprocessable_entity }
         end
       end
+
+      laws.each do |law|
+        Fine.create(notification_id: @notification.id, law_id: law)
+      end
     end
 
     def update
+      notification = notification_params
+      laws         = params.delete(:laws)
+
       respond_to do |format|
         if @notification.update(notification_params)
           format.html { redirect_to supervision_notifications_path }
@@ -36,12 +48,25 @@ module Supervision
           format.json { render json: @notification.errors, status: :unprocessable_entity }
         end
       end
+
+      if laws
+        laws.each do |law|
+          Fine.create(notification_id: @notification.id, law_id: law)
+        end
+      end
     end
 
     def destroy
       @notification.destroy
       respond_to do |format|
         format.html { redirect_to supervision_notifications_path }
+        format.json { head :no_content }
+      end
+    end
+
+    def delete_fine
+      Fine.find(params[:id]).destroy
+      respond_to do |format|
         format.json { head :no_content }
       end
     end
@@ -78,7 +103,8 @@ module Supervision
           :property_meter,
           :property_block,
           :property_allotment,
-          :observation);
+          :property_observation,
+          :notify_description);
     end
   end
 end

@@ -89,23 +89,22 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="sub_title">
+        <div class="pull-left">Dados do Imóvel</div>
+        <div class="pull-right">
+          <div class="radio-inline">
+            <label><%= f.radio_button(:property_zone, "Urban", checked: true) %>Área Urbana</label>
+          </div>
 
-<div class="row">
-  <div class="col-sm-12">
-    <div class="sub_title">
-      <div class="pull-left">Dados do Imóvel</div>
-      <div class="pull-right">
-        <div class="radio-inline">
-          <label><input type="radio" name="property_zone" checked="checked">Área Urbana</label>
-        </div>
-
-        <div class="radio-inline">
-          <label><input type="radio" name="property_zone">Área Rural</label>
+          <div class="radio-inline">
+            <label><%= f.radio_button(:property_zone, "Rural") %>Área Rural</label>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 <div class="row">
   <div class="col-sm-1">
@@ -172,8 +171,8 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <%= f.label :observation, class: "control-label" %>
-      <%= f.text_area :observation, class: "form-control" %>
+      <%= f.label :property_observation, class: "control-label" %>
+      <%= f.text_area :property_observation, class: "form-control text_area" %>
     </div>
   </div>
 
@@ -215,22 +214,30 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-12">
-    <div class="col-sm-2"><label>Leis</label></div><div class="col-sm-2 pull-right" align="right"><label>Leis Escolhidas</label></div>
-  </div>
-
-  <div class="col-sm-12">
-  <select id='optgroup' multiple='multiple' class="form-control">
-    <% Law.all.each do | law | %>
-    <optgroup label="Lei: <%= law.number %>">
-        <option value='<%= law.id%>'>Artigo: <%= law.article %> | <%= law.description %></option>
-    </optgroup>
-    <% end %>
-  </select>
+<div class="col-sm-12">
+  <div class="row">
+    <%= f.label :notify_description, class: "control-label" %>
+    <%= f.text_area :notify_description, class: "form-control text_area" %>
   </div>
 </div>
 
+<div class="col-sm-12">
+  <div class="row">
+    <%= f.label 'Conforme lei', class: "control-label" %>
+    <table class="table">
+      <tbody>
+        <% Law.all.each do | law | %>
+        <tr>
+          <td><input value=<%= law.id %> type="checkbox" name="laws[]"></td>
+          <td width="100">Lei: <%= law.number %></td>
+          <td width="80">Artigo: <%= law.article %></td>
+          <td><%= law.description %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-sm-2  pull-right">
@@ -248,14 +255,14 @@
   </div>
 </div>
 
-   <div class="panel-footer">
+    <div class="panel-footer">
       <div class="actions">
-        <button class="btn btn-danger">Registrar Autuação</button>
-        <button class="btn btn-primary">Registrar Notificação</button>
+        <button class="btn btn-warning">Gerar Autuação</button>
+        <button class="btn btn-primary">Gerar Notificação</button>
       </div>
 
       <div class="actions pull-left">
-          <button class="btn">Voltar</button>
+        <%= link_to f.button("Voltar", class: "btn"), supervision_notifications_path %>
       </div>
     </div>
 <% end %>

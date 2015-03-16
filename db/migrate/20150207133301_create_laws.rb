@@ -4,6 +4,8 @@ class CreateLaws < ActiveRecord::Migration
       t.string :number
       t.string :article
       t.string :description
+
+      t.timestamps
     end
   end
 end

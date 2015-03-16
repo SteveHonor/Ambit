@@ -162,8 +162,8 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <%= f.label :observation, class: "control-label" %>
-      <%= f.text_area :observation, class: "form-control" %>
+      <%= f.label :property_observation, class: "control-label" %>
+      <%= f.text_area :property_observation, class: "form-control" %>
     </div>
   </div>
   <div class="row">
@@ -198,54 +198,75 @@
     </div>
   </div>
 
- <div class="row">
+<div class="row">
   <div class="col-sm-12">
     <div class="sub_title">Penalidades</div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-12">
-    <div class="col-sm-2"><label>Leis</label></div><div class="col-sm-2 pull-right" align="right"><label>Leis Escolhidas</label></div>
-  </div>
-
-  <div class="col-sm-12">
-  <select id='optgroup' multiple='multiple' class="form-control">
-    <% Law.all.each do | law | %>
-    <optgroup label="Lei: <%= law.number %>">
-        <option value='<%= law.id%>'>Artigo: <%= law.article %> | <%= law.description %></option>
-    </optgroup>
-    <% end %>
-  </select>
+<div class="col-sm-12">
+  <div class="row">
+    <%= f.label :notify_description, class: "control-label" %>
+    <%= f.text_area :notify_description, class: "form-control text_area" %>
   </div>
 </div>
 
+<div class="col-sm-12">
+  <div class="row">
+    <%= f.label 'Conforme lei', class: "control-label" %>
+    <table class="table">
+      <tbody>
+        <% @fine.each do | fine | %>
+        <tr>
+          <td width='2%' id='delete_fine' style="cursor:pointer">
+            <i id=<%= fine.id %> class="fa fa-trash-o"></i>
+          </td>
+          <td colspan="3"><%= fine.law.description %></td>
+        </tr>
+        <% end %>
+
+        <%  fine = Fine.all.pluck(:law_id) %>
+        <%  Law.where.not(id: fine).each do | law | %>
+        <tr>
+          <td><input value=<%= law.id %> type="checkbox" name="laws[]"></td>
+          <td width="100">Lei: <%= law.number %></td>
+          <td width="80">Artigo: <%= law.article %></td>
+          <td><%= law.description %></td>
+        </tr>
+        <% end %>
+
+        <% Law.where.not(id: @fine.pluck(:law_id) ).each do | law | %>
+        <tr>
+          <td><input value=<%= law.id %> type="checkbox" name="laws[]"></td>
+          <td width="100">Lei: <%= law.number %></td>
+          <td width="80">Artigo: <%= law.article %></td>
+          <td><%= law.description %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <div class="row">
-  <div class="col-sm-2  pull-right">
-    <label>
-      Multa R$
-    </label>
-    <input type="text" class="form-control">
-  </div>
-
   <div class="col-sm-2  pull-right">
     <label>
       Prazo de regularização
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name='regulation' class="form-control">
   </div>
 </div>
-
 
   <div class="panel-footer">
     <div class="actions">
       <button class="btn btn-primary">Atualizar</button>
+      <button class="btn btn-warning">Gerar Autuação</button>
     </div>
 
     <div class="actions pull-left">
-      <button class="btn">Voltar</button>
+      <%= link_to f.button("Voltar", class: "btn"), supervision_notifications_path %>
     </div>
   </div>
 <% end %>
 </div>
+<script src='/assets/fines.js'></script>

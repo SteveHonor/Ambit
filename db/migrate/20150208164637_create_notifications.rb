@@ -25,8 +25,12 @@ class CreateNotifications < ActiveRecord::Migration
       t.string :property_meter
       t.string :property_block
       t.string :property_allotment
-      t.string :observation
+      t.string :property_observation
+      t.string :notify_description
+      t.string :regulation
       t.string :state
+
+      t.timestamps
     end
   end
 end

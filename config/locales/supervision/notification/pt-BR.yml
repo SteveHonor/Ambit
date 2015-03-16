@@ -30,4 +30,5 @@ pt-BR:
           property_meter: "M²"
           property_block: "Quadra"
           property_allotment: "Lote"
-          observation:  "Observação"
+          property_observation:  "Observação"
+          notify_description:  "Descrição"

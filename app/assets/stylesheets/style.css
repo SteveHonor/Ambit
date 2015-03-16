@@ -79,7 +79,7 @@ body {
 }
 
 .panel .row{
-  padding: 0 30px;
+  padding: 0 20px;
 }
 
 .panel {
@@ -177,10 +177,10 @@ h {
   margin: 20px 0 20px 0;
   background-color: #EFEFEF;
   border: 0px;
-  border-radius: 4px;
-  -webkit-box-shadow: 0px 1px 4px 0px #CECECE;
-  -moz-box-shadow:    0px 1px 4px 0px #CECECE;
-  box-shadow:         0px 2px 1px 1px #CECECE;
+  border-radius: 0px;
+  -webkit-box-shadow: 0px 1px 0px 0px #CECECE;
+  -moz-box-shadow:    0px 1px 0px 0px #CECECE;
+  box-shadow:         0px 1px 1px 1px #CECECE;
   opacity: 0.7;
   float: left;
   width: 100%;
@@ -265,7 +265,7 @@ border-bottom: 6px solid #F0F0F0 !important;
 
 table.dataTable tbody th,
 table.dataTable tbody td {
-  padding: 20px 0px 10px 15px !important;
+  padding: 10px 0px 10px 15px !important;
   font-weight: bold;
   color: #666666;
 }
@@ -358,6 +358,22 @@ color: #000;
     background: white;
     cursor: inherit;
     display: block;
+}
+
+.panel .text_area{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 80px;
+}
+.modal-dialog {
+  width: 70%;
+  margin: 30px auto;
+}
+.modal-title {
+  text-transform:  uppercase;
+  font-weight:  bolder;
+  padding: 10px 0px 10px 10px !important;
+  color: #666666;
 }
 
 
