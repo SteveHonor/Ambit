@@ -18,6 +18,7 @@
 //= require dataTables/extras/dataTables.responsive
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require jquery-ui
+//= require jquery.confirm
 // require supervision/assessments
 //= require turbolinks
 //= require_tree .

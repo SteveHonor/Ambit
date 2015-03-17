@@ -1,58 +1,84 @@
-<h>Fiscalização | Notificações</h>
-<div class="panel">
-  <div class="form-group">
+  <h>Fiscalização | Notificações</h>
+  <div class="panel">
+    <div class="form-group">
 
-    <div class="row">
-      <table id="table-notification" class="table table-striped display">
-        <thead class="table-heading">
-          <tr>
-            <th width="auto">Nome</th>
-            <th width="auto">Endereço</th>
-            <th width="auto">Municipio</th>
-            <th width="auto">Status</th>
-            <th width="210px"></th>
-          </tr>
-        </thead>
+      <div class="row">
+        <table id="table-notification" class="table table-striped display">
+          <thead class="table-heading">
+            <tr>
+              <th width="auto">Nome</th>
+              <th width="auto">Endereço</th>
+              <th width="auto">Municipio</th>
+              <th width="auto">Status</th>
+              <th width="210px"></th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <% @notifications.each do | notifications |  %>
-          <tr>
-            <td><%= notifications.owner_name%></td>
-            <td><%= notifications.property_address %></td>
-            <td><%= notifications.property_city %></td>
-            <td><span class="label label-success"><%= t notifications.state %></span></td>
-            <td align="center">
-              <%= link_to '<i class="fa fa-edit"></i> Editar'.html_safe, edit_supervision_notification_path(notifications), class: "btn btn-primary btn-xs" %>
-              <%= link_to '<i class="fa fa-trash-o"></i> Deletar'.html_safe, notifications, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
-              <button type="button" id="modal" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModal">
-                <i class="fa fa-gavel"></i> Autuar
-              </button>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+          <tbody>
+            <% @notifications.each do | notifications |  %>
+            <tr>
+              <td><%= notifications.owner_name%></td>
+              <td><%= notifications.property_address %></td>
+              <td><%= notifications.property_city %></td>
+              <td>
+                <% if notifications.state == 'notified' %>
+                  <span class="label label-warning" id="label_<%= notifications.id %>">
+                <% else %>
+                  <span class="label label-success" id="label_<%= notifications.id %>">
+                <% end %>
+                  <%= t notifications.state %>
+                </span>
+              </td>
+              <td>
+                <%= link_to '<i class="fa fa-edit"></i> Editar'.html_safe, edit_supervision_notification_path(notifications), class: "btn btn-primary btn-xs" %>
+                <%= link_to '<i class="fa fa-trash-o"></i> Deletar'.html_safe, notifications, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
+
+                <% if notifications.state == 'notified' %>
+                <button type="button" id="<%= notifications.id %>" class="btn btn-warning btn-xs my_modal"  data-target="#myModal">
+                  <i class="fa fa-gavel"></i> Autuar
+                </button>
+                <% else %>
+                <button type="button" id="<%= notifications.id %>" class="btn btn-success btn-xs my_modal"  data-target="#myModal">
+                  <i class="fa fa-search"></i> Visualizar
+                </button>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 
-<div id="actin-btn" class="col-sm-2 pull-right" align="right">
-  <%= link_to '<i class="fa fa-plus"></i> Nova Notificação'.html_safe, new_supervision_notification_path, class: "btn btn-primary" %>
-</div>
+  <div id="actin-btn" class="col-sm-2 pull-right" align="right">
+    <%= link_to '<i class="fa fa-plus"></i> Nova Notificação'.html_safe, new_supervision_notification_path, class: "btn btn-primary" %>
+  </div>
 
-<script>
-$(document).ready(function() {
-  var table = $('#table-notification').dataTable({
-    "dom": '<"row"<"well"f><t><"bottom well"lp>>'
-  });
+  <script>
+  $(document).ready(function() {
+    $( ".my_modal" ).confirm({
+      title:"<i class='fa fa-exclamation-triangle'></i> Gerar Autuação",
+      text:"<h3>Realmente deseja gerar um autuação?</h3>",
+      confirm: function(button) {
+        console.log(button);
+        $('#myModal').modal();
+        $('#myModalBody').load('/supervision/assessments/'+ button.attr('id') +'/pdf');
+        $('#label_'+button.attr('id')).html('Fiscalizado');
+      },
+      confirmButton: "Sim",
+      cancelButton: "Não"
+    });
 
-  var tt = new $.fn.dataTable.TableTools( table );
+    var table = $('#table-notification').dataTable({
+      "dom": '<"row"<"well"f><t><"bottom well"lp>>'
+    });
 
-  $( "#actin-btn" ).insertBefore('#table-notification_filter');
-} );
+    var tt = new $.fn.dataTable.TableTools( table );
 
-$( "#modal" ).click(function() {
-  $('#myModalBody').load('/supervision/assessments/4/pdf');
-});
+    $( "#actin-btn" ).insertBefore('#table-notification_filter');
+  } );
 
-</script>
+
+
+  </script>
