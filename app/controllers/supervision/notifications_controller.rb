@@ -15,6 +15,12 @@ module Supervision
       @fine         = Fine.where(notification_id: params[:id])
     end
 
+    def show
+      @notification = Supervision::Notification.find(params[:id])
+      @fine         = Fine.find_by(notification_id: params[:id])
+      render  "supervision/notifications/show", layout: false
+    end
+
     def create
       notification = notification_params.merge({state: :notified})
       laws         = params.delete(:laws)

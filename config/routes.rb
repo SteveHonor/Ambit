@@ -11,6 +11,6 @@ Rails.application.routes.draw do
     resources :notifications
     resources :assessments
 
-    get '/assessments/:id/pdf', to: 'assessments#update', as: 'generate_assessment'
+    get '/assessments/:id/generate', to: 'assessments#update', as: 'generate_assessment'
   end
 end
