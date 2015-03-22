@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Notification:</strong>
+  <%= @supervision.notification %>
+</p>
+
+<p>
+  <strong>Observation:</strong>
+  <%= @supervision.observation %>
+</p>
+
+<%= link_to 'Edit', edit_supervision_path(@supervision) %> |
+<%= link_to 'Back', supervisions_path %>

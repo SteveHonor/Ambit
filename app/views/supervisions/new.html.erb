@@ -1,0 +1,12 @@
+<div class="row">
+<%= form_for(@supervision) do |f| %>
+  <div class="field">
+    <%= f.text_field :notification_id, class: "form-control",rows: 10 %>    
+    <%= f.label :observation, class: "control-label" %><br>
+    <%= f.text_area :observation, class: "form-control",rows: 10 %>
+  </div>
+  <div class="actions">
+    <%= f.submit("Enviar", class: "btn btn-primary") %>
+  </div>
+<% end %>
+</div>

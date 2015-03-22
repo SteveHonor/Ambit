@@ -1,0 +1,85 @@
+<h>Fiscalização | Notificações</h>
+<div class="panel">
+  <div class="form-group">
+
+    <div class="row">
+      <table id="table-notification" class="table table-striped display">
+        <thead class="table-heading">
+          <tr>
+            <th width="auto">Nome</th>
+            <th width="auto">Endereço</th>
+            <th width="auto">Municipio</th>
+            <th width="auto">Status</th>
+            <th width="17%"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @notifications.each do | notifications |  %>
+          <tr>
+            <td><%= notifications.owner_name%></td>
+            <td><%= notifications.property_address %></td>
+            <td><%= notifications.property_city %></td>
+            <td>
+              <% if notifications.state == 'pending' %>
+              <span class="label label-warning" id="label_<%= notifications.id %>">
+                <% else %>
+                <span class="label label-success" id="label_<%= notifications.id %>">
+                  <% end %>
+                  <%= t notifications.state %>
+                </span>
+              </td>
+              <td>
+                <%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, '#',  id: notifications.id, class: "btn btn-primary btn-sm my_modal my_modal_visualisation",  'data-target' => "#myModal" %>
+                <% if notifications.state == 'pending' %>
+                  <%= link_to '<i class="fa fa-file"></i> Fiscalização'.html_safe, '#',  id: notifications.id, class: "btn btn-success btn-sm my_modal my_modal_supervision",  'data-target' => "#myModal" %>
+                <% else %>
+                  <%= link_to '<i class="fa fa-file"></i> Fiscalização'.html_safe, '#', class: "btn btn-success btn-sm disabled"%>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+  $(document).ready(function() {
+    $( ".my_modal_generate" ).confirm({
+      title:"<i class='fa fa-exclamation-triangle'></i> Gerar Autuação",
+      text:"<h3>Realmente deseja gerar um autuação?</h3>",
+      confirm: function(button) {
+        $('#myModal').modal();
+        $('#myModalBody').load('/supervision/assessments/'+ button.attr('id') +'/genrate');
+        $('#label_'+button.attr('id')).html('Fiscalizado');
+      },
+      confirmButton: "Sim",
+      cancelButton: "Não"
+    });
+
+    $( ".my_modal_visualisation" ).click(function(){
+      $('#myModal').modal();
+      $('#myModalBody').load('/supervisions/notifications/'+ $(this).attr('id') );
+    });
+
+    $( ".my_modal_supervision" ).click(function(){
+      $('#myModal').modal();
+      $('#myModalBody').load('/notifications/'+ $(this).attr('id') +'/supervisions/new');
+    });
+
+    var table = $('#table-notification').dataTable({
+      "dom": '<"row"<"well"f><t><"bottom well"lp>>'
+    });
+
+    var tt = new $.fn.dataTable.TableTools( table );
+
+    $( "#actin-btn" ).insertBefore('#table-notification_filter');
+  } );
+
+
+
+  </script>

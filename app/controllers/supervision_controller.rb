@@ -1,2 +1,0 @@
-class SupervisionController < ApplicationController
-end

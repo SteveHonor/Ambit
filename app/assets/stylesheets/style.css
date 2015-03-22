@@ -386,7 +386,22 @@ color: #000;
   padding: 10px 0px 10px 10px !important;
   color: #666666;
 }
-
+.btn-group > button {
+  font-weight: bold;
+  margin-top: -3px;
+}
+.btn + .dropdown-menu > li > a {
+  padding: 5px;
+  margin: 0px 20px 0px 20px;
+  color: #333;
+  font-weight: bold;
+}
+.btn + .dropdown-menu > li > a > i{
+  font-weight: bold;
+}
+.label {
+  padding: 8px;
+}
 
 
 
@@ -650,32 +665,7 @@ a.show-sidebar:hover {
   font-weight: bold;
   margin-top: 2px;
 }
-.panel-menu .dropdown-menu {
-  position: absolute !important;
-  background: rgba(0, 0, 0, 0.8) !important;
-  padding: 0;
-  border: 0;
-  right: 0;
-  left: auto;
-  min-width: 100%;
-}
-.panel-menu .dropdown-menu > li > a {
-  padding:5px 0px !important;
-  color:#FFFFFF;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: bolder;
-}
-.panel-menu .dropdown-menu > li > a > i {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  font-size: 14px;
-  width: 20px;
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
-}
+
 
 .full-content .box-content {
   height: 100%;
@@ -773,40 +763,7 @@ table.no-border-bottom tr:last-child td {
 div.DTTT_collection_background {
   z-index: 2002;
 }
-ul.DTTT_dropdown.dropdown-menu {
-  z-index: 2003;
-  background: rgba(0, 0, 0, 0.7) !important;
-  padding: 0;
-  border: 0;
-  margin: 0;
-  -webkit-border-radius: 0 0 4px 4px;
-  -moz-border-radius: 0 0 4px 4px;
-  border-radius: 0 0 4px 4px;
-  min-width: 157px;
-}
-ul.DTTT_dropdown.dropdown-menu li {
-  position: relative;
-}
-ul.DTTT_dropdown.dropdown-menu > li > a {
-  position: relative;
-  display: block;
-  padding: 5px 10px !important;
-  color: #f0f0f0 !important;
-}
-ul.DTTT_dropdown.dropdown-menu > li:first-child > a {
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-}
-ul.DTTT_dropdown.dropdown-menu > li:last-child > a {
-  -webkit-border-radius: 0 0 4px 4px;
-  -moz-border-radius: 0 0 4px 4px;
-  border-radius: 0 0 4px 4px;
-}
-ul.DTTT_dropdown.dropdown-menu > li:hover > a {
-  background:rgba(0, 0, 0, 0.3);
-  color:#f0f0f0;
-}
+
 
 #breadcrumb {
   padding: 0;
@@ -1869,15 +1826,11 @@ td.beauty-hover {
 }
 .btn + .dropdown-menu {
   margin-top: -10px;
-  background: rgba(0, 0, 0, 0.7) !important; padding: 0; border: 0;
   right: 0;
   left: auto;
   min-width: 100%;
 }
-.btn + .dropdown-menu > li > a {
-  padding: 5px 10px !important;
-  color: #f0f0f0;
-}
+
 .v-txt {
   -moz-transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
