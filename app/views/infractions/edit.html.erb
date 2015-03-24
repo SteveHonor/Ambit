@@ -1,24 +1,24 @@
 <h>Fiscalização | Notificação</h>
 <div class="panel">
-<%= form_for(@notification) do |f| %>
-<div class="row">
-  <div class="col-sm-12">
-    <div class="sub_title">
-      <div class="pull-left">Dados do proprietário</div>
-      <div class="pull-right">
-        <div class="radio-inline">
-          <label><input type="radio" checked="checked">Pessoa Fisica</label>
-        </div>
+ <%= form_for(@infraction, url: infraction_path(@infraction), :method=>:put) do |f| %>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="sub_title">
+        <div class="pull-left">Dados do proprietário</div>
+        <div class="pull-right">
+          <div class="radio-inline">
+            <label><input type="radio" checked="checked">Pessoa Fisica</label>
+          </div>
 
-        <div class="radio-inline">
-          <label><input type="radio" >Pessoa Juridica</label>
+          <div class="radio-inline">
+            <label><input type="radio" >Pessoa Juridica</label>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="row">
+  <div class="row">
     <div class="col-sm-7">
       <%= f.label :owner_name, class: "control-label" %>
       <%= f.text_field :owner_name, autofocus: true, class: "form-control" %>
@@ -106,22 +106,13 @@
     </div>
   </div>
 
-<div class="row">
-  <div class="col-sm-1">
-    <label>
-      Mesmo acima
-    </label>
-    <select class="form-control">
-      <option value="N">Não</option>
-      <option value="S">Sim</option>
-    </select>
-    </div>
+  <div class="row">
     <div class="col-sm-2">
       <%= f.label :property_zip_code, class: "control-label" %>
       <%= f.text_field :property_zip_code, class: "form-control" %>
     </div>
 
-    <div class="col-sm-8">
+    <div class="col-sm-9">
       <%= f.label :property_address, class: "control-label" %>
       <%= f.text_field :property_address, class: "form-control" %>
     </div>
@@ -172,41 +163,40 @@
   <div class="row">
     <div class="col-sm-12">
       <%= f.label :property_observation, class: "control-label" %>
-      <%= f.text_area :property_observation, class: "form-control text_area" %>
+      <%= f.text_area :property_observation, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="sub_title">Imagens</div>
     </div>
   </div>
 
-<div class="row">
-  <div class="col-sm-12">
-      <div class="sub_title">Imagens</div>
-  </div>
-</div>
+  <div class="row">
+    <div class="col-xs-6 col-md-3">
+      <a href="#" class="thumbnail">
+        <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+      </a>
+    </div>
 
-<div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-    </a>
-  </div>
+    <div class="col-xs-6 col-md-3">
+      <a href="#" class="thumbnail">
+        <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+      </a>
+    </div>
 
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-    </a>
-  </div>
+    <div class="col-xs-6 col-md-3">
+      <a href="#" class="thumbnail">
+        <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+      </a>
+    </div>
 
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-    </a>
+    <div class="col-xs-6 col-md-3">
+      <a href="#" class="thumbnail">
+        <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+      </a>
+    </div>
   </div>
-
-   <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-    </a>
-  </div>
-</div>
 
 <div class="row">
   <div class="col-sm-12">
@@ -226,7 +216,26 @@
     <%= f.label 'Conforme lei', class: "control-label" %>
     <table class="table">
       <tbody>
-        <% Law.all.each do | law | %>
+        <% @fine.each do | fine | %>
+        <tr>
+          <td width='2%' id='delete_fine' style="cursor:pointer">
+            <i id=<%= fine.id %> class="fa fa-trash-o"></i>
+          </td>
+          <td colspan="3"><%= fine.law.description %></td>
+        </tr>
+        <% end %>
+
+        <%  fine = Fine.all.pluck(:law_id) %>
+        <%  Law.where.not(id: fine).each do | law | %>
+        <tr>
+          <td><input value=<%= law.id %> type="checkbox" name="laws[]"></td>
+          <td width="100">Lei: <%= law.number %></td>
+          <td width="80">Artigo: <%= law.article %></td>
+          <td><%= law.description %></td>
+        </tr>
+        <% end %>
+
+        <% Law.where.not(id: @fine.pluck(:law_id) ).each do | law | %>
         <tr>
           <td><input value=<%= law.id %> type="checkbox" name="laws[]"></td>
           <td width="100">Lei: <%= law.number %></td>
@@ -242,28 +251,22 @@
 <div class="row">
   <div class="col-sm-2  pull-right">
     <label>
-      Multa R$
-    </label>
-    <input type="text" class="form-control">
-  </div>
-
-  <div class="col-sm-2  pull-right">
-    <label>
       Prazo de regularização
     </label>
-    <input type="text" class="form-control">
+    <input type="text" name='regulation' class="form-control">
   </div>
 </div>
 
-    <div class="panel-footer">
-      <div class="actions">
-        <button class="btn btn-warning">Gerar Autuação</button>
-        <button class="btn btn-primary">Gerar Notificação</button>
-      </div>
-
-      <div class="actions pull-left">
-        <%= link_to f.button("Voltar", class: "btn"), supervision_notifications_path %>
-      </div>
+  <div class="panel-footer">
+    <div class="actions">
+      <button class="btn btn-primary">Atualizar</button>
+      <button class="btn btn-warning">Gerar Autuação</button>
     </div>
+
+    <div class="actions pull-left">
+      <%= link_to f.button("Voltar", class: "btn"), infractions_path %>
+    </div>
+  </div>
 <% end %>
 </div>
+<script src='/assets/fines.js'></script>

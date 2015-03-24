@@ -15,24 +15,32 @@
         </thead>
 
         <tbody>
-          <% @notifications.each do | notifications |  %>
+          <% @infractions.each do | infractions |  %>
           <tr>
-            <td><%= notifications.owner_name%></td>
-            <td><%= notifications.property_address %></td>
-            <td><%= notifications.property_city %></td>
+            <td><%= infractions.owner_name%></td>
+            <td><%= infractions.property_address %></td>
+            <td><%= infractions.property_city %></td>
             <td>
-              <% if notifications.state == 'pending' %>
-              <span class="label label-warning" id="label_<%= notifications.id %>">
-                <% else %>
-                <span class="label label-success" id="label_<%= notifications.id %>">
-                  <% end %>
-                  <%= t notifications.state %>
+              <% if infractions.state == 'pending' %>
+                <span class="label label-warning" id="label_<%= infractions.id %>">
+              <% elsif  infractions.state == 'notified' %>
+                <span class="label label-success" id="label_<%= infractions.id %>">
+              <% elsif  infractions.state == 'fined' %>
+                <span class="label label-danger" id="label_<%= infractions.id %>">
+              <% elsif  infractions.state == 'supervised' %>
+                <span class="label label-warning" id="label_<%= infractions.id %>">
+              <% elsif  infractions.state == 'canceled' %>
+                <span class="label label-default" id="label_<%= infractions.id %>">
+              <% else %>
+                <span class="label label-info" id="label_<%= infractions.id %>">
+              <% end %>
+              <%= t infractions.state %>
                 </span>
-              </td>
+            </td>
               <td>
-                <%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, '#',  id: notifications.id, class: "btn btn-primary btn-sm my_modal my_modal_visualisation",  'data-target' => "#myModal" %>
-                <% if notifications.state == 'pending' %>
-                  <%= link_to '<i class="fa fa-file"></i> Fiscalização'.html_safe, '#',  id: notifications.id, class: "btn btn-success btn-sm my_modal my_modal_supervision",  'data-target' => "#myModal" %>
+                <%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, '#',  id: infractions.id, class: "btn btn-primary btn-sm my_modal my_modal_visualisation",  'data-target' => "#myModal" %>
+                <% if infractions.state == 'pending' %>
+                  <%= link_to '<i class="fa fa-file"></i> Fiscalização'.html_safe, '#',  id: infractions.id, class: "btn btn-success btn-sm my_modal my_modal_supervision",  'data-target' => "#myModal" %>
                 <% else %>
                   <%= link_to '<i class="fa fa-file"></i> Fiscalização'.html_safe, '#', class: "btn btn-success btn-sm disabled"%>
                 <% end %>
@@ -63,12 +71,12 @@
 
     $( ".my_modal_visualisation" ).click(function(){
       $('#myModal').modal();
-      $('#myModalBody').load('/supervisions/notifications/'+ $(this).attr('id') );
+      $('#myModalBody').load('/supervisions/infractions/'+ $(this).attr('id') );
     });
 
     $( ".my_modal_supervision" ).click(function(){
       $('#myModal').modal();
-      $('#myModalBody').load('/notifications/'+ $(this).attr('id') +'/supervisions/new');
+      $('#myModalBody').load('/infractions/'+ $(this).attr('id') +'/supervisions/new');
     });
 
     var table = $('#table-notification').dataTable({

@@ -1,4 +1,4 @@
 class Fine < ActiveRecord::Base
-  belongs_to :notification
+  belongs_to :infraction
   belongs_to :law
 end

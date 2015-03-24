@@ -1,6 +1,6 @@
-class CreateNotifications < ActiveRecord::Migration
+class CreateInfractions < ActiveRecord::Migration
   def change
-    create_table :notifications do |t|
+    create_table :infractions do |t|
       t.string :owner_name
       t.string :owner_identifier
       t.string :owner_zip_code

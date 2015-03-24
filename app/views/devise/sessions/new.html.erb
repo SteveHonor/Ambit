@@ -1,4 +1,5 @@
-<div class="logo-login">AMBIT</div>
+<div class="logo-login">S I G A</div>
+<div class="logo-slogan">Sistema Integrado de Gestão Ambiental</div>
   <div class="login">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
@@ -12,7 +13,9 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <%= f.button :submit,class:"btn btn-primary" do %>
+        <i class='fa fa-unlock-alt'></i> Entrar
+      <% end %>
     </div>
   <% end %>
 </div>

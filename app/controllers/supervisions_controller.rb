@@ -10,13 +10,12 @@ class SupervisionsController < ApplicationController
   # GET /supervisions/1
   # GET /supervisions/1.json
   def show
-
   end
 
   # GET /supervisions/new
   def new
     @supervision  = Supervision.new
-    @supervision.notification_id = params[:id]
+    @supervision.infraction_id = params[:id]
     render layout: false
   end
 
@@ -28,11 +27,11 @@ class SupervisionsController < ApplicationController
   # POST /supervisions.json
   def create
     @supervision = Supervision.new(supervision_params)
-    @notification = Notification.find(supervision_params[:notification_id])
+    @infraction = Infraction.find(supervision_params[:infraction_id])
     respond_to do |format|
       if @supervision.save
-        @notification.supervised!
-        format.html { redirect_to notifications_path, notice: 'Supervision was successfully created.' }
+        @infraction.supervised!
+        format.html { redirect_to infractions_path, notice: 'Supervision was successfully created.' }
         format.json { render :show, status: :created, location: @supervision }
       else
         format.html { render :new }
@@ -65,15 +64,15 @@ class SupervisionsController < ApplicationController
     end
   end
 
-  def notifications
-    @notifications = Notification.all
-    render  "supervisions/notifications/index"
+  def infractions
+    @infractions = Infraction.all
+    render  "supervisions/infractions/index"
   end
 
-  def notifications_show
-    @notification = Notification.find(params[:id])
-    @fine         = Fine.find_by(notification_id: params[:id])
-    render  "supervisions/notifications/show", layout: false
+  def infractions_show
+    @infraction = Infraction.find(params[:id])
+    @fine         = Fine.find_by(infraction_id: params[:id])
+    render  "supervisions/infractions/show", layout: false
   end
 
   private
@@ -84,6 +83,6 @@ class SupervisionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def supervision_params
-      params.require(:supervision).permit(:notification_id, :observation)
+      params.require(:supervision).permit(:infraction_id, :observation)
     end
 end

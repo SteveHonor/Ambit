@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20150322155950) do
   enable_extension "plpgsql"
 
   create_table "fines", force: :cascade do |t|
-    t.integer  "notification_id"
+    t.integer  "infraction_id"
     t.integer  "law_id"
     t.decimal  "price"
     t.datetime "regularization"
@@ -25,18 +25,10 @@ ActiveRecord::Schema.define(version: 20150322155950) do
     t.datetime "updated_at"
   end
 
+  add_index "fines", ["infraction_id"], name: "index_fines_on_infraction_id", using: :btree
   add_index "fines", ["law_id"], name: "index_fines_on_law_id", using: :btree
-  add_index "fines", ["notification_id"], name: "index_fines_on_notification_id", using: :btree
 
-  create_table "laws", force: :cascade do |t|
-    t.string   "number"
-    t.string   "article"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "notifications", force: :cascade do |t|
+  create_table "infractions", force: :cascade do |t|
     t.string   "owner_name"
     t.string   "owner_identifier"
     t.string   "owner_zip_code"
@@ -63,19 +55,28 @@ ActiveRecord::Schema.define(version: 20150322155950) do
     t.string   "property_allotment"
     t.string   "property_observation"
     t.string   "notify_description"
+    t.string   "regulation"
     t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "supervisions", force: :cascade do |t|
-    t.integer  "notification_id"
-    t.string   "observation"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+  create_table "laws", force: :cascade do |t|
+    t.string   "number"
+    t.string   "article"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "supervisions", ["notification_id"], name: "index_supervisions_on_notification_id", using: :btree
+  create_table "supervisions", force: :cascade do |t|
+    t.integer  "infraction_id"
+    t.string   "observation"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "supervisions", ["infraction_id"], name: "index_supervisions_on_infraction_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -99,5 +100,5 @@ ActiveRecord::Schema.define(version: 20150322155950) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "supervisions", "notifications"
+  add_foreign_key "supervisions", "infractions"
 end

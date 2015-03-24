@@ -7,7 +7,7 @@ pt-BR:
   Rural: "Rural"
   activerecord:
     attributes:
-      "infraction":
+      "supervision/notification":
           owner_name: "Nome do Proprietário"
           owner_identifier: "CPF"
           owner_zip_code: "CEP"
