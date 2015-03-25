@@ -409,8 +409,10 @@ color: #000;
 .label {
   padding: 8px;
 }
-
-
+.btn-group>.btn+.dropdown-toggle {
+  padding-left: 4px;
+  padding-right: 4px;
+}
 
 
 

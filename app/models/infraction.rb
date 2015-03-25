@@ -13,5 +13,9 @@ class Infraction < ActiveRecord::Base
     event :down do
       transition all => :canceled
     end
+
+    event :fined do
+      transition notified: :fined 
+    end
   end
 end

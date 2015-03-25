@@ -75,7 +75,15 @@ class InfractionsController < ApplicationController
     end
   end
 
-  def generate
+  def generate_notification
+    @infraction = Infraction.find(params[:id])
+    @infraction.notified
+
+    @fine = Fine.find_by(infraction_id: params[:id])
+    render  "supervision/assessments/index", layout: false
+  end
+
+  def generate_assessment
     @infraction = Infraction.find(params[:id])
     @infraction.notified
 

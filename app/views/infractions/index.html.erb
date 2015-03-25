@@ -10,7 +10,7 @@
             <th width="auto">Endereço</th>
             <th width="auto">Municipio</th>
             <th width="auto">Status</th>
-            <th width="8%"></th>
+            <th width="10%"></th>
           </tr>
         </thead>
 
@@ -43,7 +43,7 @@
 
               <% else %>
               <div class="btn-group">
-                <button type="button" class="btn btn-sm"> Ações</button>
+                <button type="button" class="btn btn-sm" data-toggle="dropdown"><i class="fa fa-plus"></i> Ações</button>
                 <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                   <span class="caret"></span>
                 </button>
@@ -58,7 +58,7 @@
                       <li><%= link_to '<i class="fa fa-trash-o"></i> Deletar'.html_safe, '#', id: infractions.id,  class: "my_modal_canceled" %></li>
                       <li><%= link_to '<i class="fa  fa-print"></i> Imprimir'.html_safe, '#',  id: infractions.id, class: "my_modal_generate",  'data-target' => "#myModal" %></li>
                       <li class="divider"></li>
-                      <li><%= link_to '<i class="fa  fa-legal"></i> Autuar'.html_safe, '#',  id: infractions.id, class: "my_modal_notification",  'data-target' => "#myModal" %></li>
+                      <li><%= link_to '<i class="fa  fa-legal"></i> Autuar'.html_safe, '#',  id: infractions.id, class: "my_modal_assessments",  'data-target' => "#myModal" %></li>
                     <% else %>
                       <li><%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, '#',  id: infractions.id, class: "my_modal_visualisation",  'data-target' => "#myModal" %></li>
                       <li><%= link_to '<i class="fa fa-edit"></i> Editar'.html_safe, edit_infraction_path(infractions) %></li>
@@ -133,6 +133,18 @@
           cancelButton: "Não"
         });
 
+        $( ".my_modal_assessments" ).confirm({
+          title:"<i class='fa fa-exclamation-triangle'></i> Gerar Autuação",
+          text:"<h3>Realmente gerar a autuação?</h3>",
+          confirm: function(button) {
+            $('#myModal').modal();
+            $('#myModalBody').load('/infraction/'+ button.attr('id') +'/generate/assessments');
+            $('#label_'+button.attr('id')).html('Notificado');
+          },
+          confirmButton: "Sim",
+          cancelButton: "Não"
+        });
+
         var table = $('#table-notification').dataTable({
           "dom": '<"row"<"well"f><t><"bottom well"lp>>'
         });
@@ -141,7 +153,4 @@
 
         $( "#actin-btn" ).insertBefore('#table-notification_filter');
       } );
-
-
-
       </script>
