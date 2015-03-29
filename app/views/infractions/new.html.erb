@@ -111,26 +111,27 @@
     <label>
       Mesmo acima
     </label>
-    <select class="form-control">
-      <option value="N">Não</option>
-      <option value="S">Sim</option>
+    <select id="iqual" class="form-control">
+      <option value=0>Não</option>
+      <option value=1>Sim</option>
     </select>
-    </div>
-    <div class="col-sm-2">
-      <%= f.label :property_zip_code, class: "control-label" %>
-      <%= f.text_field :property_zip_code, class: "form-control" %>
-    </div>
-
-    <div class="col-sm-8">
-      <%= f.label :property_address, class: "control-label" %>
-      <%= f.text_field :property_address, class: "form-control" %>
-    </div>
-
-    <div class="col-sm-1">
-      <%= f.label :property_address_number, class: "control-label" %>
-      <%= f.text_field :property_address_number, class: "form-control" %>
-    </div>
   </div>
+
+  <div class="col-sm-2">
+    <%= f.label :property_zip_code, class: "control-label" %>
+    <%= f.text_field :property_zip_code, class: "form-control" %>
+  </div>
+
+  <div class="col-sm-8">
+    <%= f.label :property_address, class: "control-label" %>
+    <%= f.text_field :property_address, class: "form-control" %>
+  </div>
+
+  <div class="col-sm-1">
+    <%= f.label :property_address_number, class: "control-label" %>
+    <%= f.text_field :property_address_number, class: "form-control" %>
+  </div>
+</div>
 
   <div class="row">
     <div class="col-sm-2">
@@ -227,7 +228,7 @@
     <table class="table">
       <tbody>
         <% Law.all.each do | law | %>
-        <tr>
+        <tr id='laws'>
           <td><input value=<%= law.id %> type="checkbox" name="laws[]"></td>
           <td width="100">Lei: <%= law.number %></td>
           <td width="80">Artigo: <%= law.article %></td>
@@ -267,3 +268,60 @@
     </div>
 <% end %>
 </div>
+
+<script>
+$('body').ready(function() {
+  if(!$("#laws").length){
+    $.confirm({
+      title:"<i class='fa fa-exclamation-triangle'></i> Opps..",
+      text:"<h4><p>Não ha nenhuma lei cadastrada.</p><p>para proseguir será necessário cadastrar pelo menos uma</p> deseja cadastrar ?</h4>",
+      confirm: function(button) {
+        $(location).attr('href','/laws/new');
+      },
+      cancel: function() {
+        $(location).attr('href','/infractions/');
+      },
+      cancelButton: "Não, voltar",
+      confirmButton: "Sim, ir para cadastro de leis",
+      confirmButtonClass: "btn-success pull-right",
+      cancelButtonClass: "btn-default pull-left"
+    });
+  }
+});
+$('#iqual').on('change', function() {
+  if(this.value == true){
+    $('#infraction_property_zip_code').val($('#infraction_owner_zip_code').val());
+    $('#infraction_property_address').val($('#infraction_owner_address').val());
+    $('#infraction_property_address_number').val($('#infraction_owner_address_number').val());
+    $('#infraction_property_address_complement').val($('#infraction_owner_address_complement').val());
+    $('#infraction_property_district').val($('#infraction_owner_district').val());
+    $('#infraction_property_city').val($('#infraction_owner_city').val());
+    $('#infraction_property_state').val($('#infraction_owner_state').val());
+
+    $('#infraction_property_zip_code').attr('readonly', true);
+    $('#infraction_property_address').attr('readonly', true);
+    $('#infraction_property_address_number').attr('readonly', true);
+    $('#infraction_property_address_complement').attr('readonly', true);
+    $('#infraction_property_district').attr('readonly', true);
+    $('#infraction_property_city').attr('readonly', true);
+    $('#infraction_property_state').attr('readonly', true);
+  }else{
+    $('#infraction_property_zip_code').val('');
+    $('#infraction_property_address').val('');
+    $('#infraction_property_address_number').val('');
+    $('#infraction_property_address_complement').val('');
+    $('#infraction_property_district').val('');
+    $('#infraction_property_city').val('');
+    $('#infraction_property_state').val('');
+
+    $('#infraction_property_zip_code').prop("readonly", false);
+    $('#infraction_property_address').prop("readonly", false);
+    $('#infraction_property_address_number').prop("readonly", false);
+    $('#infraction_property_address_complement').prop("readonly", false);
+    $('#infraction_property_district').prop("readonly", false);
+    $('#infraction_property_city').prop("readonly", false);
+    $('#infraction_property_state').prop("readonly", false);
+  }
+});
+
+</script>
