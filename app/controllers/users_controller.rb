@@ -17,10 +17,23 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
-    @user.update_attributes(user_params)
-
-    if @user.errors
+    if @user.valid_password?(user_params[:current_password])
+      if  not params[:user][:password].empty?
+        if params[:user][:password] == params[:user][:password_confirmation]
+          user = user_params
+          user.delete(:current_password)
+          @user.update_attributes(user)
+        end
+      else
+        user = user_params_change_password
+        user.delete(:current_password)
+        user.delete(:password)
+        user.delete(:password_confirmation)
+        @user.update_attributes(user)
+      end
+    end
+    
+    if not @user.errors.count.zero?
       render :edit
     else
       redirect_to action: "index"
@@ -44,6 +57,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar_cache, :avatar, :admin);
+    params.require(:user).permit( :name, :email, :current_password, :avatar_cache, :avatar, :user_type);
+  end
+
+  def user_params_change_password
+    params.require(:user).permit( :name, :email, :password, :password_confirmation, :current_password, :avatar_cache, :avatar, :user_type);
   end
 end

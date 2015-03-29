@@ -19,7 +19,7 @@
             <td> <%= image_tag(user.avatar.url, style: "width: 50px; display: block;") %></td>
             <td><%= user.name %></td>
             <td><%= user.email %></td>
-            <td></td>
+            <td><%= user.user_type %></td>
             <td align="center">
             <%= link_to '<i class="fa fa-edit"></i> Editar'.html_safe, edit_user_path(user), class: "btn btn-primary btn-sm" %>
               <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> Remover</button>
