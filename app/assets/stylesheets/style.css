@@ -93,7 +93,7 @@ body {
   float: left;
   width: 100%;
   padding: 10px 0px 0px 0px;
-  border-radius:      0 0 4px 4px;
+  border-radius:      0px;
   -webkit-box-shadow: 0px 2px 2px 1px #CECECE;
   -moz-box-shadow:    0px 2px 2px 1px #CECECE;
   box-shadow:         0px 2px 2px 1px #CECECE;
@@ -158,7 +158,7 @@ body {
 }
 
 h {
-  border-radius: 4px 4px 0 0;
+  border-radius: 0px;
   padding: 8px 20px;
   float: left;
   color: #666666;
@@ -623,6 +623,9 @@ a.show-sidebar:hover {
 .avatar > img {
   width:40px;
   border: 1px solid #F8F8F8;
+}
+.user-mini{
+  margin-right: 10px;
 }
 .user-mini > span {
   display: block;

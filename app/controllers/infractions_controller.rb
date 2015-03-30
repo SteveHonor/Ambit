@@ -88,7 +88,7 @@ class InfractionsController < ApplicationController
     @infraction.notified
 
     @fine = Fine.find_by(infraction_id: params[:id])
-    render  "supervision/assessments/index", layout: false
+    render  "/assessments/index", layout: false
   end
 
   private

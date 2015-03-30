@@ -1,200 +1,202 @@
-<div class="row">
-  <div class="col-sm-10">
-    <div class="sub_title">Auto de Infração</div>
-  </div>
-  <div class="col-sm-2">
-    <div class="sub_title">Valor</div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-6">
-    <strong>Imposição de penalidade de multas</strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>Processo Nº</small><br>
-    <strong><%= @notification.id.to_s.rjust(6, '0') %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>Data:</small><br>
-    <strong><%= Time.now.strftime("%d/%m/%Y") %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <h3><strong>R$ <%= @fine.price || '00.00' %></strong></h3>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <div class="sub_title">Idendificação do infrator</div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-6">
-    <small>Nome</small></br>
-    <strong><%= @notification.owner_name %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>Identificação</small></br>
-    <strong><%= @notification.owner_identifier %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>Celular</small></br>
-    <strong><%= @notification.owner_mobile %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>Telefone</small></br>
-    <strong><%= @notification.owner_phone %></strong>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-4">
-    <small>Logadouro</small></br>
-    <strong><%= @notification.owner_address %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>Numero</small></br>
-    <strong><%= @notification.owner_address_number %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>Bairro</small></br>
-    <strong><%= @notification.owner_district %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>CEP</small></br>
-    <strong><%= @notification.owner_zip_code %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>Municipio</small></br>
-    <strong><%= @notification.owner_city %></strong>
-  </div>
-</div>
-
-
-<div class="row">
-  <div class="col-sm-12">
-    <div class="sub_title">Dados do Imóvel</div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-4">
-    <small>Logadouro</small></br>
-    <strong><%= @notification.property_address %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>Numero</small></br>
-    <strong><%= @notification.property_address_number %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>Complemento</small></br>
-    <strong><%= @notification.property_address_complement %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>CEP</small></br>
-    <strong><%= @notification.property_zip_code %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>Zona</small></br>
-    <strong><%= @notification.property_zone %></strong>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-2">
-    <small>Bairro</small></br>
-    <strong><%= @notification.property_district %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>Municipio</small></br>
-    <strong><%= @notification.property_city %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>Estado</small></br>
-    <strong><%= @notification.property_state %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>M2</small></br>
-    <strong><%= @notification.property_meter %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>Quadra</small></br>
-    <strong><%= @notification.property_block %></strong>
-  </div>
-
-  <div class="col-sm-2">
-    <small>Lote</small></br>
-    <strong><%= @notification.property_allotment %></strong>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <small>Observações</small></br>
-    <strong><%= @notification.property_observation %></strong>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <div class="sub_title">Irregularidades</div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-8">
-    <small>Descrição da Infração</small></br>
-    <strong><%= @notification.notify_description %></strong>
-  </div>
-</div>
-<% @notification.fine.each do | fine |%>
-<div style="background: #F9F9F9">
-  <div class="row well">
+  <div class="row">
+    <div class="col-sm-10">
+      <div class="sub_title">Auto de Infração</div>
+    </div>
     <div class="col-sm-2">
-      <small>Data da Infração</small></br>
-      <strong><%= @notification.created_at.strftime("%d/%m/%Y") %></strong>
+      <div class="sub_title">Valor</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <strong>Imposição de penalidade de multas</strong>
     </div>
 
     <div class="col-sm-2">
-      <small>Hora da Infração</small></br>
-      <strong><%= @notification.created_at.strftime("%H:%M") %></strong>
+      <small>Processo Nº</small><br>
+      <strong><%= @infraction.id.to_s.rjust(6, '0') %></strong>
     </div>
 
     <div class="col-sm-2">
-      <small>Conforme Lei</small></br>
-      <strong>Nº: <%= fine.law.number %></strong>
+      <small>Data:</small><br>
+      <strong><%= Time.now.strftime("%d/%m/%Y") %></strong>
     </div>
 
     <div class="col-sm-2">
-      <small>Artigo</small></br>
-      <strong><%= fine.law.article %></strong>
+      <h3><strong>R$ <%= @fine.price || '00.00' %></strong></h3>
     </div>
   </div>
 
   <div class="row">
     <div class="col-sm-12">
-      <small>Enquadramento</small></br>
-      <strong><%= fine.law.description %></strong>
+      <div class="sub_title">Idendificação do infrator</div>
     </div>
   </div>
-</div>
-<% end %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <small>Nome</small></br>
+      <strong><%= @infraction.owner_name %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>Identificação</small></br>
+      <strong><%= @infraction.owner_identifier %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>Celular</small></br>
+      <strong><%= @infraction.owner_mobile %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>Telefone</small></br>
+      <strong><%= @infraction.owner_phone %></strong>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <small>Logadouro</small></br>
+      <strong><%= @infraction.owner_address %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>Numero</small></br>
+      <strong><%= @infraction.owner_address_number %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>Bairro</small></br>
+      <strong><%= @infraction.owner_district %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>CEP</small></br>
+      <strong><%= @infraction.owner_zip_code %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>Municipio</small></br>
+      <strong><%= @infraction.owner_city %></strong>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="sub_title">Dados do Imóvel</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <small>Logadouro</small></br>
+      <strong><%= @infraction.property_address %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>Numero</small></br>
+      <strong><%= @infraction.property_address_number %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>Complemento</small></br>
+      <strong><%= @infraction.property_address_complement %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>CEP</small></br>
+      <strong><%= @infraction.property_zip_code %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>Zona</small></br>
+      <strong><%= @infraction.property_zone %></strong>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <small>Bairro</small></br>
+      <strong><%= @infraction.property_district %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>Municipio</small></br>
+      <strong><%= @infraction.property_city %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>Estado</small></br>
+      <strong><%= @infraction.property_state %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>M2</small></br>
+      <strong><%= @infraction.property_meter %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>Quadra</small></br>
+      <strong><%= @infraction.property_block %></strong>
+    </div>
+
+    <div class="col-sm-2">
+      <small>Lote</small></br>
+      <strong><%= @infraction.property_allotment %></strong>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <small>Observações</small></br>
+      <strong><%= @infraction.property_observation %></strong>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="sub_title">Irregularidades</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <small>Descrição da Infração</small></br>
+      <strong><%= @infraction.notify_description %></strong>
+    </div>
+  </div>
+  <div class="row">
+    <% @infraction.fine.each do | fine |%>
+    <div style="background: #F9F9F9">
+      <div class="well">
+        <div class="col-sm-2">
+          <small>Data da Infração</small></br>
+          <strong><%= @infraction.created_at.strftime("%d/%m/%Y") %></strong>
+        </div>
+
+        <div class="col-sm-2">
+          <small>Hora da Infração</small></br>
+          <strong><%= @infraction.created_at.strftime("%H:%M") %></strong>
+        </div>
+
+        <div class="col-sm-2">
+          <small>Conforme Lei</small></br>
+          <strong>Nº: <%= fine.law.number %></strong>
+        </div>
+
+        <div class="col-sm-2">
+          <small>Artigo</small></br>
+          <strong><%= fine.law.article %></strong>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <small>Enquadramento</small></br>
+          <strong><%= fine.law.description %></strong>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>

@@ -26,9 +26,13 @@ class NotificationsController < ApplicationController
 
     @notification = Supervision::Notification.new(notification)
 
+    laws.each do |law|
+      Fine.create(notification_id: @notification.id, law_id: law)
+    end
+
     respond_to do |format|
       if @notification.save
-        format.html { redirect_to supervision_notifications_path }
+        format.html { redirect_to notifications_path }
         format.json { render :show, status: :created, location: @notification }
       else
         format.html { render :new }
@@ -36,9 +40,6 @@ class NotificationsController < ApplicationController
       end
     end
 
-    laws.each do |law|
-      Fine.create(notification_id: @notification.id, law_id: law)
-    end
   end
 
   def update
