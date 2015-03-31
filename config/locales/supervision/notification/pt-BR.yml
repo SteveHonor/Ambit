@@ -2,7 +2,7 @@ pt-BR:
   notified: "Notificado"
   supervised: "Fiscalizado"
   canceled: "Cancelado"
-  pending: "Pendente"
+  pending: "Aguardando Fiscalizção"
   Urban: "Urbana"
   Rural: "Rural"
   activerecord:

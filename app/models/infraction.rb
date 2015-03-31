@@ -1,5 +1,6 @@
 class Infraction < ActiveRecord::Base
   has_many :fine
+  has_many :supervision
 
   state_machine :state, initial: :pending do
     event :supervised do
@@ -15,7 +16,7 @@ class Infraction < ActiveRecord::Base
     end
 
     event :fined do
-      transition notified: :fined 
+      transition notified: :fined
     end
   end
 end

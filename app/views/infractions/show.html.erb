@@ -198,3 +198,30 @@
   </div>
 </div>
 <% end %>
+
+<div class="row">
+  <div class="sub_title">Fiscalização</div>
+</div>
+
+<div class="row">
+  <% if not @infraction.supervision.count.zero? %>
+    <% @infraction.supervision.each do |supervision|%>
+    <div class="well" style="border-left: 5px solid #357ebd">
+      <div class="col-sm-2">
+        <small>Fiscalizado Em:</small></br>
+        <strong><%= supervision.created_at.strftime("%d/%m") %></strong>
+      </div>
+      <div class="col-sm-2">
+        <small>As:</small></br>
+        <strong><%= supervision.created_at.strftime("%H:%M") %> hs</strong>
+      </div>
+      <div class="col-sm-8">
+        <small>Descrição:</small></br>
+        <strong><%= supervision.observation  %> hs</strong>
+      </div>
+    </div>
+    <% end %>
+  <% else %>
+    <div class="well" align="center">Não ha m laudo de infração referente a esta infração</div>
+  <% end %>
+</div>

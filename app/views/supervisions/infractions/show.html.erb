@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="col-sm-10">
+  <div class="col-sm-10" style="padding: 0px;">
     <div class="sub_title">Auto de Infração</div>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-2" style="padding: 0px;">
     <div class="sub_title">Valor</div>
   </div>
 </div>
@@ -28,10 +28,9 @@
 </div>
 
 <div class="row">
-  <div class="col-sm-12">
     <div class="sub_title">Idendificação do infrator</div>
   </div>
-</div>
+
 
 <div class="row">
   <div class="col-sm-6">
@@ -84,10 +83,9 @@
 
 
 <div class="row">
-  <div class="col-sm-12">
     <div class="sub_title">Dados do Imóvel</div>
   </div>
-</div>
+
 
 <div class="row">
   <div class="col-sm-4">
@@ -149,17 +147,15 @@
 </div>
 
 <div class="row">
-  <div class="col-sm-12">
     <small>Observações</small></br>
     <strong><%= @infraction.property_observation %></strong>
-  </div>
+
 </div>
 
 <div class="row">
-  <div class="col-sm-12">
     <div class="sub_title">Irregularidades</div>
   </div>
-</div>
+
 <div class="row">
   <div class="col-sm-8">
     <small>Descrição da Infração</small></br>
@@ -198,3 +194,30 @@
   </div>
 </div>
 <% end %>
+
+<div class="row">
+  <div class="sub_title">Fiscalização</div>
+</div>
+
+<div class="row">
+  <% if not @infraction.supervision.count.zero? %>
+    <% @infraction.supervision.each do |supervision|%>
+    <div class="well" style="border-left: 5px solid #357ebd">
+      <div class="col-sm-2">
+        <small>Fiscalizado Em:</small></br>
+        <strong><%= supervision.created_at.strftime("%d/%m") %></strong>
+      </div>
+      <div class="col-sm-2">
+        <small>As:</small></br>
+        <strong><%= supervision.created_at.strftime("%H:%M") %> hs</strong>
+      </div>
+      <div class="col-sm-8">
+        <small>Descrição:</small></br>
+        <strong><%= supervision.observation  %> hs</strong>
+      </div>
+    </div>
+    <% end %>
+  <% else %>
+    <div class="well" align="center">Não ha m laudo de infração referente a esta infração</div>
+  <% end %>
+</div>

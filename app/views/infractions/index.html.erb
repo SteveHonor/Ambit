@@ -9,7 +9,7 @@
             <th width="auto">Nome</th>
             <th width="auto">Endereço</th>
             <th width="auto">Municipio</th>
-            <th width="auto">Status</th>
+            <th width="20%">Status</th>
             <th width="10%"></th>
           </tr>
         </thead>
@@ -28,7 +28,7 @@
               <% elsif  infractions.state == 'fined' %>
                 <span class="label label-danger" id="label_<%= infractions.id %>">
               <% elsif  infractions.state == 'supervised' %>
-                <span class="label label-warning" id="label_<%= infractions.id %>">
+                <span class="label label-primary" id="label_<%= infractions.id %>">
               <% elsif  infractions.state == 'canceled' %>
                 <span class="label label-default" id="label_<%= infractions.id %>">
               <% else %>
@@ -50,15 +50,16 @@
 
                 <ul class="dropdown-menu" role="menu">
                     <% if infractions.state == 'supervised' %>
-                      <li><%= link_to '<i class="fa  fa-print"></i> Imprimir'.html_safe, '#',  id: infractions.id, class: "my_modal_generate",  'data-target' => "#myModal" %></li>
+                      <li><%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, '#',  id: infractions.id, class: "my_modal_visualisation",  'data-target' => "#myModal" %></li>
+                      <li><%= link_to '<i class="fa fa-print"></i> Imprimir'.html_safe, '#',  id: infractions.id, class: "my_modal_generate",  'data-target' => "#myModal" %></li>
                       <li class="divider"></li>
                       <li><%= link_to '<i class="fa  fa-legal"></i> Notificar'.html_safe, '#',  id: infractions.id, class: "my_modal_notification",  'data-target' => "#myModal" %></li>
                     <% elsif infractions.state == 'notified' %>
                       <li><%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, '#',  id: infractions.id, class: "my_modal_visualisation",  'data-target' => "#myModal" %></li>
                       <li><%= link_to '<i class="fa fa-trash-o"></i> Deletar'.html_safe, '#', id: infractions.id,  class: "my_modal_canceled" %></li>
-                      <li><%= link_to '<i class="fa  fa-print"></i> Imprimir'.html_safe, '#',  id: infractions.id, class: "my_modal_generate",  'data-target' => "#myModal" %></li>
+                      <li><%= link_to '<i class="fa fa-print"></i> Imprimir'.html_safe, '#',  id: infractions.id, class: "my_modal_generate",  'data-target' => "#myModal" %></li>
                       <li class="divider"></li>
-                      <li><%= link_to '<i class="fa  fa-legal"></i> Autuar'.html_safe, '#',  id: infractions.id, class: "my_modal_assessments",  'data-target' => "#myModal" %></li>
+                      <li><%= link_to '<i class="fa fa-legal"></i> Autuar'.html_safe, '#',  id: infractions.id, class: "my_modal_assessments",  'data-target' => "#myModal" %></li>
                     <% else %>
                       <li><%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, '#',  id: infractions.id, class: "my_modal_visualisation",  'data-target' => "#myModal" %></li>
                       <li><%= link_to '<i class="fa fa-edit"></i> Editar'.html_safe, edit_infraction_path(infractions) %></li>
@@ -105,15 +106,17 @@
         });
 
         $( ".my_modal_notification" ).confirm({
-          title:"<i class='fa fa-exclamation-triangle'></i> Gerar Notificação",
-          text:"<h3>Realmente deseja gerar uma notificação?</h3>",
+          title:"<div align='center'><i class='fa fa-exclamation'></i> Gerar Notificação</div>",
+          text:"<div align='center'><h4>Realmente deseja gerar uma notificação?</h4></div>",
           confirm: function(button) {
             $('#myModal').modal();
             $('#myModalBody').load('/infraction/'+ button.attr('id') +'/generate/notification');
             $('#label_'+button.attr('id')).html('Notificado');
           },
-          confirmButton: "Sim",
-          cancelButton: "Não"
+          cancelButton: "Não, voltar",
+          confirmButton: "Sim, gerar notificação!",
+          confirmButtonClass: "btn-success pull-right",
+          cancelButtonClass: "btn-default pull-left"
         });
 
         $( ".my_modal_canceled" ).confirm({

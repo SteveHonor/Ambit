@@ -1,3 +1,3 @@
 class Supervision < ActiveRecord::Base
-  belongs_to :notification
+  belongs_to :infraction
 end
