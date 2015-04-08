@@ -56,3 +56,5 @@ gem 'carrierwave'
 gem "pundit"
 
 gem 'state_machine'
+
+gem 'pdfkit'

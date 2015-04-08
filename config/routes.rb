@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   root to: "dashboard#index"
 
   resources :infractions
+  resources :notifications
   resources :users
   resources :laws
+
+  get 'notifications/:id/print', to: 'notifications#print'
 
   get '/supervisions/infractions'        , to: 'supervisions#infractions'
   get '/supervisions/infractions/:id'    , to: 'supervisions#infractions_show'

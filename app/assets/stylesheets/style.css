@@ -11,14 +11,14 @@ body {
 .box {
   height: 380px;
   position: relative;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 4px;
   padding: 25px;
+  border-radius: 4px;
   background: #F3F3F3;
-  -webkit-box-shadow: 0px 2px 3px 0px #CECECE;
-  -moz-box-shadow:    0px 2px 3px 0px #CECECE;
-  box-shadow:         0px 2px 3px 0px #CECECE;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-box-shadow: 0px 2px 2px 0px #CECECE;
+  -moz-box-shadow:    0px 2px 2px 0px #CECECE;
+  box-shadow:         0px 2px 2px 0px #CECECE;
 }
 
 .row {
@@ -35,11 +35,6 @@ body {
   font-size: 15px;
   font-weight: 600;
 }
-
-.form-control::-webkit-input-placeholder { color: #CCC; }
-.form-control:-moz-placeholder { color: #CCC; }
-.form-control::-moz-placeholder { color: #CCC; }
-.form-control:-ms-input-placeholder { color: #CCC; }
 
 .actions {
   float: right;
@@ -94,9 +89,6 @@ body {
   width: 100%;
   padding: 10px 0px 0px 0px;
   border-radius:      0px;
-  -webkit-box-shadow: 0px 2px 2px 1px #CECECE;
-  -moz-box-shadow:    0px 2px 2px 1px #CECECE;
-  box-shadow:         0px 2px 2px 1px #CECECE;
 }
 
 .panel .form-control {
@@ -166,10 +158,6 @@ h {
   font-size: 12px;
   background-color: #F1F1F1;
   width: 100%;
-  -webkit-box-shadow: 0px 2px 2px 1px #CECECE;
-  -moz-box-shadow:    0px 2px 2px 1px #CECECE;
-  box-shadow:         0px 2px 2px 1px #CECECE;
-  border-bottom: 2px solid #CCC;
   text-transform: uppercase;
 }
 
@@ -180,8 +168,8 @@ h {
 }
 
 .well {
-  padding: 10px 10px 5px 10px;
-  margin: 20px 0 20px 0;
+  padding: 8px 8px 5px 8px;
+  margin: 10px 0 10px 0;
   background-color: #EFEFEF;
   border: 0px;
   /* border-radius: 0px; */
@@ -419,10 +407,29 @@ width: 100%;
 border-top-right-radius: 0;
 border-top-left-radius: 0;
 }
-
-
-
-
+.disabled-field {
+  background-color: #FAFAFA !important;
+  border: 0px !important;
+}
+.full {
+  width: 100%;
+}
+.col-sm-9-5{
+  width: 82%;
+  position: relative;
+  padding-left: 5px;
+  padding-right: 5px;
+  float: left;
+}
+.notification-view{
+  padding: 14px 10px;
+  border: 2px solid #333;
+  min-height: 80px;
+  font-size: 16px;
+}
+.divisor {
+  border-bottom: 3px dotted #333;
+}
 
 
 

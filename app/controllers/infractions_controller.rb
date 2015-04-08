@@ -17,7 +17,6 @@ class InfractionsController < ApplicationController
   def show
     @infraction = Infraction.find(params[:id])
     @fine         = Fine.find_by(infraction_id: params[:id])
-    render 'infractions/show', layout: false
   end
 
   def create
@@ -77,10 +76,10 @@ class InfractionsController < ApplicationController
 
   def generate_notification
     @infraction = Infraction.find(params[:id])
-    #@infraction.notified
+    @infraction.notified
 
     @fine = Fine.find_by(infraction_id: params[:id])
-    render  "supervision/notification/index", layout: false
+    render  "/notifications/show"
   end
 
   def generate_assessment

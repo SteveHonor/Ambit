@@ -15,9 +15,8 @@ class NotificationsController < ApplicationController
   end
 
   def show
-    @notification = Notification.find(params[:id])
-    @fine         = Fine.find_by(notification_id: params[:id])
-    render 'notifications/show', layout: false
+    @infraction = set_notification
+    @fine         = Fine.find_by(infraction_id: params[:id])
   end
 
   def create
@@ -62,6 +61,12 @@ class NotificationsController < ApplicationController
     end
   end
 
+  def print
+    @infraction = set_notification
+    @fine       = Fine.find_by(infraction_id: params[:id])
+    render "notifications/print", layout: false
+  end
+
   def destroy
     @notification.destroy
     respond_to do |format|
@@ -87,7 +92,7 @@ class NotificationsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_notification
-    @notification = Supervision::Notification.find(params[:id])
+    @notification = Infraction.find(params[:id])
   end
 
   def notification_params
