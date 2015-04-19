@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => {:registrations => "registrations"}
 
-  devise_for :users
   root to: "dashboard#index"
 
+  resources :managements
   resources :infractions
   resources :notifications
-  resources :users
   resources :laws
+  resources :users
+
+  resources :setup
 
   get 'notifications/:id/print', to: 'notifications#print'
 

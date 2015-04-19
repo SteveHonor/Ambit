@@ -19,6 +19,11 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
+      t.string  :name
+      t.boolean :status, :boolean, default: false
+      t.string  :user_type, default: :default
+
+      t.references :management, index: true
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
@@ -38,5 +43,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
     add_index :users, :reset_password_token, unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
+
+    # add_foreign_key :users, :managements
   end
 end

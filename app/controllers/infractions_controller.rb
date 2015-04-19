@@ -123,6 +123,7 @@ class InfractionsController < ApplicationController
         :property_block,
         :property_allotment,
         :property_observation,
-        :notify_description);
+        :notify_description,
+        :regularization);
   end
 end

@@ -1,0 +1,7 @@
+<%=
+if Management.all.count.zero?
+  render 'form_setup_new'
+else
+  render 'form_new'
+end
+ %>

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  mount_uploader :avatar, AvatarUploader
+  belongs_to :management
+  has_many :infractions
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

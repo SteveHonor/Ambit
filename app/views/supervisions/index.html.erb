@@ -14,7 +14,7 @@
   <tbody>
     <% @supervisions.each do |supervision| %>
       <tr>
-        <td><%= supervision.notification %></td>
+        <td><%= supervision.infraction %></td>
         <td><%= supervision.observation %></td>
         <td><%= link_to 'Show', supervision %></td>
         <td><%= link_to 'Edit', edit_supervision_path(supervision) %></td>

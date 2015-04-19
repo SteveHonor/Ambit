@@ -3,8 +3,6 @@ class CreateFine < ActiveRecord::Migration
     create_table :fines do |t|
       t.references :infraction, index: true
       t.references :law, index: true
-      t.decimal :price
-      t.datetime :regularization
 
       t.timestamps
     end

@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(version: 20150322155950) do
   create_table "fines", force: :cascade do |t|
     t.integer  "infraction_id"
     t.integer  "law_id"
-    t.decimal  "price"
-    t.datetime "regularization"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -57,9 +55,14 @@ ActiveRecord::Schema.define(version: 20150322155950) do
     t.string   "notify_description"
     t.string   "regulation"
     t.string   "state"
+    t.decimal  "price"
+    t.datetime "regularization"
+    t.integer  "users_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "infractions", ["users_id"], name: "index_infractions_on_users_id", using: :btree
 
   create_table "laws", force: :cascade do |t|
     t.string   "number"
@@ -67,6 +70,20 @@ ActiveRecord::Schema.define(version: 20150322155950) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "managements", force: :cascade do |t|
+    t.string   "name"
+    t.string   "prefecture"
+    t.string   "zip_code"
+    t.string   "address"
+    t.string   "address_number"
+    t.string   "district"
+    t.string   "city"
+    t.string   "state"
+    t.string   "phone"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "supervisions", force: :cascade do |t|
@@ -89,15 +106,17 @@ ActiveRecord::Schema.define(version: 20150322155950) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "avatar"
     t.string   "name"
     t.boolean  "status",                 default: false
+    t.boolean  "boolean",                default: false
     t.string   "user_type",              default: "default"
+    t.integer  "management_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["management_id"], name: "index_users_on_management_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "supervisions", "infractions"

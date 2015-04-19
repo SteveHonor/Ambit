@@ -25,6 +25,7 @@ class UsersController < ApplicationController
           @user.update_attributes(user)
         end
       else
+    pry
         user = user_params_change_password
         user.delete(:current_password)
         user.delete(:password)
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
         @user.update_attributes(user)
       end
     end
-    
+
     if not @user.errors.count.zero?
       render :edit
     else
@@ -42,7 +43,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    pry
     respond_to do |format|
       if @user.save
         format.html { redirect_to users_path }
@@ -57,10 +57,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit( :name, :email, :current_password, :avatar_cache, :avatar, :user_type);
+    params.require(:user).permit( :name, :email, :current_password, :avatar_cache, :avatar, :user_type, :management_id);
   end
 
   def user_params_change_password
-    params.require(:user).permit( :name, :email, :password, :password_confirmation, :current_password, :avatar_cache, :avatar, :user_type);
+    params.require(:user).permit( :name, :email, :password, :password_confirmation, :current_password, :avatar_cache, :avatar, :user_type, :management_id);
   end
 end

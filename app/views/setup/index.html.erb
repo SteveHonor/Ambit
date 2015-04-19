@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ambit</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container-fluid">
+    <div id="page-setup" class="row">
+      <div class="col-sm-12">
+        <div class="panel" style="padding: 20px;">
+          <h3> <i class="fa fa-cogs"></i> SETUP</h3>
+        </div>
+          <br>
+        <div class="box-setup">
+          <ul class="nav nav-tabs">
+            <li role="presentation" class="<%=
+            if  @action == 1
+            "active"
+            end
+            %>"><a href="#">Cadastro de Unidade</a></li>
+
+            <li role="presentation" class="<%=
+            if @action == 2
+            "active"
+            end
+            %>"><a href="#">Cadastro Admin</a></li> 
+          </ul>
+          <br>
+          <% if @action == 1 %>
+          <%= render "management" %>
+          <% elsif @action == 2 %>
+          <%= render "admin" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -2,6 +2,8 @@ class Infraction < ActiveRecord::Base
   has_many :fine
   has_many :supervision
 
+  belongs_to :users
+
   state_machine :state, initial: :pending do
     event :supervised do
       transition pending: :supervised

@@ -9,7 +9,8 @@
             <th width="auto">Nome</th>
             <th width="auto">Endereço</th>
             <th width="auto">Municipio</th>
-            <th width="20%">Status</th>
+            <th width="10%">Prazo</th>
+            <th width="13%">Status</th>
             <th width="10%"></th>
           </tr>
         </thead>
@@ -20,6 +21,7 @@
             <td><%= infractions.owner_name%></td>
             <td><%= infractions.property_address %></td>
             <td><%= infractions.property_city %></td>
+            <td><%= infractions.regularization%></td>
             <td>
               <% if infractions.state == 'pending' %>
                 <span class="label label-warning" id="label_<%= infractions.id %>">
@@ -76,7 +78,7 @@
 </div>
 
   <div id="actin-btn" class="col-sm-2 pull-right" align="right">
-    <%= link_to '<i class="fa fa-plus"></i> Nova Infração'.html_safe, new_infraction_path, class: "btn btn-primary" %>
+    <%= link_to '<i class="fa fa-plus"></i> <b>Cadastrar Nova Infração</b>'.html_safe, new_infraction_path, class: "btn btn-primary" %>
   </div>
 
       <script>

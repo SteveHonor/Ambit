@@ -4,18 +4,6 @@
     <%= form_for @user do |f| %>
     <div class="row">
       <div class="col-sm-12">
-        <div class="col-sm-2" style="padding: 0px;">
-          <div class="row">
-            <div class="sub_title">Avatar</div>
-            <%= image_tag(@user.avatar.url, style: "width: 100%") %>
-
-            <span class="btn btn-primary btn-sm btn-file", style="width: 100%">
-              Escolha um foto <%=  f.file_field :avatar %>
-              <%=  f.hidden_field :avatar_cache %>
-            </span>
-          </div>
-        </div>
-
         <div class="col-sm-10">
           <div class="row">
             <div class="sub_title">Dados do Usuário</div>
@@ -48,6 +36,11 @@
             <div class="col-sm-4">
               <%= f.label :current_password, class: "control-label" %>
               <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+            </div>
+
+            <div class="col-sm-2">
+              <%= f.label :managements %><br />
+              <%= f.select :management_id, options_for_select(Management.all.map{|s|[s.name, s.id]}), class: "form-control" %>
             </div>
           </div>
 

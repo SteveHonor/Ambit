@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @management.name %>
+</p>
+
+<p>
+  <strong>Prefecture:</strong>
+  <%= @management.prefecture %>
+</p>
+
+<p>
+  <strong>Zip code:</strong>
+  <%= @management.zip_code %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @management.address %>
+</p>
+
+<p>
+  <strong>Address number:</strong>
+  <%= @management.address_number %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @management.district %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @management.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @management.state %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @management.phone %>
+</p>
+
+<%= link_to 'Edit', edit_management_path(@management) %> |
+<%= link_to 'Back', managements_path %>

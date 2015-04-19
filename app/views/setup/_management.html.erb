@@ -1,0 +1,55 @@
+<%= form_for('setup') do |f| %>
+<div class="row">
+  <% if @management.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@management.errors.count, "error") %> prohibited this management from being saved:</h2>
+    <ul>
+      <% @management.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+
+  <div class="col-sm-12" style="padding: 0px;">
+    <div class="col-sm-12">
+      <%= f.label :name, class: "control-label"%><br>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="col-sm-12">
+      <%= f.label :prefecture, class: "control-label"%><br>
+      <%= f.text_field :prefecture, class: "form-control" %>
+    </div>
+    <div class="col-sm-12">
+      <%= f.label :address, class: "control-label"%><br>
+      <%= f.text_field :address, class: "form-control" %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.label :address_number, class: "control-label"%><br>
+      <%= f.text_field :address_number, class: "form-control" %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.label :zip_code, class: "control-label"%><br>
+      <%= f.text_field :zip_code, class: "form-control" %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.label :district, class: "control-label"%><br>
+      <%= f.text_field :district, class: "form-control" %>
+    </div>
+    <div class="col-sm-3">
+      <%= f.label :state, class: "control-label"%><br>
+      <%= f.text_field :state, class: "form-control" %>
+    </div>
+    <div class="col-sm-3">
+      <%= f.label :phone, class: "control-label"%><br>
+      <%= f.text_field :phone, class: "form-control" %>
+    </div>
+  </div>
+
+</div>
+
+  <div class="actions">
+    <%= f.button "Próximo <i class='fa fa-arrow-right'></i>".html_safe, class: "btn btn-primary"  %>
+  </div>
+<% end %>
