@@ -214,7 +214,6 @@
     <% @infraction.fine.each do | fine |%>
     <div style="background: #F9F9F9">
       <div class="row well">
-
         <div class="col-sm-2">
           <small>Data da Infração</small></br>
           <strong><%= @infraction.created_at.strftime("%d/%m/%Y") %></strong>
@@ -234,19 +233,21 @@
           <small>Artigo</small></br>
           <strong><%= fine.law.article %></strong>
         </div>
+
+        <div class="col-sm-2">
+          <small>Multa</small></br>
+          <strong>R$ <%= fine.price %></strong>
+        </div>
       </div>
 
       <div class="row">
         <div class="col-sm-12">
           <small>Enquadramento</small></br>
-          <strong><%= fine.law.description.upcase %></strong>
+          <strong><%= fine.law.description %></strong>
         </div>
       </div>
     </div>
-    <div class="col-sm-2 pull-right">
-      <small>Prazo Regularização:</small></br>
-      <strong><%= @infraction.regularization || 0 %></strong>
-    </div>
+    <hr>
     <% end %>
   </div>
   <div class="row">
@@ -278,7 +279,7 @@
 
   <div class="panel-footer">
     <div class="actions">
-    <% if @infraction.state == 'supervised' %>
+      <% if @infraction.state == 'supervised' %>
       <button class="my_modal_notification btn btn-warning", id=<%= @infraction.id %>  'data-target'="#myModal"><i class="fa fa-legal"></i> Gerar Notificação</button>
       <% end %>
     </div>
@@ -294,13 +295,13 @@
 $( ".my_modal_notification" ).confirm({
   title:"<div align='center'><i class='fa fa-exclamation'></i> Gerar Notificação</div>",
   text:"<div align='center'>"+
-       "  <h4>Realmente deseja gerar uma notificação?</h4>"+
-       "</div>"+
-       "<hr><b>Esta ação irá:</b>"+
-       "<ul>"+
-       "<li>Enviar e-mails</li>"+
-       "<li>Mudar o status da Infração para Notificado</li>"+
-       "</ul>",
+  "  <h4>Realmente deseja gerar uma notificação?</h4>"+
+  "</div>"+
+  "<hr><b>Esta ação irá:</b>"+
+  "<ul>"+
+  "<li>Enviar e-mails</li>"+
+  "<li>Mudar o status da Infração para Notificado</li>"+
+  "</ul>",
   confirm: function(button) {
     $(location).attr('href','/infraction/'+button.attr('id')+'/generate/notification');
   },

@@ -4,7 +4,7 @@ class CreateSupervisions < ActiveRecord::Migration
       t.references :infraction, index: true
       t.string :observation
 
-      t.timestamps null: false
+      t.timestamps
     end
     add_foreign_key :supervisions, :infractions
   end

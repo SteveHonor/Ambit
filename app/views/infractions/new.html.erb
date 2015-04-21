@@ -1,24 +1,24 @@
-<h>Fiscalização | Notificação</h>
+<h>Castro de Infrações</h>
 <div class="panel">
   <%= form_for(@infraction) do |f| %>
-<div class="row">
-  <div class="col-sm-12">
-    <div class="sub_title">
-      <div class="pull-left">Dados do proprietário</div>
-      <div class="pull-right">
-        <div class="radio-inline">
-          <label><input type="radio" checked="checked">Pessoa Fisica</label>
-        </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="sub_title">
+        <div class="pull-left">Dados do proprietário</div>
+        <div class="pull-right">
+          <div class="radio-inline">
+            <label><input type="radio" checked="checked">Pessoa Fisica</label>
+          </div>
 
-        <div class="radio-inline">
-          <label><input type="radio" >Pessoa Juridica</label>
+          <div class="radio-inline">
+            <label><input type="radio" >Pessoa Juridica</label>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="row">
+  <div class="row">
     <div class="col-sm-7">
       <%= f.label :owner_name, class: "control-label" %>
       <%= f.text_field :owner_name, autofocus: true, class: "form-control" %>
@@ -106,32 +106,32 @@
     </div>
   </div>
 
-<div class="row">
-  <div class="col-sm-1">
-    <label>
-      Mesmo acima
-    </label>
-    <select id="iqual" class="form-control">
-      <option value=0>Não</option>
-      <option value=1>Sim</option>
-    </select>
-  </div>
+  <div class="row">
+    <div class="col-sm-1">
+      <label>
+        Mesmo acima
+      </label>
+      <select id="iqual" class="form-control">
+        <option value=0>Não</option>
+        <option value=1>Sim</option>
+      </select>
+    </div>
 
-  <div class="col-sm-2">
-    <%= f.label :property_zip_code, class: "control-label" %>
-    <%= f.text_field :property_zip_code, class: "form-control" %>
-  </div>
+    <div class="col-sm-2">
+      <%= f.label :property_zip_code, class: "control-label" %>
+      <%= f.text_field :property_zip_code, class: "form-control" %>
+    </div>
 
-  <div class="col-sm-8">
-    <%= f.label :property_address, class: "control-label" %>
-    <%= f.text_field :property_address, class: "form-control" %>
-  </div>
+    <div class="col-sm-8">
+      <%= f.label :property_address, class: "control-label" %>
+      <%= f.text_field :property_address, class: "form-control" %>
+    </div>
 
-  <div class="col-sm-1">
-    <%= f.label :property_address_number, class: "control-label" %>
-    <%= f.text_field :property_address_number, class: "form-control" %>
+    <div class="col-sm-1">
+      <%= f.label :property_address_number, class: "control-label" %>
+      <%= f.text_field :property_address_number, class: "form-control" %>
+    </div>
   </div>
-</div>
 
   <div class="row">
     <div class="col-sm-2">
@@ -177,92 +177,112 @@
     </div>
   </div>
 
-<div class="row">
-  <div class="col-sm-12">
+  <div class="row">
+    <div class="col-sm-12">
       <div class="sub_title">Imagens</div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-    </a>
+    </div>
   </div>
 
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-    </a>
+  <div class="row">
+    <div class="col-xs-6 col-md-3">
+      <a href="#" class="thumbnail">
+        <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+      </a>
+    </div>
+
+    <div class="col-xs-6 col-md-3">
+      <a href="#" class="thumbnail">
+        <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+      </a>
+    </div>
+
+    <div class="col-xs-6 col-md-3">
+      <a href="#" class="thumbnail">
+        <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+      </a>
+    </div>
+
+    <div class="col-xs-6 col-md-3">
+      <a href="#" class="thumbnail">
+        <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+      </a>
+    </div>
   </div>
 
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-    </a>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="sub_title">Penalidades</div>
+    </div>
   </div>
 
-   <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-    </a>
+  <div class="row">
+    <div class="col-sm-3">
+      <%= f.label 'Prazo de Regularização', class: "control-label" %>
+      <div class="input-group">
+        <%= f.text_field :regularization, class: "form-control", "aria-describedby"=> "basic-addon2" %>
+        <span class="input-group-addon" id="basic-addon2"><b>dias a partir da ciência deste auto.</b></span>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="row">
   <div class="col-sm-12">
-    <div class="sub_title">Penalidades</div>
-  </div>
-</div>
-
-<div class="col-sm-12">
-  <div class="row">
-    <%= f.label :notify_description, class: "control-label" %>
-    <%= f.text_area :notify_description, class: "form-control text_area" %>
-  </div>
-</div>
-
-<div class="col-sm-12">
-  <div class="row">
-    <%= f.label 'Conforme lei', class: "control-label" %>
-    <table class="table">
-      <tbody>
-        <% Law.all.each do | law | %>
-        <tr id='laws'>
-          <td><input value=<%= law.id %> type="checkbox" name="laws[]"></td>
-          <td width="100">Lei: <%= law.number %></td>
-          <td width="80">Artigo: <%= law.article %></td>
-          <td><%= law.description %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-2  pull-right">
     <div class="row">
-      <%= f.label :regularization, class: "control-label" %>
-      <%= f.text_field :regularization, class: "form-control form-control" %>
+      <%= f.label :notify_description, class: "control-label" %>
+      <%= f.text_area :notify_description, class: "form-control text_area" %>
     </div>
   </div>
-</div>
 
-    <div class="panel-footer">
-      <div class="actions">
-        <!-- <button class="btn btn-warning">Gerar Autuação</button> -->
-        <button class="btn btn-primary"><i class="fa fa-save"></i> Salvar</button>
-      </div>
-
-      <div class="actions pull-left">
-        <%= link_to f.button("Voltar", class: "btn"), infractions_path %>
-      </div>
+  <div class="col-sm-12">
+    <div class="row">
+      <table class="table">
+        <thead>
+          <th colspan="4">Conforme lei</th>
+          <th>Valor</th>
+        </thead>
+        <tbody>
+          <% Law.all.each do | law | %>
+          <tr id='laws'>
+            <td><input id="law_<%= law.id %>" onClick="myFunction(<%= law.id %>)" value="<%= law.id %>" type="checkbox" name="laws[]"></td>
+            <td width="100"><b>Lei:</b> <%= law.number %></td>
+            <td width="80"><b>Artigo:</b> <%= law.article %></td>
+            <td><%= law.description %></td>
+            <td width="150">
+              <div id="input_group_<%= law.id %>" class="input-group" style="opacity: 0.3;">
+                <span class="input-group-addon" id="basic-addon1"><b>R$</b> </span>
+                <input id="price_<%= law.id %>" type="text" name="prices[]" class="form-control" placeholder="00,00", disabled=true>
+              </div>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-<% end %>
+  </div>
+
+  <div class="panel-footer">
+    <div class="actions">
+      <!-- <button class="btn btn-warning">Gerar Autuação</button> -->
+      <button class="btn btn-primary"><i class="fa fa-save"></i> Salvar</button>
+    </div>
+
+    <div class="actions pull-left">
+      <%= link_to f.button("Voltar", class: "btn"), infractions_path %>
+    </div>
+  </div>
+  <% end %>
 </div>
 
 <script>
+function myFunction(id){
+  if($("#law_"+id+":checkbox:checked").length){
+    $("#input_group_"+id).removeAttr( "style" );
+    $("#price_"+id).attr("disabled",false);
+  }else{
+    $("#input_group_"+id).attr("style","opacity: 0.3;");
+    $("#price_"+id).attr("disabled",true);
+  }
+}
+
 $('body').ready(function() {
   if(!$("#laws").length){
     $.confirm({

@@ -23,7 +23,7 @@
   </div>
 
   <div class="col-sm-2">
-    <h3><strong>R$ <%= @fine.price || '00.00' %></strong></h3>
+    <h3><strong>R$ <%= '00.00' %></strong></h3>
   </div>
 </div>
 
@@ -184,6 +184,11 @@
       <small>Artigo</small></br>
       <strong><%= fine.law.article %></strong>
     </div>
+
+    <div class="col-sm-2">
+      <small>Multa</small></br>
+      <strong>R$ <%= fine.price %></strong>
+    </div>
   </div>
 
   <div class="row">
@@ -193,6 +198,7 @@
     </div>
   </div>
 </div>
+<hr>
 <% end %>
 
 <div class="row">

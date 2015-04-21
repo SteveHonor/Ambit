@@ -30,8 +30,7 @@ class CreateInfractions < ActiveRecord::Migration
       t.string :regulation
       t.string :state
 
-      t.decimal :price
-      t.datetime :regularization
+      t.integer :regularization
 
       t.references :users, index: true
 

@@ -157,96 +157,115 @@
         <div class="row">
           Irregularidades
           <div class="col-sm-12 notification-view">
-            <div class="col-sm-12">
+            <% @infraction.fine.each do | fine |%>
+            <div class="row">
+              <div class="col-sm-2">
+                <small>Data da Infração</small></br>
+                <strong><%= @infraction.created_at.strftime("%d/%m/%Y") %></strong>
+              </div>
+
+              <div class="col-sm-2">
+                <small>Hora da Infração</small></br>
+                <strong><%= @infraction.created_at.strftime("%H:%M") %></strong>
+              </div>
+
+              <div class="col-sm-2">
+                <small>Conforme Lei</small></br>
+                <strong>Nº: <%= fine.law.number %></strong>
+              </div>
+
+              <div class="col-sm-2">
+                <small>Artigo</small></br>
+                <strong><%= fine.law.article %></strong>
+              </div>
+
+              <div class="col-sm-2">
+                <small>Multa</small></br>
+                <strong>R$ <%= fine.price %></strong>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <small>Enquadramento</small></br>
+                <strong><%= fine.law.description %></strong>
+              </div>
+            </div>
+            <hr>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 notification-view">
+            <div class="col-sm-10">
               <small>Descrição da Infração</small></br>
               <strong><%= @infraction.notify_description.upcase %></strong>
             </div>
-            <% @infraction.fine.each do | fine |%>
-            <div class="col-sm-2">
-              <small>Data da Infração</small></br>
-              <strong><%= @infraction.created_at.strftime("%d/%m/%Y") %></strong>
-            </div>
 
-            <div class="col-sm-2">
-              <small>Hora da Infração</small></br>
-              <strong><%= @infraction.created_at.strftime("%H:%M") %></strong>
-            </div>
+            <div class="colcol-sm-2">
+              <small>Valor Total da Multa</small><br>
 
-            <div class="col-sm-2">
-              <small>Conforme Lei</small></br>
-              <strong>Nº: <%= fine.law.number %></strong>
-            </div>
-
-            <div class="col-sm-2">
-              <small>Artigo</small></br>
-              <strong><%= fine.law.article %></strong>
-            </div>
-
-            <div class="col-sm-12">
-              <small>Enquadramento</small></br>
-              <strong><%= fine.law.description.upcase %></strong>
-            </div>
-            <% end %>
-          </div>
-        </div>
-        <div class="row">
-          Fiscalização
-          <div class="col-sm-12 notification-view">
-            <% if not @infraction.supervision.count.zero? %>
-            <% @infraction.supervision.each do |supervision|%>
-            <div class="col-sm-2">
-              <small>Fiscalizado Em:</small></br>
-              <strong><%= supervision.created_at.strftime("%d/%m") %></strong>
-            </div>
-            <div class="col-sm-2">
-              <small>As:</small></br>
-              <strong><%= supervision.created_at.strftime("%H:%M") %> hs</strong>
-            </div>
-            <div class="col-sm-8">
-              <small>Descrição:</small></br>
-              <strong><%= supervision.observation  %></strong>
-            </div>
-            <% end %>
-            <% else %>
-            <div class="well" align="center">Não ha m laudo de infração referente a esta infração</div>
-            <% end %>
-          </div>
-        </div>
-
-        <div class="row">
-          Unidade Emitente
-          <div class="col-sm-12 notification-view">
-            <div class="col-sm-8" style="margin-top:10px">
-              Prefeitura Municipal de Assis<br>
-              Secretaria Municipal de Meio Ambiente<br>
-              Departamento de Fiscalização Ambiental
-            </div>
-
-            <div class="col-sm-4" style="margin-top:40px" align="center">
-              ____________________________________<br>
-              assinatura
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="row">
-          Ciência do Infrator
-          <div class="col-sm-12 notification-view">
-            <div class="col-sm-8" style="height:60px">
-              <small>Nome:</small></br>
-
+          <div class="row">
+            Fiscalização
+            <div class="col-sm-12 notification-view">
+              <% if not @infraction.supervision.count.zero? %>
+              <% @infraction.supervision.each do |supervision|%>
+              <div class="col-sm-2">
+                <small>Fiscalizado Em:</small></br>
+                <strong><%= supervision.created_at.strftime("%d/%m") %></strong>
+              </div>
+              <div class="col-sm-2">
+                <small>As:</small></br>
+                <strong><%= supervision.created_at.strftime("%H:%M") %> hs</strong>
+              </div>
+              <div class="col-sm-8">
+                <small>Descrição:</small></br>
+                <strong><%= supervision.observation  %></strong>
+              </div>
+              <% end %>
+              <% else %>
+              <div class="well" align="center">Não ha m laudo de infração referente a esta infração</div>
+              <% end %>
             </div>
+          </div>
 
-            <div class="col-sm-8">
-              <small>Data:</small></br>
+          <div class="row">
+            Unidade Emitente
+            <div class="col-sm-12 notification-view">
+              <div class="col-sm-8" style="margin-top:10px">
+                Prefeitura Municipal de Assis<br>
+                Secretaria Municipal de Meio Ambiente<br>
+                Departamento de Fiscalização Ambiental
+              </div>
 
+              <div class="col-sm-4" style="margin-top:40px" align="center">
+                ____________________________________<br>
+                assinatura
+              </div>
             </div>
+          </div>
 
-            <div class="col-sm-4" align="center">
-              ____________________________________<br>
-              assinatura
+          <div class="row">
+            Ciência do Infrator
+            <div class="col-sm-12 notification-view">
+              <div class="col-sm-8" style="height:60px">
+                <small>Nome:</small></br>
+
+              </div>
+
+              <div class="col-sm-8">
+                <small>Data:</small></br>
+
+              </div>
+
+              <div class="col-sm-4" align="center">
+                ____________________________________<br>
+                assinatura
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>

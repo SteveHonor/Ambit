@@ -21,7 +21,10 @@ class InfractionsController < ApplicationController
 
   def create
     infraction = infraction_params.merge({state: :pending})
-    laws         = params.delete(:laws)
+    laws       = params.delete(:laws)
+    prices     = params.delete(:prices)
+
+    zipped = Hash[laws.zip(prices)]
 
     @infraction = Infraction.new(infraction)
 
@@ -29,9 +32,8 @@ class InfractionsController < ApplicationController
       if @infraction.save
         format.html { redirect_to infractions_path }
         format.json { render :show, status: :created, location: @infraction }
-
-        laws.each do |law|
-          Fine.create(infraction_id: @infraction.id, law_id: law)
+        zipped.each do |law, price|
+          Fine.create(infraction_id: @infraction.id, law_id: law, price: price)
         end
       else
         format.html { render :new }
@@ -42,7 +44,10 @@ class InfractionsController < ApplicationController
 
   def update
     infraction = infraction_params
-    laws        = params.delete(:laws)
+    laws       = params.delete(:laws)
+    prices     = params.delete(:prices)
+
+    zipped = Hash[laws.zip(prices)]
 
     respond_to do |format|
       if @infraction.update(infraction_params)
@@ -53,8 +58,9 @@ class InfractionsController < ApplicationController
       end
     end
 
-    if laws
-      laws.each do |law|
+    if zipped
+      zipped.each do |law|
+        pry
         Fine.create(infraction_id: @infraction.id, law_id: law)
       end
     end

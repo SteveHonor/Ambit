@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150322155950) do
   create_table "fines", force: :cascade do |t|
     t.integer  "infraction_id"
     t.integer  "law_id"
+    t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -55,8 +56,7 @@ ActiveRecord::Schema.define(version: 20150322155950) do
     t.string   "notify_description"
     t.string   "regulation"
     t.string   "state"
-    t.decimal  "price"
-    t.datetime "regularization"
+    t.integer  "regularization"
     t.integer  "users_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -89,8 +89,8 @@ ActiveRecord::Schema.define(version: 20150322155950) do
   create_table "supervisions", force: :cascade do |t|
     t.integer  "infraction_id"
     t.string   "observation"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "supervisions", ["infraction_id"], name: "index_supervisions_on_infraction_id", using: :btree
