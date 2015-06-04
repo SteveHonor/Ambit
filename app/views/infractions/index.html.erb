@@ -1,17 +1,21 @@
-<h>Infrações</h>
-<div class="panel">
-  <div class="form-group">
+<h>
+  <div class="col-sm-2 title">Infrações</div>
+  <div id="actin-btn" class="pull-right">
+    <%= link_to '<i class="fa fa-plus"></i> <b>Cadastrar Nova Infração</b>'.html_safe, new_infraction_path, class: "btn btn-primary btn-sm" %>
+  </div>
+</h>
 
+  <div class="form-group">
     <div class="row">
       <table id="table-notification" class="table table-striped display">
         <thead class="table-heading">
           <tr>
-            <th width="auto">Nome</th>
-            <th width="auto">Endereço</th>
-            <th width="auto">Municipio</th>
+            <th width="20%">Nome</th>
+            <th width="20%">Endereço</th>
+            <th width="15%">Municipio</th>
             <th width="10%">Prazo</th>
-            <th width="13%">Status</th>
-            <th width="10%"></th>
+            <th width="12%">Status</th>
+            <th width="8%"></th>
           </tr>
         </thead>
 
@@ -73,87 +77,77 @@
           <% end %>
         </tbody>
       </table>
-    </div>
   </div>
 </div>
 
-  <div id="actin-btn" class="col-sm-2 pull-right" align="right">
-    <%= link_to '<i class="fa fa-plus"></i> <b>Cadastrar Nova Infração</b>'.html_safe, new_infraction_path, class: "btn btn-primary" %>
-  </div>
+<script>
+$(document).ready(function() {
+  $( ".my_modal_generate" ).confirm({
+    title:"<i class='fa fa-exclamation-triangle'></i> Gerar Autuação",
+    text:"<h3>Realmente deseja gerar um autuação?</h3>",
+    confirm: function(button) {
+      $('#myModal').modal();
+      $('#myModalBody').load('/supervisions/assessments/'+ button.attr('id') +'/genrate');
+      $('#label_'+button.attr('id')).html('Fiscalizado');
+    },
+    confirmButton: "Sim",
+    cancelButton: "Não"
+  });
 
-      <script>
-      $(document).ready(function() {
-        $( ".my_modal_generate" ).confirm({
-          title:"<i class='fa fa-exclamation-triangle'></i> Gerar Autuação",
-          text:"<h3>Realmente deseja gerar um autuação?</h3>",
-          confirm: function(button) {
-            $('#myModal').modal();
-            $('#myModalBody').load('/supervisions/assessments/'+ button.attr('id') +'/genrate');
-            $('#label_'+button.attr('id')).html('Fiscalizado');
-          },
-          confirmButton: "Sim",
-          cancelButton: "Não"
-        });
+  $( ".my_modal_visualisation" ).click(function(){
+    $('#myModal').modal();
+    $('#myModalBody').load('/infractions/'+ $(this).attr('id') );
+  });
 
-        $( ".my_modal_visualisation" ).click(function(){
-          $('#myModal').modal();
-          $('#myModalBody').load('/infractions/'+ $(this).attr('id') );
-        });
+  $( ".my_modal_supervision" ).click(function(){
+    $('#myModal').modal();
+    $('#myModalBody').load('/supervisions/'+ $(this).attr('id') );
+  });
 
-        $( ".my_modal_supervision" ).click(function(){
-          $('#myModal').modal();
-          $('#myModalBody').load('/supervisions/'+ $(this).attr('id') );
-        });
+  $( ".my_modal_notification" ).confirm({
+    title:"<div align='center'><i class='fa fa-exclamation'></i> Gerar Notificação</div>",
+    text:"<div align='center'><h4>Realmente deseja gerar uma notificação?</h4></div>",
+    confirm: function(button) {
+      $('#myModal').modal();
+      $('#myModalBody').load('/infraction/'+ button.attr('id') +'/generate/notification');
+      $('#label_'+button.attr('id')).html('Notificado');
+    },
+    cancelButton: "Não, voltar",
+    confirmButton: "Sim, gerar notificação!",
+    confirmButtonClass: "btn-success pull-right",
+    cancelButtonClass: "btn-default pull-left"
+  });
 
-        $( ".my_modal_notification" ).confirm({
-          title:"<div align='center'><i class='fa fa-exclamation'></i> Gerar Notificação</div>",
-          text:"<div align='center'><h4>Realmente deseja gerar uma notificação?</h4></div>",
-          confirm: function(button) {
-            $('#myModal').modal();
-            $('#myModalBody').load('/infraction/'+ button.attr('id') +'/generate/notification');
-            $('#label_'+button.attr('id')).html('Notificado');
-          },
-          cancelButton: "Não, voltar",
-          confirmButton: "Sim, gerar notificação!",
-          confirmButtonClass: "btn-success pull-right",
-          cancelButtonClass: "btn-default pull-left"
-        });
+  $( ".my_modal_canceled" ).confirm({
+    title:"<i class='fa fa-exclamation-triangle'></i> Cancelar Infração",
+    text:"<h3>Realmente cancelar esta infração?</h3>",
+    confirm: function(button) {
+      $.ajax({
+          url: '/infractions/'+ button.attr('id'),
+          type: 'DELETE',
+          success: function(result) {
+            $('#label_'+button.attr('id')).html('Cancelado');
+            $('#label_'+button.attr('id')).attr('class', "label-default");
+          }
+      });
+    },
+    confirmButton: "Sim",
+    cancelButton: "Não"
+  });
 
-        $( ".my_modal_canceled" ).confirm({
-          title:"<i class='fa fa-exclamation-triangle'></i> Cancelar Infração",
-          text:"<h3>Realmente cancelar esta infração?</h3>",
-          confirm: function(button) {
-            $.ajax({
-                url: '/infractions/'+ button.attr('id'),
-                type: 'DELETE',
-                success: function(result) {
-                  $('#label_'+button.attr('id')).html('Cancelado');
-                  $('#label_'+button.attr('id')).attr('class', "label-default");
-                }
-            });
-          },
-          confirmButton: "Sim",
-          cancelButton: "Não"
-        });
+  $( ".my_modal_assessments" ).confirm({
+    title:"<i class='fa fa-exclamation-triangle'></i> Gerar Autuação",
+    text:"<h3>Realmente gerar a autuação?</h3>",
+    confirm: function(button) {
+      $('#myModal').modal();
+      $('#myModalBody').load('/infraction/'+ button.attr('id') +'/generate/assessments');
+      $('#label_'+button.attr('id')).html('Notificado');
+    },
+    confirmButton: "Sim",
+    cancelButton: "Não"
+  });
 
-        $( ".my_modal_assessments" ).confirm({
-          title:"<i class='fa fa-exclamation-triangle'></i> Gerar Autuação",
-          text:"<h3>Realmente gerar a autuação?</h3>",
-          confirm: function(button) {
-            $('#myModal').modal();
-            $('#myModalBody').load('/infraction/'+ button.attr('id') +'/generate/assessments');
-            $('#label_'+button.attr('id')).html('Notificado');
-          },
-          confirmButton: "Sim",
-          cancelButton: "Não"
-        });
+  var table = $('#table-notification').dataTable({ "dom": '<tp>' });
 
-        var table = $('#table-notification').dataTable({
-          "dom": '<"row"<"well"f><t><"bottom well"lp>>'
-        });
-
-        var tt = new $.fn.dataTable.TableTools( table );
-
-        $( "#actin-btn" ).insertBefore('#table-notification_filter');
-      } );
-      </script>
+} );
+</script>

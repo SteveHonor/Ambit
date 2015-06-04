@@ -1,47 +1,40 @@
-<h>Usuários</h>
-<div class="panel">
-  <div class="form-group">
-    <div class="row">
+<h><div class="col-sm-2 title">Usuários</div>
+  <div id="actin-btn" class="pull-right">
+    <%= link_to '<i class="fa fa-plus"></i> <b>Novo Usuários</b>'.html_safe, new_user_path, class: "btn btn-primary btn-sm" %>
+  </div>
+</h>
 
-      <table id="table-user" class="table table-striped display">
-        <thead class="table-heading">
+<div class="form-group">
+  <div class="row">
+
+    <table id="table-user" class="table table-striped display">
+      <thead class="table-heading">
+      <tr>
+        <th width="300">Name</th>
+        <th width="400">E-mail</th>
+        <th width="200">Tipo</th>
+        <th width="150">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do | user |  %>
         <tr>
-          <th width="300">Name</th>
-          <th width="400">E-mail</th>
-          <th width="200">Tipo</th>
-          <th width="150">Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @users.each do | user |  %>
-          <tr>
-            <td><%= user.name %></td>
-            <td><%= user.email %></td>
-            <td><%= user.user_type %></td>
-            <td align="center">
-            <%= link_to '<i class="fa fa-edit"></i> Editar'.html_safe, edit_user_path(user), class: "btn btn-primary btn-sm" %>
-              <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> Remover</button>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.user_type %></td>
+          <td align="center">
+          <%= link_to '<i class="fa fa-edit"></i> Editar'.html_safe, edit_user_path(user), class: "btn btn-primary btn-sm" %>
+            <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> Remover</button>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 
-  <div id="actin-btn" class="col-sm-2 pull-right" align="right">
-    <%= link_to '<i class="fa fa-plus"></i> Novo Usuários'.html_safe, new_user_path, class: "btn btn-primary" %>
-  </div>
-
 <script>
   $(document).ready(function() {
-    var table = $('#table-user').dataTable({
-      "dom": '<"row"<"well"f><t><"bottom well"lp>>'
-    });
-
-    var tt = new $.fn.dataTable.TableTools( table );
-
-    $( "#actin-btn" ).insertBefore('#table-user_filter');
+    var table = $('#table-user').dataTable({ "dom": '<tp>' });
   } );
 </script>

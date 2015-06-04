@@ -1,47 +1,41 @@
-<h>Leis</h>
-<div class="panel">
-  <div class="form-group">
+<h><div class="col-sm-2 title">Leis</div>
+  <div id="actin-btn" class="pull-right">
+    <%= link_to '<i class="fa fa-plus"></i> Nova Lei'.html_safe, new_law_path, class: "btn btn-primary btn-sm" %>
+  </div>
+</h>
 
-    <div class="row">
-      <table id="table-law" class="table table-striped display">
-        <thead class="table-heading">
-          <tr>
-            <th width="auto">Numero</th>
-            <th width="auto">Artigo</th>
-            <th width="auto">Descrição</th>
-            <th width="120px"></th>
-          </tr>
-        </thead>
+<div class="form-group">
+  <div class="row">
+    <table id="table-law" class="table table-striped display">
+      <thead class="table-heading">
+        <tr>
+          <th width="20px">Numero</th>
+          <th width="20px">Artigo</th>
+          <th width="auto">Descrição</th>
+          <th width="120px"></th>
+        </tr>
+      </thead>
 
-        <tbody>
-          <% @laws.each do |law| %>
-          <tr>
-            <td><%= law.number %></td>
-            <td><%= law.article %></td>
-            <td><%= law.description %></td>
-            <td>
-            <%= link_to '<i class="fa fa-edit"></i> Edit'.html_safe, edit_law_path(law), class: "btn btn-warning btn-sm" %>
-            <%= link_to '<i class="fa fa-trash-o"></i> Destroy'.html_safe, law, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+      <tbody>
+        <% @laws.each do |law| %>
+        <tr>
+          <td><%= law.number %></td>
+          <td><%= law.article %></td>
+          <td><%= law.description %></td>
+          <td>
+          <%= link_to '<i class="fa fa-edit"></i> Edit'.html_safe, edit_law_path(law), class: "btn btn-warning btn-sm" %>
+          <%= link_to '<i class="fa fa-trash-o"></i> Destroy'.html_safe, law, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 
-  <div id="actin-btn" class="col-sm-2 pull-right" align="right">
-    <%= link_to '<i class="fa fa-plus"></i> Nova Lei'.html_safe, new_law_path, class: "btn btn-primary" %>
-  </div>
+
 
 <script>
   $(document).ready(function() {
-    var table = $('#table-law').dataTable({
-      "dom": '<"row"<"well"f><t><"bottom well"lp>>'
-    });
-
-    var tt = new $.fn.dataTable.TableTools( table );
-
-    $( "#actin-btn" ).insertBefore('#table-law_filter');
-  } );
+    var table = $('#table-law').dataTable({ "dom": '<tp>' });
+  });
 </script>

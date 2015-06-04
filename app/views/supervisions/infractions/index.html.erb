@@ -1,7 +1,6 @@
-<h>Fiscalização | Notificações</h>
-<div class="panel">
-  <div class="form-group">
+<h><div class="col-sm-2 title">Fiscalização</div></h>
 
+  <div class="form-group">
     <div class="row">
       <table id="table-notification" class="table table-striped display">
         <thead class="table-heading">
@@ -53,8 +52,6 @@
     </div>
   </div>
 
-
-
   <script>
   $(document).ready(function() {
     $( ".my_modal_generate" ).confirm({
@@ -79,13 +76,8 @@
       $('#myModalBody').load('/infractions/'+ $(this).attr('id') +'/supervisions/new');
     });
 
-    var table = $('#table-notification').dataTable({
-      "dom": '<"row"<"well"f><t><"bottom well"lp>>'
-    });
+    var table = $('#table-notification').dataTable({ "dom": '<tp>' });
 
-    var tt = new $.fn.dataTable.TableTools( table );
-
-    $( "#actin-btn" ).insertBefore('#table-notification_filter');
   } );
 
 
