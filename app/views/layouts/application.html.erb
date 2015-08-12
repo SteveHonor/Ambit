@@ -5,39 +5,11 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="top-panel">
-      <div class="col-sm-1">
-        <div class="icon-menu" id="toggle-menu">
-          <i class="fa fa-bars"></i>
-          <span>Menu</span>
-        </div>
-      </div>
 
-      <div class="col-sm-1 pull-right">
-        <p class="fields"><%= current_user.name %></p>
-      </div>
-
-      <div class="col-sm-1 pull-right">
-        <p class="fields"><%= current_user.management.state %></p>
-      </div>
-
-      <div class="col-sm-1 pull-right">
-        <p class="fields"><%= current_user.management.prefecture %></p>
-      </div>
-
-      <div class="col-sm-3 pull-right">
-        <p class="fields"><%= current_user.management.name %></p>
-      </div>
-
-      <div class="col-sm-2 pull-right">
-        <p class="fields"><%= current_user.user_type %></p>
-      </div>
-    </div>
-  </header>
-
+<div class="col-menu">
   <div id="menu" class="menu">
     <ul id="accordion" class="accordion">
       <li>
@@ -78,61 +50,144 @@
         </a>
       </li>
     </ul>
-  </div>
-  <div class="content">
-    <div class="row">
-      <%= yield %>
+    <div class="close-menu">
+    <a href="#" id="close-menu">
+      <i class="fa fa-th-list"></i>
+    </a>
     </div>
   </div>
 
-  <script type="text/javascript">
-  $("#toggle-menu").click(function () {
+  <div id="menu-icon" class="menu-icon">
+    <ul id="accordion" class="accordion">
+      <li><a href="/"><div class="link-icon"><i class="fa fa-home"></i></div></a></li>
+      <li><div class="link-icon"><i class="fa fa-archive"></i></div></li>
+      <li><div class="link-icon"><i class="fa fa-tree"></i></div></li>
+      <li><div class="link-icon"><i class="fa fa-search"></i></div></li>
+      <li>
+        <div class="link-icon">
+          <a href="/users/sign_out">
+            <i class="fa fa-power-off"></i>
+          </a>
+        </div>
+      </li>
+    </ul>
+    <div class="close-menu-icon">
+    <a href="#" id="close-menu-icon">
+      <i class="fa fa-th-list"></i>
+    </a>
+    </div>
+  </div>
+</div>
+
+<div class="col-content">
+  <div class="content">
+    <%= yield %>
+  </div>
+</div>
+
+<script>
+$(function() {
+  var Accordion = function(el, multiple) {
+    this.el = el || {};
+    this.multiple = multiple || false;
+
+    // Variables privadas
+    var links = this.el.find('.link');
+    // Evento
+    links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+  }
+
+  Accordion.prototype.dropdown = function(e) {
+    var $el = e.data.el;
+    $this = $(this),
+    $next = $this.next();
+
+    $next.slideToggle();
+    $this.parent().toggleClass('open');
+
+    if (!e.data.multiple) {
+      $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+    };
+  }
+
+  var accordion = new Accordion($('#accordion'), false);
+});
+</script>
+
+<script type="text/javascript">
+$("#toggle-menu").click(function () {
+  var effect   = 'slide';
+  var options  = { direction: 'left' };
+  var duration = 200;
+
+  $('#menu-icon').hide();
+  $('#menu').toggle(effect, options, duration);
+
+  $('#mega-1').dcVerticalMegaMenu();
+});
+
+$(document).ready(function($) {
+  if (location.pathname+location.search != "/"){
+    $('#menu').toggle();
+  }
+
+  $('#mega-1').dcVerticalMegaMenu();
+});
+</script>
+
+
+<script type="text/javascript">
+  $("#close-menu-icon").click(function () {
     var effect   = 'slide';
     var options  = { direction: 'left' };
-    var duration = 600;
+    var duration = 200;
+
+    $('#menu-icon').toggle(effect, options, duration);
+    $('#menu').toggle(effect, options, duration);
+      $('#mega-1').dcVerticalMegaMenu();
+  });
+</script>
+
+<script type="text/javascript">
+  $("#close-menu").click(function () {
+    var effect   = 'slide';
+    var options  = { direction: 'left' };
+    var duration = 200;
 
     $('#menu').toggle(effect, options, duration);
-
-    $('#mega-1').dcVerticalMegaMenu();
+    $('#menu-icon').toggle(effect, options, duration);
   });
+</script>
 
-  $(document).ready(function($) {
-    if (location.pathname+location.search != "/"){
-      $('#menu').toggle();
-    }
+<script>
+(function() {
+  var Accordion = function(el, multiple) {
+    this.el = el || {};
+    this.multiple = multiple || false;
 
-    $('#mega-1').dcVerticalMegaMenu();
-  });
-  </script>
+    // Variables privadas
+    var links = this.el.find('.link');
+    // Evento
+    links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+  }
 
-  <script>
-  $(function() {
-    var Accordion = function(el, multiple) {
-      this.el = el || {};
-      this.multiple = multiple || false;
+  Accordion.prototype.dropdown = function(e) {
+    var $el = e.data.el;
+    $this = $(this),
+    $next = $this.next();
 
-      // Variables privadas
-      var links = this.el.find('.link');
-      // Evento
-      links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-    }
+    $next.slideToggle();
+    $this.parent().toggleClass('open');
 
-    Accordion.prototype.dropdown = function(e) {
-      var $el = e.data.el;
-      $this = $(this),
-      $next = $this.next();
+    if (!e.data.multiple) {
+      $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+    };
+  }
 
-      $next.slideToggle();
-      $this.parent().toggleClass('open');
+  var accordion = new Accordion($('#accordion'), false);
+});
+</script>
 
-      if (!e.data.multiple) {
-        $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-      };
-    }
-
-    var accordion = new Accordion($('#accordion'), false);
-  });
-  </script>
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog-big">

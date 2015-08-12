@@ -1,205 +1,254 @@
+<div class="row">
+  <h3 class="title">Visualizar <strong>Cadastro de Infração</strong></h3>
+</div>
   <%= form_for(@infraction) do |f| %>
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="sub_title">
-        <div class="pull-left">Dados do proprietário</div>
-        <div class="pull-right">
-          <div class="radio-inline">
-            <label><input type="radio" checked="checked">Pessoa Fisica</label>
-          </div>
-
-          <div class="radio-inline">
-            <label><input type="radio" >Pessoa Juridica</label>
-          </div>
-        </div>
+  <div class="panel">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>Dados do <strong>Proprietário</strong></h2>
+        <hr>
       </div>
-    </div>
-  </div>
+   </div>
 
   <div class="row">
     <div class="col-sm-7">
+      <div class="form-group">
       <%= f.label :owner_name, class: "control-label" %>
       <%= f.text_field :owner_name, autofocus: true, class: "form-control disabled-field", disabled: true %>
     </div>
+    </div>
 
     <div class="col-sm-3">
+      <div class="form-group">
       <%= f.label :owner_identifier, class: "control-label" %>
       <%= f.text_field :owner_identifier, class: "form-control disabled-field", disabled: true %>
     </div>
+    </div>
 
     <div class="col-sm-2">
+      <div class="form-group">
       <%= f.label :owner_zip_code, class: "control-label" %>
       <%= f.text_field :owner_zip_code, class: "form-control disabled-field", disabled: true %>
+    </div>
     </div>
   </div>
 
   <div class="row">
     <div class="col-sm-5">
+      <div class="form-group">
       <%= f.label :owner_address, class: "control-label" %>
       <%= f.text_field :owner_address, class: "form-control disabled-field", disabled: true %>
     </div>
+    </div>
 
     <div class="col-sm-1">
+      <div class="form-group">
       <%= f.label :owner_address_number, class: "control-label" %>
       <%= f.text_field :owner_address_number, class: "form-control disabled-field", disabled: true %>
     </div>
-
-    <div class="col-sm-3">
-      <%= f.label :owner_address_complement, class: "control-label" %>
-      <%= f.text_field :owner_address_complement, class: "form-control disabled-field", disabled: true %>
     </div>
 
     <div class="col-sm-3">
+      <div class="form-group">
+      <%= f.label :owner_address_complement, class: "control-label" %>
+      <%= f.text_field :owner_address_complement, class: "form-control disabled-field", disabled: true %>
+    </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="form-group">
       <%= f.label :owner_district, class: "control-label" %>
       <%= f.text_field :owner_district, class: "form-control disabled-field", disabled: true %>
+    </div>
     </div>
   </div>
 
   <div class="row">
     <div class="col-sm-3">
+      <div class="form-group">
       <%= f.label :owner_city, class: "control-label" %>
       <%= f.text_field :owner_city, class: "form-control disabled-field", disabled: true %>
     </div>
+    </div>
 
     <div class="col-sm-1">
+      <div class="form-group">
       <%= f.label :owner_state, class: "control-label" %>
       <%= f.text_field :owner_state, class: "form-control disabled-field", disabled: true %>
     </div>
+    </div>
 
     <div class="col-sm-1">
+      <div class="form-group">
       <%= f.label :owner_ddd_mobile, class: "control-label" %>
       <%= f.text_field :owner_ddd_mobile, class: "form-control disabled-field", disabled: true %>
     </div>
+    </div>
 
     <div class="col-sm-3">
+      <div class="form-group">
       <%= f.label :owner_mobile, class: "control-label" %>
       <%= f.text_field :owner_mobile, class: "form-control disabled-field", disabled: true %>
     </div>
+    </div>
 
     <div class="col-sm-1">
+      <div class="form-group">
       <%= f.label :owner_ddd_phone, class: "control-label" %>
       <%= f.text_field :owner_ddd_phone, class: "form-control disabled-field", disabled: true %>
     </div>
+    </div>
 
     <div class="col-sm-3">
+      <div class="form-group">
       <%= f.label :owner_phone, class: "control-label" %>
       <%= f.text_field :owner_phone, class: "form-control disabled-field", disabled: true %>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Dados do <strong>Imóvel</strong></h2>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="form-group">
+      <%= f.label :property_zone, class: "control-label" %>
+      <%= f.text_field :property_zone, class: "form-control disabled-field", disabled: true %>
+    </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="form-group">
+      <%= f.label :property_zip_code, class: "control-label" %>
+      <%= f.text_field :property_zip_code, class: "form-control disabled-field", disabled: true %>
+    </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+      <%= f.label :property_address, class: "control-label" %>
+      <%= f.text_field :property_address, class: "form-control disabled-field", disabled: true %>
+    </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="form-group">
+      <%= f.label :property_address_number, class: "control-label" %>
+      <%= f.text_field :property_address_number, class: "form-control disabled-field", disabled: true %>
+    </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="form-group">
+      <%= f.label :property_address_complement, class: "control-label" %>
+      <%= f.text_field :property_address_complement, class: "form-control disabled-field", disabled: true %>
+    </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="form-group">
+      <%= f.label :property_district, class: "control-label" %>
+      <%= f.text_field :property_district, class: "form-control disabled-field", disabled: true %>
+    </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="form-group">
+      <%= f.label :property_city, class: "control-label" %>
+      <%= f.text_field :property_city, class: "form-control disabled-field", disabled: true %>
+    </div>
+    </div>
+
+    <div class="col-sm-1">
+      <div class="form-group">
+      <%= f.label :property_state, class: "control-label" %>
+      <%= f.text_field :property_state, class: "form-control disabled-field", disabled: true %>
+    </div>
+    </div>
+
+    <div class="col-sm-1">
+      <div class="form-group">
+      <%= f.label :property_meter, class: "control-label" %>
+      <%= f.text_field :property_meter, class: "form-control disabled-field", disabled: true %>
+    </div>
+    </div>
+
+    <div class="col-sm-1">
+      <div class="form-group">
+      <%= f.label :property_block, class: "control-label" %>
+      <%= f.text_field :property_block, class: "form-control disabled-field", disabled: true %>
+    </div>
+    </div>
+
+    <div class="col-sm-1">
+      <div class="form-group">
+      <%= f.label :property_allotment, class: "control-label" %>
+      <%= f.text_field :property_allotment, class: "form-control disabled-field", disabled: true %>
+    </div>
     </div>
   </div>
 
   <div class="row">
     <div class="col-sm-12">
-      <div class="sub_title">
-        <div class="pull-left">Dados do Imóvel</div>
-        <div class="pull-right">
-          <div class="radio-inline">
-            <label><%= f.radio_button(:property_zone, "Urban", checked: true) %>Área Urbana</label>
-          </div>
+      <div class="form-group">
+      <%= f.label :property_observation, class: "control-label" %>
+      <%= f.text_area :property_observation, class: "form-control text_area disabled-field", disabled: true %>
+    </div>
+    </div>
+  </div>
+</div>
 
-          <div class="radio-inline">
-            <label><%= f.radio_button(:property_zone, "Rural") %>Área Rural</label>
-          </div>
-        </div>
+  <div class="panel">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>Selecione as <strong>Imagens</strong></h2>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail">
+          <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+        </a>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail">
+          <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+        </a>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail">
+          <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+        </a>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail">
+          <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+        </a>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-2">
-      <%= f.label :property_zip_code, class: "control-label" %>
-      <%= f.text_field :property_zip_code, class: "form-control disabled-field", disabled: true %>
+  <div class="panel">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>Dados das <strong>Irregularidades</strong></h2>
+        <hr>
+      </div>
     </div>
-
-    <div class="col-sm-8">
-      <%= f.label :property_address, class: "control-label" %>
-      <%= f.text_field :property_address, class: "form-control disabled-field", disabled: true %>
-    </div>
-
-    <div class="col-sm-2">
-      <%= f.label :property_address_number, class: "control-label" %>
-      <%= f.text_field :property_address_number, class: "form-control disabled-field", disabled: true %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-2">
-      <%= f.label :property_address_complement, class: "control-label" %>
-      <%= f.text_field :property_address_complement, class: "form-control disabled-field", disabled: true %>
-    </div>
-
-    <div class="col-sm-3">
-      <%= f.label :property_district, class: "control-label" %>
-      <%= f.text_field :property_district, class: "form-control disabled-field", disabled: true %>
-    </div>
-
-    <div class="col-sm-3">
-      <%= f.label :property_city, class: "control-label" %>
-      <%= f.text_field :property_city, class: "form-control disabled-field", disabled: true %>
-    </div>
-
-    <div class="col-sm-1">
-      <%= f.label :property_state, class: "control-label" %>
-      <%= f.text_field :property_state, class: "form-control disabled-field", disabled: true %>
-    </div>
-
-    <div class="col-sm-1">
-      <%= f.label :property_meter, class: "control-label" %>
-      <%= f.text_field :property_meter, class: "form-control disabled-field", disabled: true %>
-    </div>
-
-    <div class="col-sm-1">
-      <%= f.label :property_block, class: "control-label" %>
-      <%= f.text_field :property_block, class: "form-control disabled-field", disabled: true %>
-    </div>
-
-    <div class="col-sm-1">
-      <%= f.label :property_allotment, class: "control-label" %>
-      <%= f.text_field :property_allotment, class: "form-control disabled-field", disabled: true %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-12">
-      <%= f.label :property_observation, class: "control-label" %>
-      <%= f.text_area :property_observation, class: "form-control text_area disabled-field", disabled: true %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="sub_title">Imagens</div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-6 col-md-3">
-      <a href="#" class="thumbnail">
-        <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-md-3">
-      <a href="#" class="thumbnail">
-        <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-md-3">
-      <a href="#" class="thumbnail">
-        <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-md-3">
-      <a href="#" class="thumbnail">
-        <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-      </a>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="sub_title">Irregularidades</div>
-  </div>
 
   <div class="row">
     <div class="col-sm-8">
@@ -209,7 +258,7 @@
 
     <% @infraction.fine.each do | fine |%>
     <div style="background: #F9F9F9">
-      <div class="row well">
+      <div class="row panel">
         <div class="col-sm-2">
           <small>Data da Infração</small></br>
           <strong><%= @infraction.created_at.strftime("%d/%m/%Y") %></strong>
@@ -246,14 +295,20 @@
     <hr>
     <% end %>
   </div>
+</div>
+
+<div class="panel">
   <div class="row">
-    <div class="sub_title">Fiscalização</div>
+    <div class="col-sm-12">
+      <h2>Dados das <strong>Fiscalização</strong></h2>
+      <hr>
+    </div>
   </div>
 
   <div class="row">
     <% if not @infraction.supervision.count.zero? %>
     <% @infraction.supervision.each do |supervision|%>
-    <div class="well" style="border-left: 5px solid #357ebd">
+    <div class="panel" style="border-left: 5px solid #357ebd">
       <div class="col-sm-2">
         <small>Fiscalizado Em:</small></br>
         <strong><%= supervision.created_at.strftime("%d/%m") %></strong>
@@ -272,8 +327,10 @@
     <div class="well" align="center">Não ha m laudo de infração referente a esta infração</div>
     <% end %>
   </div>
+</div>
+  <div class="panel">
+    <div class="row">
 
-  <div class="panel-footer">
     <div class="actions">
       <% if @infraction.state == 'supervised' %>
       <button class="my_modal_notification btn btn-warning", id=<%= @infraction.id %>  'data-target'="#myModal"><i class="fa fa-legal"></i> Gerar Notificação</button>
@@ -282,6 +339,7 @@
 
     <div class="actions pull-left">
       <%= link_to f.button("Voltar", class: "btn"), infractions_path %>
+    </div>
     </div>
   </div>
   <% end %>

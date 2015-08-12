@@ -1,337 +1,411 @@
+<div class="row">
+  <h3 class="title">Cadastro de <strong>Infração</strong></h3>
+</div>
+
 <%= form_for(@infraction) do |f| %>
-<div class="row">
-  <div class="col-sm-12">
-    <div class="sub_title">
-      <div class="pull-left">Dados do proprietário</div>
-      <div class="pull-right">
-        <div class="radio-inline">
-          <label><input type="radio" checked="checked">Pessoa Fisica</label>
-        </div>
-
-        <div class="radio-inline">
-          <label><input type="radio" >Pessoa Juridica</label>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-7">
-    <%= f.label :owner_name, class: "control-label" %>
-    <%= f.text_field :owner_name, autofocus: true, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-3">
-    <%= f.label :owner_identifier, class: "control-label" %>
-    <%= f.text_field :owner_identifier, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-2">
-    <%= f.label :owner_zip_code, class: "control-label" %>
-    <%= f.text_field :owner_zip_code, class: "form-control" %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-5">
-    <%= f.label :owner_address, class: "control-label" %>
-    <%= f.text_field :owner_address, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-1">
-    <%= f.label :owner_address_number, class: "control-label" %>
-    <%= f.text_field :owner_address_number, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-3">
-    <%= f.label :owner_address_complement, class: "control-label" %>
-    <%= f.text_field :owner_address_complement, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-3">
-    <%= f.label :owner_district, class: "control-label" %>
-    <%= f.text_field :owner_district, class: "form-control" %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-3">
-    <%= f.label :owner_city, class: "control-label" %>
-    <%= f.text_field :owner_city, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-1">
-    <%= f.label :owner_state, class: "control-label" %>
-    <%= f.text_field :owner_state, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-1">
-    <%= f.label :owner_ddd_mobile, class: "control-label" %>
-    <%= f.text_field :owner_ddd_mobile, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-3">
-    <%= f.label :owner_mobile, class: "control-label" %>
-    <%= f.text_field :owner_mobile, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-1">
-    <%= f.label :owner_ddd_phone, class: "control-label" %>
-    <%= f.text_field :owner_ddd_phone, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-3">
-    <%= f.label :owner_phone, class: "control-label" %>
-    <%= f.text_field :owner_phone, class: "form-control" %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <div class="sub_title">
-      <div class="pull-left">Dados do Imóvel</div>
-      <div class="pull-right">
-        <div class="radio-inline">
-          <label><%= f.radio_button(:property_zone, "Urban", checked: true) %>Área Urbana</label>
-        </div>
-
-        <div class="radio-inline">
-          <label><%= f.radio_button(:property_zone, "Rural") %>Área Rural</label>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-1">
-    <label>
-      Mesmo acima
-    </label>
-    <select id="iqual" class="form-control">
-      <option value=0>Não</option>
-      <option value=1>Sim</option>
-    </select>
-  </div>
-
-  <div class="col-sm-2">
-    <%= f.label :property_zip_code, class: "control-label" %>
-    <%= f.text_field :property_zip_code, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-8">
-    <%= f.label :property_address, class: "control-label" %>
-    <%= f.text_field :property_address, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-1">
-    <%= f.label :property_address_number, class: "control-label" %>
-    <%= f.text_field :property_address_number, class: "form-control" %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-2">
-    <%= f.label :property_address_complement, class: "control-label" %>
-    <%= f.text_field :property_address_complement, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-3">
-    <%= f.label :property_district, class: "control-label" %>
-    <%= f.text_field :property_district, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-3">
-    <%= f.label :property_city, class: "control-label" %>
-    <%= f.text_field :property_city, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-1">
-    <%= f.label :property_state, class: "control-label" %>
-    <%= f.text_field :property_state, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-1">
-    <%= f.label :property_meter, class: "control-label" %>
-    <%= f.text_field :property_meter, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-1">
-    <%= f.label :property_block, class: "control-label" %>
-    <%= f.text_field :property_block, class: "form-control" %>
-  </div>
-
-  <div class="col-sm-1">
-    <%= f.label :property_allotment, class: "control-label" %>
-    <%= f.text_field :property_allotment, class: "form-control" %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <%= f.label :property_observation, class: "control-label" %>
-    <%= f.text_area :property_observation, class: "form-control text_area" %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <div class="sub_title">Imagens</div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-    </a>
-  </div>
-
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-    </a>
-  </div>
-
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-    </a>
-  </div>
-
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
-    </a>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <div class="sub_title">Penalidades</div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-3">
-    <%= f.label 'Prazo de Regularização', class: "control-label" %>
-    <div class="input-group">
-      <%= f.text_field :regularization, class: "form-control", "aria-describedby"=> "basic-addon2" %>
-      <span class="input-group-addon" id="basic-addon2"><b>dias a partir da ciência deste auto.</b></span>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <%= f.label :notify_description, class: "control-label" %>
-    <%= f.text_area :notify_description, class: "form-control text_area" %>
-  </div>
-</div>
-
-<div class="col-sm-12">
+<div class="panel">
   <div class="row">
-    <table class="table">
-      <thead>
-        <th colspan="4">Conforme lei</th>
-        <th>Valor</th>
-      </thead>
-      <tbody>
-        <% Law.all.each do | law | %>
-        <tr id='laws'>
-          <td><input id="law_<%= law.id %>" onClick="myFunction(<%= law.id %>)" value="<%= law.id %>" type="checkbox" name="laws[]"></td>
-          <td width="100"><b>Lei:</b> <%= law.number %></td>
-          <td width="120"><b>Artigo:</b> <%= law.article %></td>
-          <td><%= law.description %></td>
-          <td width="150">
-            <div id="input_group_<%= law.id %>" class="input-group" style="opacity: 0.3;">
-              <span class="input-group-addon" id="basic-addon1"><b>R$</b> </span>
-              <input id="price_<%= law.id %>" type="text" name="prices[]" class="form-control" placeholder="00,00", disabled=true>
-            </div>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <div class="col-sm-12">
+      <h2>Dados do <strong>Proprietário</strong></h2>
+      <hr>
+    </div>
   </div>
 
-<div class="panel-footer">
-  <div class="actions">
-    <!-- <button class="btn btn-warning">Gerar Autuação</button> -->
-    <button class="btn btn-primary"><i class="fa fa-save"></i> Salvar</button>
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="form-group">
+        <label>Pessoa:</label>
+        <select id="iqual" class="form-control">
+          <option value=0>Fisica</option>
+          <option value=1>Juridica<option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :owner_name, class: "control-label" %>
+        <%= f.text_field :owner_name, autofocus: true, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="form-group">
+        <%= f.label :owner_identifier, class: "control-label" %>
+        <%= f.text_field :owner_identifier, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="form-group">
+        <%= f.label :owner_zip_code, class: "control-label" %>
+        <%= f.text_field :owner_zip_code, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="actions pull-left">
-    <%= link_to f.button("Voltar", class: "btn"), infractions_path %>
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="form-group">
+        <%= f.label :owner_address, class: "control-label" %>
+        <%= f.text_field :owner_address, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-sm-1">
+      <div class="form-group">
+        <%= f.label :owner_address_number, class: "control-label" %>
+        <%= f.text_field :owner_address_number, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="form-group">
+        <%= f.label :owner_address_complement, class: "control-label" %>
+        <%= f.text_field :owner_address_complement, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="form-group">
+        <%= f.label :owner_district, class: "control-label" %>
+        <%= f.text_field :owner_district, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="form-group">
+        <%= f.label :owner_city, class: "control-label" %>
+        <%= f.text_field :owner_city, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-sm-1">
+      <div class="form-group">
+        <%= f.label :owner_state, class: "control-label" %>
+        <%= f.text_field :owner_state, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-sm-1">
+      <div class="form-group">
+        <%= f.label :owner_ddd_mobile, class: "control-label" %>
+        <%= f.text_field :owner_ddd_mobile, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="form-group">
+        <%= f.label :owner_mobile, class: "control-label" %>
+        <%= f.text_field :owner_mobile, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-sm-1">
+      <div class="form-group">
+        <%= f.label :owner_ddd_phone, class: "control-label" %>
+        <%= f.text_field :owner_ddd_phone, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="form-group">
+        <%= f.label :owner_phone, class: "control-label" %>
+        <%= f.text_field :owner_phone, class: "form-control" %>
+      </div>
+    </div>
   </div>
 </div>
-<% end %>
 
-<script>
-function myFunction(id){
-  if($("#law_"+id+":checkbox:checked").length){
-    $("#input_group_"+id).removeAttr( "style" );
-    $("#price_"+id).attr("disabled",false);
-  }else{
-    $("#input_group_"+id).attr("style","opacity: 0.3;");
-    $("#price_"+id).attr("disabled",true);
+  <div class="panel">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>Dados do <strong>Imóvel</strong></h2>
+        <hr>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="col-sm-1">
+      <label>Mesmo:</label>
+      <select id="iqual" class="form-control">
+        <option value=0>Não</option>
+        <option value=1>Sim</option>
+      </select>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="form-group">
+        <label>
+          Área:
+        </label>
+        <select id="iqual" class="form-control">
+          <option value="Urban">Área Urbana</option>
+          <option value="Rural">Área Rural<option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+        <div class="form-group">
+          <%= f.label :property_zip_code, class: "control-label" %>
+          <%= f.text_field :property_zip_code, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :property_address, class: "control-label" %>
+          <%= f.text_field :property_address, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-sm-1">
+        <div class="form-group">
+          <%= f.label :property_address_number, class: "control-label" %>
+          <%= f.text_field :property_address_number, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="form-group">
+          <%= f.label :property_address_complement, class: "control-label" %>
+          <%= f.text_field :property_address_complement, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-group">
+          <%= f.label :property_district, class: "control-label" %>
+          <%= f.text_field :property_district, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-group">
+          <%= f.label :property_city, class: "control-label" %>
+          <%= f.text_field :property_city, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-sm-1">
+        <div class="form-group">
+          <%= f.label :property_state, class: "control-label" %>
+          <%= f.text_field :property_state, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-sm-1">
+        <div class="form-group">
+          <%= f.label :property_meter, class: "control-label" %>
+          <%= f.text_field :property_meter, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-sm-1">
+        <div class="form-group">
+          <%= f.label :property_block, class: "control-label" %>
+          <%= f.text_field :property_block, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-sm-1">
+        <div class="form-group">
+          <%= f.label :property_allotment, class: "control-label" %>
+          <%= f.text_field :property_allotment, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <%= f.label :property_observation, class: "control-label" %>
+          <%= f.text_area :property_observation, class: "form-control text_area" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>Selecione as <strong>Imagens</strong></h2>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail">
+          <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+        </a>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail">
+          <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+        </a>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail">
+          <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+        </a>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail">
+          <img data-src="holder.js/100%x180" alt="100%x180" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5LjU1NDY4NzUiIHk9IjkwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 280px; width: 100%; display: block;">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>Dados das <strong>Penalidades</strong></h2>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= f.label 'Prazo de Regularização', class: "control-label" %>
+          <div class="input-group">
+            <%= f.text_field :regularization, class: "form-control", "aria-describedby"=> "basic-addon2" %>
+            <span class="input-group-addon" id="basic-addon2"><b>dias a partir da ciência deste auto.</b></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <%= f.label :notify_description, class: "control-label" %>
+          <%= f.text_area :notify_description, class: "form-control text_area" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="col-sm-12">
+      <div class="row">
+        <h2>Conforme <strong>Lei</strong></h2>
+        <hr>
+        <table class="table">
+          <thead>
+            <th colspan="4"></th>
+            <th>Valor</th>
+          </thead>
+          <tbody>
+            <% Law.all.each do | law | %>
+            <tr id='laws'>
+              <td><input id="law_<%= law.id %>" onClick="myFunction(<%= law.id %>)" value="<%= law.id %>" type="checkbox" name="laws[]"></td>
+              <td width="100"><b>Lei:</b> <%= law.number %></td>
+              <td width="120"><b>Artigo:</b> <%= law.article %></td>
+              <td><%= law.description %></td>
+              <td width="150">
+                <div id="input_group_<%= law.id %>" class="input-group" style="opacity: 0.3;">
+                  <span class="input-group-addon" id="basic-addon1"><b>R$</b> </span>
+                  <input id="price_<%= law.id %>" type="text" name="prices[]" class="form-control" placeholder="00,00", disabled=true>
+                </div>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="row">
+
+    <div class="actions">
+      <!-- <button class="btn btn-warning">Gerar Autuação</button> -->
+      <button class="btn btn-primary"><i class="fa fa-save"></i> Salvar</button>
+    </div>
+
+    <div class="actions pull-left">
+      <%= link_to f.button("Voltar", class: "btn"), infractions_path %>
+    </div>
+    </div>
+  </div>
+  <% end %>
+
+  <script>
+  function myFunction(id){
+    if($("#law_"+id+":checkbox:checked").length){
+      $("#input_group_"+id).removeAttr( "style" );
+      $("#price_"+id).attr("disabled",false);
+    }else{
+      $("#input_group_"+id).attr("style","opacity: 0.3;");
+      $("#price_"+id).attr("disabled",true);
+    }
   }
-}
 
-$('body').ready(function() {
-  if(!$("#laws").length){
-    $.confirm({
-      title:"<i class='fa fa-exclamation-triangle'></i> Opss..",
-      text:"<h4><p>Não ha nenhuma lei cadastrada.</p><p>para proseguir será necessário cadastrar pelo menos uma</p> deseja cadastrar ?</h4>",
-      confirm: function(button) {
-        $(location).attr('href','/laws/new');
-      },
-      cancel: function() {
-        $(location).attr('href','/infractions/');
-      },
-      cancelButton: "Não, voltar",
-      confirmButton: "Sim, ir para cadastro de leis",
-      confirmButtonClass: "btn-success pull-right",
-      cancelButtonClass: "btn-default pull-left",
+  $('body').ready(function() {
+    if(!$("#laws").length){
+      $.confirm({
+        title:"<i class='fa fa-exclamation-triangle'></i> Opss..",
+        text:"<h4><p>Não ha nenhuma lei cadastrada.</p><p>para proseguir será necessário cadastrar pelo menos uma</p> deseja cadastrar ?</h4>",
+        confirm: function(button) {
+          $(location).attr('href','/laws/new');
+        },
+        cancel: function() {
+          $(location).attr('href','/infractions/');
+        },
+        cancelButton: "Não, voltar",
+        confirmButton: "Sim, ir para cadastro de leis",
+        confirmButtonClass: "btn-success pull-right",
+        cancelButtonClass: "btn-default pull-left",
 
-    });
-  }
-});
-$('#iqual').on('change', function() {
-  if(this.value == true){
-    $('#infraction_property_zip_code').val($('#infraction_owner_zip_code').val());
-    $('#infraction_property_address').val($('#infraction_owner_address').val());
-    $('#infraction_property_address_number').val($('#infraction_owner_address_number').val());
-    $('#infraction_property_address_complement').val($('#infraction_owner_address_complement').val());
-    $('#infraction_property_district').val($('#infraction_owner_district').val());
-    $('#infraction_property_city').val($('#infraction_owner_city').val());
-    $('#infraction_property_state').val($('#infraction_owner_state').val());
+      });
+    }
+  });
+  $('#iqual').on('change', function() {
+    if(this.value == true){
+      $('#infraction_property_zip_code').val($('#infraction_owner_zip_code').val());
+      $('#infraction_property_address').val($('#infraction_owner_address').val());
+      $('#infraction_property_address_number').val($('#infraction_owner_address_number').val());
+      $('#infraction_property_address_complement').val($('#infraction_owner_address_complement').val());
+      $('#infraction_property_district').val($('#infraction_owner_district').val());
+      $('#infraction_property_city').val($('#infraction_owner_city').val());
+      $('#infraction_property_state').val($('#infraction_owner_state').val());
 
-    $('#infraction_property_zip_code').attr('readonly', true);
-    $('#infraction_property_address').attr('readonly', true);
-    $('#infraction_property_address_number').attr('readonly', true);
-    $('#infraction_property_address_complement').attr('readonly', true);
-    $('#infraction_property_district').attr('readonly', true);
-    $('#infraction_property_city').attr('readonly', true);
-    $('#infraction_property_state').attr('readonly', true);
-  }else{
-    $('#infraction_property_zip_code').val('');
-    $('#infraction_property_address').val('');
-    $('#infraction_property_address_number').val('');
-    $('#infraction_property_address_complement').val('');
-    $('#infraction_property_district').val('');
-    $('#infraction_property_city').val('');
-    $('#infraction_property_state').val('');
+      $('#infraction_property_zip_code').attr('readonly', true);
+      $('#infraction_property_address').attr('readonly', true);
+      $('#infraction_property_address_number').attr('readonly', true);
+      $('#infraction_property_address_complement').attr('readonly', true);
+      $('#infraction_property_district').attr('readonly', true);
+      $('#infraction_property_city').attr('readonly', true);
+      $('#infraction_property_state').attr('readonly', true);
+    }else{
+      $('#infraction_property_zip_code').val('');
+      $('#infraction_property_address').val('');
+      $('#infraction_property_address_number').val('');
+      $('#infraction_property_address_complement').val('');
+      $('#infraction_property_district').val('');
+      $('#infraction_property_city').val('');
+      $('#infraction_property_state').val('');
 
-    $('#infraction_property_zip_code').prop("readonly", false);
-    $('#infraction_property_address').prop("readonly", false);
-    $('#infraction_property_address_number').prop("readonly", false);
-    $('#infraction_property_address_complement').prop("readonly", false);
-    $('#infraction_property_district').prop("readonly", false);
-    $('#infraction_property_city').prop("readonly", false);
-    $('#infraction_property_state').prop("readonly", false);
-  }
-});
+      $('#infraction_property_zip_code').prop("readonly", false);
+      $('#infraction_property_address').prop("readonly", false);
+      $('#infraction_property_address_number').prop("readonly", false);
+      $('#infraction_property_address_complement').prop("readonly", false);
+      $('#infraction_property_district').prop("readonly", false);
+      $('#infraction_property_city').prop("readonly", false);
+      $('#infraction_property_state').prop("readonly", false);
+    }
+  });
 
-</script>
+  </script>
