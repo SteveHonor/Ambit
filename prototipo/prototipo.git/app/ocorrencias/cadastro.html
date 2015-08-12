@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="pt-br" ng-app="app">
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro de Ocorrência | Pré Hospitalar</title>
+
+    <link href="../../assets/css/animate.min.css" rel="stylesheet">
+    <link href="../../assets/material_design_iconic_font/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="../../assets/css/app.min.1.css" rel="stylesheet">
+    <link href="../../assets/css/app.min.2.css" rel="stylesheet">
+    <link href="../../assets/css/custom.css" rel="stylesheet">
+</head>
+
+<body ng-controller="OcorrenciasController">
+    <!-- barra superior -->
+    <header id="header" class="bgm-red">
+        <ul class="header-inner">
+            <li id="menu-trigger" data-trigger="#sidebar">
+                <div class="line-wrap">
+                    <div class="line top"></div>
+                    <div class="line center"></div>
+                    <div class="line bottom"></div>
+                </div>
+            </li>
+
+            <li class="logo hidden-xs m-t--10">
+                <a href="index.html">
+                    <img src="../../assets/img/logo_topo.png" style="max-height: 45px;">
+                </a>
+            </li>
+
+            <li class="pull-right">
+                <ul class="top-menu">
+                    <li class="navbar-text c-white m-r-0" style="margin-top: 1px;">
+                        Bem vindo <strong>Fulano de Tal</strong><br>
+                        Código de hoje: <strong>123456</strong>
+                    </li>
+
+                    <li class="navbar-text m-t-7">
+                        <i class="zmdi zmdi-headset-mic zmdi-hc-2x c-white"></i>
+                    </li>
+
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="tm-settings" href=""></a>
+                        <ul class="dropdown-menu dm-icon pull-right">
+                            <li>
+                                <a href=""><i class="zmdi zmdi-settings"></i> Configurações</a>
+                            </li>
+
+                            <li>
+                                <a href="../login.html"><i class="zmdi zmdi-power-off"></i> Sair</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <!-- ./barra superior -->
+
+    <section id="main">
+        <!-- menu lateral -->
+        <aside id="sidebar">
+            <div class="sidebar-inner c-overflow">
+                <div class="profile-menu">
+                    <a href="#">
+                        <div class="profile-pic">
+                            <img src="../../assets/img/headset.png">
+                        </div>
+
+                        <div class="profile-info">
+                            Nome Sobrenome
+
+                            <i class="zmdi zmdi-caret-down"></i>
+                        </div>
+                    </a>
+
+                    <ul class="main-menu">
+                        <li><a href="#"><i class="zmdi zmdi-settings"></i> Configurações</a></li>
+                        <li><a href="../login.html"><i class="zmdi zmdi-power-off"></i> Sair</a></li>
+                    </ul>
+                </div>
+
+                <ul class="main-menu">
+                    <li class="active">
+                        <a href="index.html"><i class="zmdi zmdi-chevron-right zmdi-hc-2x"></i> Ocorrências</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <!-- ./menu lateral -->
+
+        <!-- conteúdo da página -->
+        <section id="content">
+            <div class="container-fluid">
+                <div class="block-header">
+                    <h2>
+                        <a href="index.html" title="voltar">
+                            <i class="zmdi zmdi-long-arrow-left zmdi-hc-lg"></i>
+                        </a> &nbsp; Cadastro de Ocorrência
+                    </h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body card-padding">
+                                <!-- solicitante -->
+                                <fieldset>
+                                    <legend><i class="zmdi zmdi-view-subtitles"></i> Informações do solicitante</legend>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label for="telefone">Telefone</label>
+
+                                            <div class="input-group form-group">
+                                                <span class="input-group-addon"><i class="zmdi zmdi-phone zmdi-hc-2x"></i></span>
+                                                <div class="dtp-container dropdown fg-line">
+                                                    <input type="text" class="form-control" placeholder="Telefone" name="telefone"
+                                                           id="telefone">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label for="solicitante">Solicitante</label>
+
+                                            <div class="input-group form-group">
+                                                <span class="input-group-addon"><i class="zmdi zmdi-account zmdi-hc-2x"></i></span>
+                                                <div class="dtp-container dropdown fg-line">
+                                                    <input type="text" class="form-control" placeholder="Nome do solicitante"
+                                                           name="solicitante" id="solicitante">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <label>Relação</label><br>
+                                            <small>Grau de parentesco do solicitante com o paciente</small>
+
+                                            <div class="form-group m-t-10">
+                                                <label class="radio radio-inline m-r-20">
+                                                    <input type="radio" name="relacao" value="O próprio">
+                                                    <i class="input-helper"></i>
+                                                    O próprio
+                                                </label>
+
+                                                <label class="radio radio-inline m-r-20">
+                                                    <input type="radio" name="relacao" value="Parente">
+                                                    <i class="input-helper"></i>
+                                                    Conjuge | Parente
+                                                </label>
+
+                                                <label class="radio radio-inline m-r-20">
+                                                    <input type="radio" name="relacao" value="População">
+                                                    <i class="input-helper"></i>
+                                                    Conhecido | População
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!-- ./solicitante -->
+
+                                <div class="clearfix m-b-20"></div>
+
+                                <!-- paciente -->
+                                <fieldset>
+                                    <legend><i class="zmdi zmdi-view-subtitles"></i> Informações do(s) paciente(s)</legend>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group fg-line">
+                                                <label for="paciente">Paciente</label>
+                                                <input type="text" class="form-control" id="paciente"
+                                                       placeholder="Digite o nome do paciente"
+                                                       ng-model="formData.pacientes.nome">
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group fg-line">
+                                                        <label for="idade">Idade</label>
+                                                        <input type="number" class="form-control" id="idade"
+                                                               ng-model="formData.pacientes.idade">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group fg-line">
+                                                        <label>&nbsp;</label>
+                                                        <div class="select">
+                                                            <select class="form-control" ng-model="formData.pacientes.idadeEm">
+                                                                <option value="Anos">Anos</option>
+                                                                <option value="Meses">Meses</option>
+                                                                <option value="Dias">Dias</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group fg-line">
+                                                        <label for="sexo">Sexo</label>
+                                                        <div class="select">
+                                                            <select class="form-control" id="sexo">
+                                                                <option value="Masculino">Masculino</option>
+                                                                <option value="Feminino">Feminino</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <button type="button" class="btn btn-default btn-block bgm-gray"
+                                                    ng-click="addPaciente()">
+                                                <i class="zmdi zmdi-accounts-add zmdi-hc-lg"></i> Adicionar Paciente
+                                            </button>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="alert alert-info text-center" ng-hide="pacientes.length">
+                                                <i class="zmdi zmdi-accounts-add zmdi-hc-3x"></i><br>
+                                                Adicione um paciente preenchendo o formulário ao lado.
+                                            </div>
+
+                                            <div class="table-responsive" tabindex="1" class="ng-hide" ng-show="pacientes.length">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Nome</th>
+                                                        <th>Idade</th>
+                                                        <th></th>
+                                                    </tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                    <tr ng-repeat="paciente in pacientes">
+                                                        <td><strong>{{ ($index + 1) }}</strong></td>
+                                                        <td>{{ paciente.nome }}</td>
+                                                        <td>{{ paciente.idade }} {{ paciente.idadeEm }}</td>
+                                                        <td>
+                                                            <button type="button"
+                                                                    class="btn btn-icon btn-icon-sm btn-danger pull-right"
+                                                                    title="Excluir paciente"
+                                                                    ng-click="removePaciente()">
+                                                                <span class="zmdi zmdi-delete"></span>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!-- ./paciente -->
+
+                                <div class="clearfix m-b-20 m-t-20"></div>
+
+                                <!-- local da ocorrência -->
+                                <fieldset>
+                                    <legend><i class="zmdi zmdi-view-subtitles"></i> Local da ocorrência</legend>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-sm-8">
+                                                    <div class="form-group fg-line">
+                                                        <label for="endereco">Endereço</label>
+                                                        <input type="text" class="form-control" id="endereco"
+                                                               placeholder="Digite o Endereço">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group fg-line">
+                                                        <label for="numero">Numero</label>
+                                                        <input type="text" class="form-control" id="numero">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group fg-line">
+                                                <label for="municipio">Município</label>
+                                                <input type="text" class="form-control" id="municipio"
+                                                       placeholder="Digite o Muicípio">
+                                            </div>
+
+                                            <div class="form-group fg-line">
+                                                <label for="bairro">Bairro</label>
+                                                <input type="text" class="form-control" id="bairro"
+                                                       placeholder="Digite o Bairro">
+                                            </div>
+
+                                            <div class="form-group fg-line">
+                                                <label for="complemento">Complemento</label>
+                                                <input type="text" class="form-control" id="complemento"
+                                                       placeholder="Digite o Complemento">
+                                            </div>
+
+                                            <div class="form-group fg-line">
+                                                <label for="referencia">Referência</label>
+                                                <input type="text" class="form-control" id="referencia"
+                                                       placeholder="Informe um ponto de referência">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <img src="../../assets/img/map.png" class="img-responsive">
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!-- ./local da ocorrência -->
+
+                                <div class="clearfix m-b-20 m-t-20"></div>
+
+                                <!-- informações sobre o chamado -->
+                                <fieldset>
+                                    <legend><i class="zmdi zmdi-view-subtitles"></i> Informações sobre o chamado</legend>
+
+                                    <div class="form-group fg-line">
+                                        <label for="queixa-principal">Queixa Principal</label>
+                                        <input type="text" class="form-control" id="queixa-principal"
+                                               placeholder="Digite a queixa principal">
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group fg-line">
+                                                <label for="local-chamado">Local do Chamado</label>
+                                                <div class="select">
+                                                    <select class="form-control" id="local-chamado">
+                                                        <option value="">Selecione ...</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group fg-line">
+                                                <label for="motivo-chamado">Motivo do Chamado</label>
+                                                <div class="select">
+                                                    <select class="form-control" id="motivo-chamado">
+                                                        <option value="">Selecione ...</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!-- ./informações sobre o chamado -->
+
+                                <div class="pull-right">
+                                    <a href="index.html" class="btn btn-link">Cancelar</a>
+
+                                    <a href="index.html#?success" class="btn btn-lg bgm-orange waves-effect">
+                                        <i class="zmdi zmdi-check zmdi-hc-lg"></i> Salvar</a>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ./conteúdo da página -->
+    </section>
+
+    <!-- rodape -->
+    <footer id="footer">
+        Copyright © 2015 DuoSystem
+    </footer>
+    <!-- ./rodape -->
+
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/angular.min.js"></script>
+    <script src="../../assets/js/angular-animate.js"></script>
+    <script src="../../assets/js/app.js"></script>
+    <script src="../../assets/waves/dist/waves.min.js"></script>
+    <script src="../../assets/js/bootstrap-growl.min.js"></script>
+    <script src="../../assets/js/mousetrap.min.js"></script>
+    <script src="../../assets/js/bootstrap-select.js"></script>
+
+    <!-- Placeholder for IE9 -->
+    <!--[if IE 9 ]>
+    <script src="../../assets/js/jquery.placeholder.min.js"></script>
+    <![endif]-->
+
+    <script src="../../assets/js/functions.js"></script>
+    <script src="../../assets/js/services/Ocorrencias.js"></script>
+    <script src="../../assets/js/services/Pacientes.js"></script>
+    <script src="../../assets/js/controllers/OcorrenciasController.js"></script>
+</body>
+</html>

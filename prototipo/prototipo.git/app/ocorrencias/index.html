@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="pt-br" ng-app="app">
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ocorrências | Pré Hospitalar</title>
+
+    <link href="../../assets/css/animate.min.css" rel="stylesheet">
+    <link href="../../assets/material_design_iconic_font/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="../../assets/css/app.min.1.css" rel="stylesheet">
+    <link href="../../assets/css/app.min.2.css" rel="stylesheet">
+    <link href="../../assets/css/custom.css" rel="stylesheet">
+</head>
+
+<body ng-controller="OcorrenciasController">
+    <!-- barra superior -->
+    <header id="header" class="bgm-red">
+        <ul class="header-inner">
+            <li id="menu-trigger" data-trigger="#sidebar">
+                <div class="line-wrap">
+                    <div class="line top"></div>
+                    <div class="line center"></div>
+                    <div class="line bottom"></div>
+                </div>
+            </li>
+
+            <li class="logo hidden-xs m-t--10">
+                <a href="index.html">
+                    <img src="../../assets/img/logo_topo.png" style="max-height: 45px;">
+                </a>
+            </li>
+
+            <li class="pull-right">
+                <ul class="top-menu">
+                    <li class="navbar-text c-white m-r-0" style="margin-top: 1px;">
+                        Bem vindo <strong>Fulano de Tal</strong><br>
+                        Código de hoje: <strong>123456</strong>
+                    </li>
+
+                    <li class="navbar-text m-t-7">
+                        <i class="zmdi zmdi-headset-mic zmdi-hc-2x c-white"></i>
+                    </li>
+
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="tm-settings" href=""></a>
+                        <ul class="dropdown-menu dm-icon pull-right">
+                            <li>
+                                <a href=""><i class="zmdi zmdi-settings"></i> Configurações</a>
+                            </li>
+
+                            <li>
+                                <a href="../login.html"><i class="zmdi zmdi-power-off"></i> Sair</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <!-- ./barra superior -->
+
+    <section id="main">
+        <!-- menu lateral -->
+        <aside id="sidebar">
+            <div class="sidebar-inner c-overflow">
+                <div class="profile-menu">
+                    <a href="#">
+                        <div class="profile-pic">
+                            <img src="../../assets/img/headset.png">
+                        </div>
+
+                        <div class="profile-info">
+                            Nome Sobrenome
+
+                            <i class="zmdi zmdi-caret-down"></i>
+                        </div>
+                    </a>
+
+                    <ul class="main-menu">
+                        <li><a href="#"><i class="zmdi zmdi-settings"></i> Configurações</a></li>
+                        <li><a href="../login.html"><i class="zmdi zmdi-power-off"></i> Sair</a></li>
+                    </ul>
+                </div>
+
+                <ul class="main-menu">
+                    <li class="active">
+                        <a href="index.html"><i class="zmdi zmdi-chevron-right zmdi-hc-2x"></i> Ocorrências</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <!-- ./menu lateral -->
+
+        <!-- conteúdo da página -->
+        <section id="content">
+            <div class="container-fluid">
+                <div class="block-header">
+                    <h2 class="pull-left">Ocorrências</h2>
+
+                    <div class="pull-right">
+                        <a href="cadastro.html" class="btn bgm-orange waves-effect" title="Abrir nova ocorrência (alt + n)"
+                           style="margin-top: -7px;">
+                            <i class="zmdi zmdi-plus-circle"></i> Nova Ocorrência
+                        </a>
+                    </div>
+                </div>
+
+                <div class="clearfix m-b-15"></div>
+
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="pull-left">
+                                    <h2>Ocorrências</h2>
+                                </div>
+
+                                <div class="pull-right">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default waves-effect"
+                                                ng-class="{active: (statusFilter == undefined)}"
+                                                ng-click="changeStatusFilter()">Todas</button>
+
+                                        <button type="button" class="btn btn-default waves-effect"
+                                                ng-class="{active: (statusFilter == 'regulacao')}"
+                                                ng-click="changeStatusFilter('regulacao')">
+                                            <span class="badge bgm-blue">1</span> Em Regulação
+                                        </button>
+
+                                        <button type="button" class="btn btn-default waves-effect"
+                                                ng-class="{active: (statusFilter == 'atendimento')}"
+                                                ng-click="changeStatusFilter('atendimento')">
+                                            <span class="badge bgm-green">2</span> Em Atendimento</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Município</th>
+                                        <th>Queixa</th>
+                                        <th>Hora</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr ng-repeat="ocorrencia in ocorrencias"
+                                        ng-class="{regulacao: (ocorrencia.status == 'regulacao'), atendimento: (ocorrencia.status == 'atendimento')}">
+                                        <td>{{ ocorrencia.codigo }}</td>
+                                        <td>{{ ocorrencia.municipio }}</td>
+                                        <td>{{ ocorrencia.queixa }}</td>
+                                        <td>{{ ocorrencia.hora }}</td>
+                                        <td>
+                                            <div class="lv-actions actions dropdown pull-right">
+                                                <a href="" data-toggle="dropdown" aria-expanded="true">
+                                                    <i class="zmdi zmdi-more-vert"></i>
+                                                </a>
+
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <a href="">Editar</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">Excluir</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card" style="min-height: 509px;">
+                            <div class="card-header">
+                                <h2>Chamadas Perdidas</h2>
+                            </div>
+
+                            <div class="card-body table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Hora</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr>
+                                        <td>123456-7</td>
+                                        <td>11:00</td>
+                                        <td>
+                                            <div class="lv-actions actions dropdown pull-right">
+                                                <a href="" data-toggle="dropdown" aria-expanded="true">
+                                                    <i class="zmdi zmdi-more-vert"></i>
+                                                </a>
+
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <a href="">Editar</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">Excluir</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>123456-7</td>
+                                        <td>11:00</td>
+                                        <td>
+                                            <div class="lv-actions actions dropdown pull-right">
+                                                <a href="" data-toggle="dropdown" aria-expanded="true">
+                                                    <i class="zmdi zmdi-more-vert"></i>
+                                                </a>
+
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <a href="">Editar</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">Excluir</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>123456-7</td>
+                                        <td>11:00</td>
+                                        <td>
+                                            <div class="lv-actions actions dropdown pull-right">
+                                                <a href="" data-toggle="dropdown" aria-expanded="true">
+                                                    <i class="zmdi zmdi-more-vert"></i>
+                                                </a>
+
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <a href="">Editar</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">Excluir</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>123456-7</td>
+                                        <td>11:00</td>
+                                        <td>
+                                            <div class="lv-actions actions dropdown pull-right">
+                                                <a href="" data-toggle="dropdown" aria-expanded="true">
+                                                    <i class="zmdi zmdi-more-vert"></i>
+                                                </a>
+
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <a href="">Editar</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">Excluir</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>123456-7</td>
+                                        <td>11:00</td>
+                                        <td>
+                                            <div class="lv-actions actions dropdown pull-right">
+                                                <a href="" data-toggle="dropdown" aria-expanded="true">
+                                                    <i class="zmdi zmdi-more-vert"></i>
+                                                </a>
+
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <a href="">Editar</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">Excluir</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="mini-charts">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="mini-charts-item bgm-red">
+                                        <div class="clearfix">
+                                            <div class="chart stats-bar" style="padding: 15px 32px;">
+                                                <i class="zmdi zmdi-trending-up zmdi-hc-4x c-white"></i>
+                                            </div>
+
+                                            <div class="count">
+                                                <small>Total de Ocorrências</small>
+                                                <h2>10.000</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="mini-charts-item bgm-blue">
+                                        <div class="clearfix">
+                                            <div class="chart stats-bar" style="padding: 15px 32px;">
+                                                <i class="zmdi zmdi-trending-up zmdi-hc-4x c-white"></i>
+                                            </div>
+
+                                            <div class="count">
+                                                <small>Total de Ocorrências em Regulação</small>
+                                                <h2>2.000</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="mini-charts-item bgm-green">
+                                        <div class="clearfix">
+                                            <div class="chart stats-bar" style="padding: 15px 32px;">
+                                                <i class="zmdi zmdi-trending-up zmdi-hc-4x c-white"></i>
+                                            </div>
+
+                                            <div class="count">
+                                                <small>Total de Ocorrências em Atendimento</small>
+                                                <h2>200</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="mini-charts-item bgm-gray">
+                                        <div class="clearfix">
+                                            <div class="chart stats-bar" style="padding: 15px 32px;">
+                                                <i class="zmdi zmdi-trending-up zmdi-hc-4x c-white"></i>
+                                            </div>
+
+                                            <div class="count">
+                                                <small>Total de Chamadas Perdidas</small>
+                                                <h2>1.000</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ./conteúdo da página -->
+    </section>
+
+    <!-- rodape -->
+    <footer id="footer">
+        Copyright © 2015 DuoSystem
+    </footer>
+    <!-- ./rodape -->
+
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/angular.min.js"></script>
+    <script src="../../assets/js/angular-animate.js"></script>
+    <script src="../../assets/js/app.js"></script>
+    <script src="../../assets/waves/dist/waves.min.js"></script>
+    <script src="../../assets/js/bootstrap-growl.min.js"></script>
+    <script src="../../assets/js/mousetrap.min.js"></script>
+
+    <!-- Placeholder for IE9 -->
+    <!--[if IE 9 ]>
+    <script src="../../assets/js/jquery.placeholder.min.js"></script>
+    <![endif]-->
+
+    <script src="../../assets/js/functions.js"></script>
+    <script src="../../assets/js/services/Ocorrencias.js"></script>
+    <script src="../../assets/js/services/Pacientes.js"></script>
+    <script src="../../assets/js/controllers/OcorrenciasController.js"></script>
+
+    <script>
+        $(function(){
+            Mousetrap.bind('alt+n', function(e) {
+                window.location = 'cadastro.html';
+            });
+        });
+    </script>
+</body>
+</html>

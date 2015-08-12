@@ -8,202 +8,61 @@
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 </head>
 <body>
-
-<div class="col-menu">
-  <div id="menu" class="menu">
-    <ul id="accordion" class="accordion">
-      <li>
-        <a href="/"><div class="link"><i class="fa fa-home"></i></i>Inicio</div></a>
+  <header id="header" class="bgm-teal">
+    <ul class="header-inner">
+      <li id="menu-trigger" data-trigger="#sidebar">
+        <div class="line-wrap">
+          <div class="line top"></div>
+          <div class="line center"></div>
+          <div class="line bottom"></div>
+        </div>
       </li>
 
-      <li>
-        <div class="link"><i class="fa fa-archive"></i>Cadastros<i class="fa fa-chevron-down"></i></div>
-        <ul class="submenu">
-          <li><a href="/infractions/"><i class="fa fa-exclamation-circle"></i>Infrações</a></li>
-          <li><a href="/users"><i class="fa fa-user"></i>Usuários</a></li>
-          <li><a href="/laws"><i class="fa fa-legal"></i>Leis</a></li>
-          <li><a href="/managements"><i class="fa fa-home"></i>Unidade</a></li>
-        </ul>
-      </li>
-
-      <li>
-        <div class="link"><i class="fa fa-tree"></i>Arborização<i class="fa fa-chevron-down"></i></div>
-        <ul class="submenu">
-          <!-- <li><a href="/infractions/"><i class="fa fa-exclamation-circle"></i>Infrações</a></li>
-          <li><a href="/users"><i class="fa fa-user"></i>Usuários</a></li>
-          <li><a href="/laws"><i class="fa fa-legal"></i>Leis</a></li> -->
-        </ul>
-      </li>
-
-      <li>
-        <div class="link"><i class="fa fa-search"></i>Fiscalização<i class="fa fa-chevron-down"></i></div>
-        <ul class="submenu" style="display: none;">
-          <li><a href="/supervisions/infractions/"><i class="fa fa-exclamation"></i>Infrações</a></li>
-        </ul>
-      </li>
-
-      <li>
-        <a href="/users/sign_out">
-          <div class="link">
-            <i class="fa fa-power-off"></i>Sair
-          </div>
+      <!-- <li class="logo hidden-xs m-t--10">
+        <a href="index.html">
+          <img src="../../assets/img/logo_topo.png" style="max-height: 45px;">
         </a>
+      </li> -->
+
+      <li class="pull-right">
+        <ul class="top-menu">
+          <li class="navbar-text c-white m-r-0" style="margin-top: 1px;">
+            Bem vindo <strong>Fulano de Tal</strong><br>
+            Código de hoje: <strong>123456</strong>
+          </li>
+
+          <li class="navbar-text m-t-7">
+            <i class="zmdi zmdi-headset-mic zmdi-hc-2x c-white"></i>
+          </li>
+
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="tm-settings" href=""></a>
+            <ul class="dropdown-menu dm-icon pull-right">
+              <li>
+                <a href=""><i class="zmdi zmdi-settings"></i> Configurações</a>
+              </li>
+
+              <li>
+                <a href="../login.html"><i class="zmdi zmdi-power-off"></i> Sair</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </li>
     </ul>
-    <div class="close-menu">
-    <a href="#" id="close-menu">
-      <i class="fa fa-th-list"></i>
-    </a>
+  </header>
+  <section id="main">
+
+  <section class="content">
+    <div class="container-fluid">
+      <%= yield %>
     </div>
   </div>
+  </section>
+</section>
+<footer id="footer">
+        Copyright © 2015 Secretária do meio ambiente
+    </footer>
 
-  <div id="menu-icon" class="menu-icon">
-    <ul id="accordion" class="accordion">
-      <li><a href="/"><div class="link-icon"><i class="fa fa-home"></i></div></a></li>
-      <li><div class="link-icon"><i class="fa fa-archive"></i></div></li>
-      <li><div class="link-icon"><i class="fa fa-tree"></i></div></li>
-      <li><div class="link-icon"><i class="fa fa-search"></i></div></li>
-      <li>
-        <div class="link-icon">
-          <a href="/users/sign_out">
-            <i class="fa fa-power-off"></i>
-          </a>
-        </div>
-      </li>
-    </ul>
-    <div class="close-menu-icon">
-    <a href="#" id="close-menu-icon">
-      <i class="fa fa-th-list"></i>
-    </a>
-    </div>
-  </div>
-</div>
-
-<div class="col-content">
-  <div class="content">
-    <%= yield %>
-  </div>
-</div>
-
-<script>
-$(function() {
-  var Accordion = function(el, multiple) {
-    this.el = el || {};
-    this.multiple = multiple || false;
-
-    // Variables privadas
-    var links = this.el.find('.link');
-    // Evento
-    links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-  }
-
-  Accordion.prototype.dropdown = function(e) {
-    var $el = e.data.el;
-    $this = $(this),
-    $next = $this.next();
-
-    $next.slideToggle();
-    $this.parent().toggleClass('open');
-
-    if (!e.data.multiple) {
-      $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-    };
-  }
-
-  var accordion = new Accordion($('#accordion'), false);
-});
-</script>
-
-<script type="text/javascript">
-$("#toggle-menu").click(function () {
-  var effect   = 'slide';
-  var options  = { direction: 'left' };
-  var duration = 200;
-
-  $('#menu-icon').hide();
-  $('#menu').toggle(effect, options, duration);
-
-  $('#mega-1').dcVerticalMegaMenu();
-});
-
-$(document).ready(function($) {
-  if (location.pathname+location.search != "/"){
-    $('#menu').toggle();
-  }
-
-  $('#mega-1').dcVerticalMegaMenu();
-});
-</script>
-
-
-<script type="text/javascript">
-  $("#close-menu-icon").click(function () {
-    var effect   = 'slide';
-    var options  = { direction: 'left' };
-    var duration = 200;
-
-    $('#menu-icon').toggle(effect, options, duration);
-    $('#menu').toggle(effect, options, duration);
-      $('#mega-1').dcVerticalMegaMenu();
-  });
-</script>
-
-<script type="text/javascript">
-  $("#close-menu").click(function () {
-    var effect   = 'slide';
-    var options  = { direction: 'left' };
-    var duration = 200;
-
-    $('#menu').toggle(effect, options, duration);
-    $('#menu-icon').toggle(effect, options, duration);
-  });
-</script>
-
-<script>
-(function() {
-  var Accordion = function(el, multiple) {
-    this.el = el || {};
-    this.multiple = multiple || false;
-
-    // Variables privadas
-    var links = this.el.find('.link');
-    // Evento
-    links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-  }
-
-  Accordion.prototype.dropdown = function(e) {
-    var $el = e.data.el;
-    $this = $(this),
-    $next = $this.next();
-
-    $next.slideToggle();
-    $this.parent().toggleClass('open');
-
-    if (!e.data.multiple) {
-      $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-    };
-  }
-
-  var accordion = new Accordion($('#accordion'), false);
-});
-</script>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog-big">
-      <div class="modal-content">
-        <div class="modal-header">
-          <div class="pull-right">
-            <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <h4 class="modal-title" id="myModalLabel"><i class="fa fa-gavel"></i> Autuação</h4>
-        </div>
-        <div class="modal-body" id="myModalBody"></div>
-
-      </div>
-    </div>
-  </div>
 </body>
 </html>

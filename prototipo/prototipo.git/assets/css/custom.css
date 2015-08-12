@@ -1,0 +1,60 @@
+.bgm-darkgray {
+    background-color: #333 !important;
+}
+
+.bgm-red {
+    background-color: #bf1e2e !important;
+}
+
+.block-header > h2 {
+    font-size: 18px;
+}
+
+body.login-content:before {
+    background-color: #ff9800;
+}
+
+.btn-icon-sm {
+    width: 30px;
+    height: 30px;
+}
+
+#footer {
+    height: auto;
+}
+
+.m-t-7 {
+    margin-top: 7px !important;
+}
+
+.m-t--10 {
+    margin-top: -10px !important;
+}
+
+.ng-enter, .ng-hide-remove {
+    animation: fadeIn 0.7s;
+}
+
+.ng-leave, .ng-hide-add {
+    animation: fadeOut 0.3s;
+}
+
+#sidebar .main-menu > li > a > i {
+    font-size: 28px;
+}
+
+#sidebar .profile-menu > a {
+    background: url(../img/back_profile.jpg) no-repeat left top;
+}
+
+.table-responsive {
+    overflow-x: visible;
+}
+
+tr.regulacao {
+    border-left: 5px solid #2196F3;
+}
+
+tr.atendimento {
+    border-left: 5px solid #4CAF50;
+}
