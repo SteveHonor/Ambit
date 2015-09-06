@@ -18,51 +18,51 @@
         </div>
       </li>
 
-      <!-- <li class="logo hidden-xs m-t--10">
-        <a href="index.html">
-          <img src="../../assets/img/logo_topo.png" style="max-height: 45px;">
-        </a>
-      </li> -->
-
       <li class="pull-right">
         <ul class="top-menu">
-          <li class="navbar-text c-white m-r-0" style="margin-top: 1px;">
-            Bem vindo <strong>Fulano de Tal</strong><br>
-            Código de hoje: <strong>123456</strong>
-          </li>
-
-          <li class="navbar-text m-t-7">
-            <i class="zmdi zmdi-headset-mic zmdi-hc-2x c-white"></i>
-          </li>
-
-          <li class="dropdown">
-            <a data-toggle="dropdown" class="tm-settings" href=""></a>
-            <ul class="dropdown-menu dm-icon pull-right">
-              <li>
-                <a href=""><i class="zmdi zmdi-settings"></i> Configurações</a>
-              </li>
-
-              <li>
-                <a href="../login.html"><i class="zmdi zmdi-power-off"></i> Sair</a>
-              </li>
-            </ul>
+          <li class="navbar-text c-white m-r-10 pull-right" style="margin-top: 6px;">
+            Usuário: <strong>Administrador</strong>
           </li>
         </ul>
       </li>
     </ul>
   </header>
   <section id="main">
+    <aside id="sidebar">
+      <div class="sidebar-inner c-overflow" tabindex="7" style="overflow: hidden; outline: none;">
+        <div class="profile-menu">
+                        <a href="#">
+                            <div class="profile-info">
+                                <b>Steve Junior</b>
 
-  <section class="content">
-    <div class="container-fluid">
-      <%= yield %>
-    </div>
-  </div>
+                                <i class="zmdi zmdi-arrow-drop-down"></i>
+                            </div>
+                        </a>
+                    </div>
+        <ul class="main-menu">
+          <li class="active"><a href="/"><i class="zmdi zmdi-home"></i> Início</a></li>
+          <li class="sub-menu">
+              <a href=""><i class="zmdi zmdi-widgets"></i> Cadastros</a>
+              <ul>
+                  <li><a href="/laws">Leis</a></li>
+                  <li><a href="/users">Usuários</a></li>
+              </ul>
+          </li>
+          <li><a href="/infractions"><i class="zmdi zmdi-search"></i> Fiscalização</a></li>
+          <li><a href="/users/sign_out"><i class="zmdi zmdi-close"></i> Sair</a></li>
+        </div>
+      </aside>
+
+      <section class="content">
+        <div class="container-fluid">
+          <%= yield %>
+        </div>
+      </div>
+    </section>
   </section>
-</section>
-<footer id="footer">
-        Copyright © 2015 Secretária do meio ambiente
-    </footer>
+  <footer id="footer">
+    Copyright © 2015 Secretária do meio ambiente
+  </footer>
 
 </body>
 </html>

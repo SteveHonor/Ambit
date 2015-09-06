@@ -44,7 +44,7 @@ body.login-content:before {
 }
 
 #sidebar .profile-menu > a {
-    background: url(../img/back_profile.jpg) no-repeat left top;
+    background: url(back_profile.jpg) no-repeat left top;
 }
 
 .table-responsive {

@@ -1,18 +1,26 @@
-<h><div class="col-sm-2 title">Leis</div>
-  <div id="actin-btn" class="pull-right">
-    <%= link_to '<i class="fa fa-plus"></i> Nova Lei'.html_safe, new_law_path, class: "btn btn-primary btn-sm" %>
-  </div>
-</h>
+<div class="block-header">
+  <ul class="actions">
+    <div class="btn-action-new">
+      <%= link_to 'Nova Lei'.html_safe, new_law_path, class: "btn btn-primary btn-sm" %>
+    </div>
+  </ul>
+  <h2>
+    <a href="/" title="voltar">
+      <i class="zmdi zmdi-long-arrow-left zmdi-hc-lg"></i>
+    </a> Cadastros de Leis
+  </h2>
+</div>
 
-<div class="form-group">
-  <div class="row">
-    <table id="table-law" class="table table-striped display">
+
+<div class="card">
+  <div class="card-body card-padding">
+    <table id="table-law" class="table table-houver">
       <thead class="table-heading">
         <tr>
-          <th width="20px">Numero</th>
-          <th width="20px">Artigo</th>
-          <th width="auto">Descrição</th>
-          <th width="120px"></th>
+          <th width="10%">Numero</th>
+          <th width="10%">Artigo</th>
+          <th width="65%">Descrição</th>
+          <th width="15%"></th>
         </tr>
       </thead>
 
@@ -23,19 +31,11 @@
           <td><%= law.article %></td>
           <td><%= law.description %></td>
           <td>
-          <%= link_to '<i class="fa fa-edit"></i> Edit'.html_safe, edit_law_path(law), class: "btn btn-warning btn-sm" %>
-          <%= link_to '<i class="fa fa-trash-o"></i> Destroy'.html_safe, law, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+          <%= link_to 'Editar'.html_safe, edit_law_path(law), class: "btn btn-warning btn-sm" %>
+          <%= link_to 'Deletar'.html_safe, law, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm " %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
   </div>
 </div>
-
-
-
-<script>
-  $(document).ready(function() {
-    var table = $('#table-law').dataTable({ "dom": '<tp>' });
-  });
-</script>

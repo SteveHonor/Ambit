@@ -1,43 +1,46 @@
-<div class="row">
-  <h3 class="title">Editar <strong>Cadastro de Infração</strong></h3>
+<div class="block-header">
+  <h2>
+    <a href="/" title="voltar">
+      <i class="zmdi zmdi-long-arrow-left zmdi-hc-lg"></i>
+    </a> Editar Infração
+  </h2>
 </div>
 
 <%= form_for(@infraction, url: infraction_path(@infraction), :method=>:put) do |f| %>
-  <div class="panel">
-    <div class="row">
-      <div class="col-sm-12">
-        <h2>Dados do <strong>Proprietário</strong></h2>
-        <hr>
-      </div>
-   </div>
+<div class="card">
+  <div class="card-body card-padding">
 
-   <div class="row">
-     <div class="col-sm-2">
-       <div class="form-group">
-         <label>Pessoa:</label>
-         <select id="iqual" class="form-control">
-           <option value=0>Fisica</option>
-           <option value=1>Juridica<option>
-         </select>
-       </div>
-     </div>
+    <fieldset>
+      <legend><i class="zmdi zmdi-view-subtitles"></i> Informações do solicitante</legend>
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="form-group fg-line">
+            <label for="iqual">Pessoa:</label>
+            <div class="select">
+              <select id="iqual" class="form-control">
+                <option value=0>Fisica</option>
+                <option value=1>Juridica<option>
+                </select>
+              </div>
+            </div>
+          </div>
 
-     <div class="col-sm-6">
-       <div class="form-group">
+          <div class="col-sm-6">
+            <div class="form-group fg-line fg-line">
          <%= f.label :owner_name, class: "control-label" %>
          <%= f.text_field :owner_name, autofocus: true, class: "form-control" %>
        </div>
      </div>
 
      <div class="col-sm-2">
-       <div class="form-group">
+       <div class="form-group fg-line">
          <%= f.label :owner_identifier, class: "control-label" %>
          <%= f.text_field :owner_identifier, class: "form-control" %>
        </div>
      </div>
 
      <div class="col-sm-2">
-       <div class="form-group">
+       <div class="form-group fg-line">
          <%= f.label :owner_zip_code, class: "control-label" %>
          <%= f.text_field :owner_zip_code, class: "form-control" %>
        </div>
@@ -46,28 +49,28 @@
 
   <div class="row">
     <div class="col-sm-5">
-      <div class="form-group">
+      <div class="form-group fg-line">
         <%= f.label :owner_address, class: "control-label" %>
         <%= f.text_field :owner_address, class: "form-control" %>
       </div>
     </div>
 
     <div class="col-sm-1">
-      <div class="form-group">
+      <div class="form-group fg-line">
         <%= f.label :owner_address_number, class: "control-label" %>
         <%= f.text_field :owner_address_number, class: "form-control" %>
       </div>
     </div>
 
     <div class="col-sm-3">
-      <div class="form-group">
+      <div class="form-group fg-line">
         <%= f.label :owner_address_complement, class: "control-label" %>
         <%= f.text_field :owner_address_complement, class: "form-control" %>
       </div>
     </div>
 
     <div class="col-sm-3">
-      <div class="form-group">
+      <div class="form-group fg-line">
         <%= f.label :owner_district, class: "control-label" %>
         <%= f.text_field :owner_district, class: "form-control" %>
       </div>
@@ -76,56 +79,51 @@
 
   <div class="row">
     <div class="col-sm-3">
-      <div class="form-group">
+      <div class="form-group fg-line">
         <%= f.label :owner_city, class: "control-label" %>
         <%= f.text_field :owner_city, class: "form-control" %>
       </div>
     </div>
 
     <div class="col-sm-1">
-      <div class="form-group">
+      <div class="form-group fg-line">
         <%= f.label :owner_state, class: "control-label" %>
         <%= f.text_field :owner_state, class: "form-control" %>
       </div>
     </div>
 
     <div class="col-sm-1">
-      <div class="form-group">
+      <div class="form-group fg-line">
         <%= f.label :owner_ddd_mobile, class: "control-label" %>
         <%= f.text_field :owner_ddd_mobile, class: "form-control" %>
       </div>
     </div>
 
     <div class="col-sm-3">
-      <div class="form-group">
+      <div class="form-group fg-line">
         <%= f.label :owner_mobile, class: "control-label" %>
         <%= f.text_field :owner_mobile, class: "form-control" %>
       </div>
     </div>
 
     <div class="col-sm-1">
-      <div class="form-group">
+      <div class="form-group fg-line">
         <%= f.label :owner_ddd_phone, class: "control-label" %>
         <%= f.text_field :owner_ddd_phone, class: "form-control" %>
       </div>
     </div>
 
     <div class="col-sm-3">
-      <div class="form-group">
+      <div class="form-group fg-line">
         <%= f.label :owner_phone, class: "control-label" %>
         <%= f.text_field :owner_phone, class: "form-control" %>
       </div>
     </div>
   </div>
-</div>
+</fieldset>
 
-<div class="panel">
-  <div class="row">
-    <div class="col-sm-12">
-      <h2>Dados do <strong>Imóvel</strong></h2>
-      <hr>
-    </div>
-  </div>
+<fieldset>
+  <legend><i class="zmdi zmdi-view-subtitles"></i> Dados do imovel</legend>
 
   <div class="row">
     <div class="col-sm-1">
@@ -137,7 +135,7 @@
     </div>
 
     <div class="col-sm-2">
-      <div class="form-group">
+      <div class="form-group fg-line">
         <label>
           Área:
         </label>
@@ -148,22 +146,22 @@
         </div>
       </div>
 
-    <div class="col-sm-2">
-      <div class="form-group">
+      <div class="col-sm-2">
+        <div class="form-group fg-line">
       <%= f.label :property_zip_code, class: "control-label" %>
       <%= f.text_field :property_zip_code, class: "form-control" %>
     </div>
     </div>
 
     <div class="col-sm-6">
-      <div class="form-group">
+      <div class="form-group fg-line">
       <%= f.label :property_address, class: "control-label" %>
       <%= f.text_field :property_address, class: "form-control" %>
     </div>
     </div>
 
     <div class="col-sm-1">
-      <div class="form-group">
+      <div class="form-group fg-line">
       <%= f.label :property_address_number, class: "control-label" %>
       <%= f.text_field :property_address_number, class: "form-control" %>
     </div>
@@ -174,49 +172,49 @@
 
   <div class="row">
     <div class="col-sm-2">
-      <div class="form-group">
+      <div class="form-group fg-line">
       <%= f.label :property_address_complement, class: "control-label" %>
       <%= f.text_field :property_address_complement, class: "form-control" %>
     </div>
   </div>
 
     <div class="col-sm-3">
-      <div class="form-group">
+      <div class="form-group fg-line">
       <%= f.label :property_district, class: "control-label" %>
       <%= f.text_field :property_district, class: "form-control" %>
     </div>
   </div>
 
     <div class="col-sm-3">
-      <div class="form-group">
+      <div class="form-group fg-line">
       <%= f.label :property_city, class: "control-label" %>
       <%= f.text_field :property_city, class: "form-control" %>
     </div>
   </div>
 
     <div class="col-sm-1">
-      <div class="form-group">
+      <div class="form-group fg-line">
       <%= f.label :property_state, class: "control-label" %>
       <%= f.text_field :property_state, class: "form-control" %>
     </div>
   </div>
 
     <div class="col-sm-1">
-      <div class="form-group">
+      <div class="form-group fg-line">
       <%= f.label :property_meter, class: "control-label" %>
       <%= f.text_field :property_meter, class: "form-control" %>
     </div>
   </div>
 
     <div class="col-sm-1">
-      <div class="form-group">
+      <div class="form-group fg-line">
       <%= f.label :property_block, class: "control-label" %>
       <%= f.text_field :property_block, class: "form-control" %>
     </div>
   </div>
 
     <div class="col-sm-1">
-      <div class="form-group">
+      <div class="form-group fg-line">
       <%= f.label :property_allotment, class: "control-label" %>
       <%= f.text_field :property_allotment, class: "form-control" %>
     </div>
@@ -225,21 +223,16 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <div class="form-group">
+      <div class="form-group fg-line">
         <%= f.label :property_observation, class: "control-label" %>
         <%= f.text_area :property_observation, class: "form-control text_area" %>
       </div>
     </div>
   </div>
-</div>
+</fieldset>
 
-<div class="panel">
-  <div class="row">
-    <div class="col-sm-12">
-      <h2>Selecione as <strong>Imagens</strong></h2>
-      <hr>
-    </div>
-  </div>
+<fieldset>
+  <legend><i class="zmdi zmdi-view-subtitles"></i> Selecione as imagens</legend>
 
   <div class="row">
     <div class="col-xs-6 col-md-3">
@@ -266,19 +259,14 @@
       </a>
     </div>
   </div>
-</div>
+</fieldset>
 
-<div class="panel">
-  <div class="row">
-    <div class="col-sm-12">
-      <h2>Dados das <strong>Penalidades</strong></h2>
-      <hr>
-    </div>
-  </div>
+<fieldset>
+  <legend><i class="zmdi zmdi-view-subtitles"></i> Dados da penalidade</legend>
 
   <div class="row">
-    <div class="col-sm-4">
-      <div class="form-group">
+    <div class="col-sm-3">
+      <div class="form-group fg-line">
         <%= f.label 'Prazo de Regularização', class: "control-label" %>
         <div class="input-group">
           <%= f.text_field :regularization, class: "form-control", "aria-describedby"=> "basic-addon2" %>
@@ -290,15 +278,15 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <div class="form-group">
+      <div class="form-group fg-line">
         <%= f.label :notify_description, class: "control-label" %>
         <%= f.text_area :notify_description, class: "form-control text_area" %>
       </div>
     </div>
   </div>
-</div>
+</fieldset>
 
-<div class="panel">
+
 <div class="col-sm-12">
   <div class="row">
     <%= f.label 'Conforme lei', class: "control-label" %>
@@ -307,16 +295,22 @@
         <% @fine.each do | fine | %>
         <tr>
           <td width='2%' id='delete_fine' style="cursor:pointer">
-            <i id=<%= fine.id %> class="fa fa-trash-o"></i>
+            <i id=<%= fine.id %> class="zmdi zmdi-close zmdi-hc-2x"></i>
           </td>
           <td colspan="3"><%= fine.law.description %></td>
         </tr>
         <% end %>
-
         <%  fine = Fine.all.pluck(:law_id) %>
         <%  Law.where.not(id: fine).each do | law | %>
         <tr>
-          <td><input value=<%= law.id %> type="checkbox" name="laws[]"></td>
+          <td>
+            <div class="checkbox m-b-15">
+              <label>
+                <input value=<%= law.id %> type="checkbox" name="laws[]">
+                <i class="input-helper"></i>
+              </label>
+            </div>
+          </td>
           <td width="100">Lei: <%= law.number %></td>
           <td width="80">Artigo: <%= law.article %></td>
           <td><%= law.description %></td>
@@ -325,7 +319,14 @@
 
         <% Law.where.not(id: @fine.pluck(:law_id) ).each do | law | %>
         <tr>
-          <td><input value=<%= law.id %> type="checkbox" name="laws[]"></td>
+          <td>
+            <div class="checkbox m-b-15">
+              <label>
+                <input value=<%= law.id %> type="checkbox" name="laws[]">
+                <i class="input-helper"></i>
+              </label>
+            </div>
+          </td>
           <td width="100">Lei: <%= law.number %></td>
           <td width="80">Artigo: <%= law.article %></td>
           <td><%= law.description %></td>
@@ -335,19 +336,13 @@
     </table>
   </div>
 </div>
+<div class="pull-right">
+  <!-- <button class="btn btn-warning">Gerar Autuação</button> -->
+  <%= link_to "Voltar", infractions_path, class: "btn btn-link waves-effect" %>
+  <button class="btn btn-primary waves-effect"> Atualizar</button>
 </div>
+<div class="clearfix"></div>
 
-
-  <div class="panel">
-    <div class="row">
-    <div class="actions">
-      <button class="btn btn-primary">Atualizar</button>
-      <button class="btn btn-warning">Gerar Autuação</button>
-    </div>
-
-    <div class="actions pull-left">
-      <%= link_to f.button("Voltar", class: "btn"), infractions_path %>
-    </div>
   </div>
 </div>
 <% end %>

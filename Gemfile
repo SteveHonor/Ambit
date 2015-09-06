@@ -58,3 +58,6 @@ gem "pundit"
 gem 'state_machine'
 
 gem 'pdfkit'
+
+gem "chartkick"
+gem 'groupdate'

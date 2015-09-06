@@ -1,23 +1,33 @@
-<div class="row">
-  <div class="col-sm-2" align="center">
-    <p><%= link_to '<i class="fa fa-print"></i> Imprimir'.html_safe, "/notifications/2/print", class: "btn btn-primary full btnPrint"%></p>
-    <p><%= link_to '<i class="fa fa-save"></i> Salvar PDF'.html_safe, "/infractions/", class: "btn btn-primary full" %></p>
-    <p><%= link_to '<i class="fa fa-legal"></i> Autuar'.html_safe, "/infractions/", class: "btn btn-danger full" %></p>
-    <p><%= link_to '<i class="fa fa-search"></i> Voltar'.html_safe, "/infractions/", class: "btn btn-default full" %></p>
-
+<style media="screen">
+.notification-view{
+  border: 1px solid gray;
+  padding: 8px;
+}
+</style>
+<div class="container" style="width: 1050px;">
+  <div class="block-header">
+    <ul class="actions">
+      <div class="btn-action-new">
+        <%= link_to 'Imprimir'.html_safe, "/notifications/2/print", class: "btn btn-primary full btnPrint"%>
+        <%= link_to 'Salvar PDF'.html_safe, "/infractions/", class: "btn btn-primary full" %>
+        <%= link_to 'Autuar'.html_safe, "/infractions/", class: "btn btn-danger full" %>
+      </div>
+    </ul>
+    <h2>
+      <a href="/" title="voltar">
+        <i class="zmdi zmdi-long-arrow-left zmdi-hc-lg"></i>
+      </a> Notificação
+    </h2>
   </div>
-  <div class="col-sm-10">
-    <div class="panel">
+
+  <div class="card">
+    <div class="card-body card-padding">
       <div class="row">
         <div class="col-sm-10"></div>
-        <div class="col-sm-2 notification-view">
-          <small>Processo Nº</small><br>
-          <strong><%= @infraction.id.to_s.rjust(6, '0') %></strong>
-        </div>
       </div>
-<br>
+      <br>
       <div class="row">
-        <div class="col-sm-9-5 notification-view">
+        <div class="col-sm-9 notification-view">
           <div class="col-sm-10 ">
             <h3><b>AUTO DE INFRAÇÃO</b></h3>
             <strong><small>IMPOSIÇÃO DE PENALIDADE DE MULTA</small></strong>
@@ -27,9 +37,12 @@
         <div class="col-sm-2 pull-right notification-view">
           <small>Data:</small><br>
           <strong><%= Time.now.strftime("%d/%m/%Y") %></strong>
+          <br>
+          <small>Processo Nº</small><br>
+          <strong><%= @infraction.id.to_s.rjust(6, '0') %></strong>
         </div>
       </div>
-
+      <br>
       <div class="row">
         Idendificação do infrator
         <div class="col-sm-12 notification-view">
@@ -80,7 +93,7 @@
 
       </div>
 
-
+      <br>
       <div class="row">
         Idendificação do Imóvel
         <div class="col-sm-12 notification-view">
@@ -139,7 +152,7 @@
           </div>
         </div>
       </div>
-
+      <br>
       <div class="row">
         Observações
         <div class="col-sm-12 notification-view">
@@ -149,7 +162,7 @@
         </div>
       </div>
 
-
+      <br>
       <div class="row">
         Irregularidades
         <div class="col-sm-12 notification-view">
@@ -202,66 +215,72 @@
           <div class="colcol-sm-2">
             <small>Valor Total da Multa</small><br>
 
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          Fiscalização
-          <div class="col-sm-12 notification-view">
-            <% if not @infraction.supervision.count.zero? %>
-            <% @infraction.supervision.each do |supervision|%>
-            <div class="col-sm-2">
-              <small>Fiscalizado Em:</small></br>
-              <strong><%= supervision.created_at.strftime("%d/%m") %></strong>
-            </div>
-            <div class="col-sm-2">
-              <small>As:</small></br>
-              <strong><%= supervision.created_at.strftime("%H:%M") %> hs</strong>
-            </div>
-            <div class="col-sm-8">
-              <small>Descrição:</small></br>
-              <strong><%= supervision.observation  %></strong>
-            </div>
-            <% end %>
-            <% else %>
-            <div class="well" align="center">Não ha m laudo de infração referente a esta infração</div>
-            <% end %>
-          </div>
-        </div>
-
-        <div class="row">
-          Unidade Emitente
-          <div class="col-sm-12 notification-view">
-            <div class="col-sm-8" style="margin-top:10px">
-              Prefeitura Municipal de Assis<br>
-              Secretaria Municipal de Meio Ambiente<br>
-              Departamento de Fiscalização Ambiental
-            </div>
-
-            <div class="col-sm-4" style="margin-top:40px" align="center">
-              ____________________________________<br>
-              assinatura
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          Ciência do Infrator
-          <div class="col-sm-12 notification-view">
-            <div class="col-sm-8" style="height:60px">
-              <small>Nome:</small></br>
-
-            </div>
-
-            <div class="col-sm-8">
-              <small>Data:</small></br>
-
-            </div>
-
-            <div class="col-sm-4" align="center">
-              ____________________________________<br>
-              assinatura
-            </div>
           </div>
         </div>
       </div>
+      <br>
+      <div class="row">
+        Fiscalização
+        <div class="col-sm-12 notification-view">
+          <% if not @infraction.supervision.count.zero? %>
+          <% @infraction.supervision.each do |supervision|%>
+          <div class="col-sm-2">
+            <small>Fiscalizado Em:</small></br>
+            <strong><%= supervision.created_at.strftime("%d/%m") %></strong>
+          </div>
+          <div class="col-sm-2">
+            <small>As:</small></br>
+            <strong><%= supervision.created_at.strftime("%H:%M") %> hs</strong>
+          </div>
+          <div class="col-sm-8">
+            <small>Descrição:</small></br>
+            <strong><%= supervision.observation  %></strong>
+          </div>
+          <% end %>
+          <% else %>
+          <div class="well" align="center">Não ha m laudo de infração referente a esta infração</div>
+          <% end %>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        Unidade Emitente
+        <div class="col-sm-12 notification-view">
+          <div class="col-sm-8" style="margin-top:10px">
+            Prefeitura Municipal de Assis<br>
+            Secretaria Municipal de Meio Ambiente<br>
+            Departamento de Fiscalização Ambiental
+          </div>
+
+          <div class="col-sm-4" style="margin-top:40px" align="center">
+            ____________________________________<br>
+            assinatura
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        Ciência do Infrator
+        <div class="col-sm-12 notification-view">
+          <div class="col-sm-8" style="height:60px">
+            <small>Nome:</small></br>
+
+          </div>
+
+          <div class="col-sm-8">
+            <small>Data:</small></br>
+
+          </div>
+
+          <div class="col-sm-4" align="center">
+            ____________________________________<br>
+            assinatura
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="text-right">
+        <%= link_to "Voltar", infractions_path, class: "btn btn-link waves-effect" %>
+      </div>
+    </div>
+  </div>

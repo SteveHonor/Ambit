@@ -1,15 +1,21 @@
-<h><div class="col-sm-2 title">Fiscalização</div></h>
+<div class="block-header">
+  <h2>
+    <a href="/" title="voltar">
+      <i class="zmdi zmdi-long-arrow-left zmdi-hc-lg"></i>
+    </a> Fiscalização
+  </h2>
+</div>
 
-  <div class="form-group">
-    <div class="row">
-      <table id="table-notification" class="table table-striped display">
+<div class="card">
+  <div class="card-body card-padding">
+      <table id="table-notification" class="table table-houver">
         <thead class="table-heading">
           <tr>
-            <th width="auto">Nome</th>
-            <th width="auto">Endereço</th>
-            <th width="auto">Municipio</th>
-            <th width="auto">Status</th>
-            <th width="17%"></th>
+            <th width="20%">Nome</th>
+            <th width="30%">Endereço</th>
+            <th width="20%">Municipio</th>
+            <th width="5%">Status</th>
+            <th width="25%"></th>
           </tr>
         </thead>
 
@@ -36,12 +42,12 @@
               <%= t infractions.state %>
                 </span>
             </td>
-              <td>
-                <%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, '#',  id: infractions.id, class: "btn btn-primary btn-sm my_modal my_modal_visualisation",  'data-target' => "#myModal" %>
+              <td class="text-right">
+                <%= link_to 'Visualizar'.html_safe, '#',  id: infractions.id, class: "btn btn-primary btn-sx my_modal my_modal_visualisation",  'data-target' => "#myModal" %>
                 <% if infractions.state == 'pending' %>
-                  <%= link_to '<i class="fa fa-file"></i> Fiscalização'.html_safe, '#',  id: infractions.id, class: "btn btn-success btn-sm my_modal my_modal_supervision",  'data-target' => "#myModal" %>
+                  <%= link_to 'Fiscalização'.html_safe, '#',  id: infractions.id, class: "btn btn-success btn-sx my_modal my_modal_supervision",  'data-target' => "#myModal" %>
                 <% else %>
-                  <%= link_to '<i class="fa fa-file"></i> Fiscalização'.html_safe, '#', class: "btn btn-success btn-sm disabled"%>
+                  <%= link_to 'Fiscalização'.html_safe, '#', class: "btn btn-success btn-sx disabled"%>
                 <% end %>
               </td>
             </tr>

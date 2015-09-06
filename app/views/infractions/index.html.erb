@@ -1,153 +1,87 @@
-<div class="row pull-left">
-  <h3 class="title">Lista de <strong>Infrações</strong></h3>
-</div>
-<div class="btn-action-new pull-right">
-  <%= link_to '<i class="fa fa-plus"></i> <b>Cadastrar Nova Infração</b>'.html_safe, new_infraction_path, class: "btn btn-primary btn-sm" %>
+<div class="block-header">
+  <ul class="actions">
+    <div class="btn-action-new">
+      <%= link_to '<b>Cadastrar Nova Infração</b>'.html_safe, new_infraction_path, class: "btn btn-primary btn-sm" %>
+    </div>
+  </ul>
+  <h2>
+    <a href="/" title="voltar">
+      <i class="zmdi zmdi-long-arrow-left zmdi-hc-lg"></i>
+    </a> Lista de infrações
+  </h2>
 </div>
 
-  <div class="panel">
-    <div class="row">
-      <table id="table-notification" class="table display">
-        <thead class="table-heading">
-          <tr>
-            <th width="20%">Nome</th>
-            <th width="20%">Endereço</th>
-            <th width="15%">Municipio</th>
-            <th width="10%">Prazo</th>
-            <th width="12%">Status</th>
-            <th width="8%"></th>
-          </tr>
-        </thead>
+<div class="card">
+  <div class="card-body card-padding">
+    <table id="table-notification" class="table display">
+      <thead class="table-heading">
+        <tr>
+          <th width="25%">Nome</th>
+          <th width="20%">Endereço</th>
+          <th width="20%">Municipio</th>
+          <th width="10%">Prazo</th>
+          <th width="12%">Status</th>
+          <th width="18%"></th>
+        </tr>
+      </thead>
 
-        <tbody>
-          <% @infractions.each do | infractions |  %>
-          <tr>
-            <td><%= infractions.owner_name%></td>
-            <td><%= infractions.property_address %></td>
-            <td><%= infractions.property_city %></td>
-            <td><%= infractions.regularization%></td>
-            <td>
-              <% if infractions.state == 'pending' %>
-                <span class="label label-warning" id="label_<%= infractions.id %>">
-              <% elsif  infractions.state == 'notified' %>
-                <span class="label label-success" id="label_<%= infractions.id %>">
-              <% elsif  infractions.state == 'fined' %>
-                <span class="label label-danger" id="label_<%= infractions.id %>">
-              <% elsif  infractions.state == 'supervised' %>
-                <span class="label label-primary" id="label_<%= infractions.id %>">
-              <% elsif  infractions.state == 'canceled' %>
-                <span class="label label-default" id="label_<%= infractions.id %>">
-              <% else %>
-                <span class="label label-info" id="label_<%= infractions.id %>">
-              <% end %>
+      <tbody>
+        <% @infractions.each do | infractions |  %>
+        <tr>
+          <td><%= infractions.owner_name%></td>
+          <td><%= infractions.property_address %></td>
+          <td><%= infractions.property_city %></td>
+          <td><%= infractions.regularization%></td>
+          <td>
+            <% if infractions.state == 'pending' %>
+              <span class="label label-warning" id="label_<%= infractions.id %>">
+            <% elsif  infractions.state == 'notified' %>
+              <span class="label label-success" id="label_<%= infractions.id %>">
+            <% elsif  infractions.state == 'fined' %>
+              <span class="label label-danger" id="label_<%= infractions.id %>">
+            <% elsif  infractions.state == 'supervised' %>
+              <span class="label label-primary" id="label_<%= infractions.id %>">
+            <% elsif  infractions.state == 'canceled' %>
+              <span class="label label-default" id="label_<%= infractions.id %>">
+            <% else %>
+              <span class="label label-info" id="label_<%= infractions.id %>">
+            <% end %>
               <%= t infractions.state %>
-                </span>
-            </td>
-            <td>
-              <% if infractions.state == 'canceled' %>
+            </span>
+          </td>
+          <td>
+            <% if infractions.state == 'canceled' %>
               <button type="button" id="<%= infractions.id %>" class="btn btn-sm my_modal_visualisation"  data-target="#myModal"><i class="fa fa-search"></i> Visualizar </buttom>
-
-              <% else %>
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm" data-toggle="dropdown"><i class="fa fa-plus"></i> Ações</button>
-                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <% else %>
+              <div class="btn-group pull-right">
+                <button type="button" class="btn btn-sm btn-primary waves-effect" data-toggle="dropdown"><i class="fa fa-plus"></i> Ações</button>
+                <button type="button" class="btn btn-sm btn-primary waves-effect" data-toggle="dropdown" aria-expanded="false">
                   <span class="caret"></span>
                 </button>
 
-                <ul class="dropdown-menu" role="menu">
-                    <% if infractions.state == 'supervised' %>
-                      <li><%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, "/infractions/#{infractions.id}" %></li>
-                      <li><%= link_to '<i class="fa fa-print"></i> Imprimir'.html_safe, '#',  id: infractions.id, class: "my_modal_generate",  'data-target' => "#myModal" %></li>
-                      <li class="divider"></li>
-                      <li><%= link_to '<i class="fa  fa-legal"></i> Notificar'.html_safe, '#',  id: infractions.id, class: "my_modal_notification",  'data-target' => "#myModal" %></li>
-                    <% elsif infractions.state == 'notified' %>
-                      <li><%= link_to '<i class="fa fa-search"></i> Visualizar Notificação'.html_safe, "/notifications/#{infractions.id}" %></li>
-                      <li class="divider"></li>
-                      <li><%= link_to '<i class="fa fa-legal"></i> Autuar'.html_safe, '#',  id: infractions.id, class: "my_modal_assessments",  'data-target' => "#myModal" %></li>
-                    <% else %>
-                      <li><%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, "/infractions/#{infractions.id}" %></li>
-                      <li><%= link_to '<i class="fa fa-edit"></i> Editar'.html_safe, edit_infraction_path(infractions) %></li>
-                      <li><%= link_to '<i class="fa fa-trash-o"></i> Deletar'.html_safe, '#', id: infractions.id,  class: "my_modal_canceled" %></li>
-                    <% end %>
-                  </ul>
-                </div>
-                <% end %>
-              </td>
-            </tr>
+                <ul class="dropdown-menu dm-icon pull-right" role="menu">
+                  <% if infractions.state == 'supervised' %>
+                    <li><%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, "/infractions/#{infractions.id}" %></li>
+                    <li><%= link_to '<i class="fa fa-print"></i> Imprimir'.html_safe, '#',  id: infractions.id, class: "my_modal_generate",  'data-target' => "#myModal" %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to '<i class="fa  fa-legal"></i> Notificar'.html_safe, '#',  id: infractions.id, class: "my_modal_notification",  'data-target' => "#myModal" %></li>
+                  <% elsif infractions.state == 'notified' %>
+                    <li><%= link_to '<i class="fa fa-search"></i> Visualizar Notificação'.html_safe, "/notifications/#{infractions.id}" %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to '<i class="fa fa-legal"></i> Autuar'.html_safe, '#',  id: infractions.id, class: "my_modal_assessments",  'data-target' => "#myModal" %></li>
+                  <% else %>
+                  <li><%= link_to '<i class="fa  fa-legal"></i> Notificar'.html_safe, '#',  id: infractions.id, class: "my_modal_notification",  'data-target' => "#myModal" %></li>
+                    <li><%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, "/infractions/#{infractions.id}" %></li>
+                    <li><%= link_to '<i class="fa fa-edit"></i> Editar'.html_safe, edit_infraction_path(infractions) %></li>
+                    <li><%= link_to '<i class="fa fa-trash-o"></i> Deletar'.html_safe, '#', id: infractions.id,  class: "my_modal_canceled" %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+            </td>
+          </tr>
           <% end %>
         </tbody>
       </table>
+    </div>
   </div>
-</div>
-
-<script>
-$(document).ready(function() {
-  $( ".my_modal_generate" ).confirm({
-    title:"<i class='fa fa-exclamation-triangle'></i> Gerar Autuação",
-    text:"<h3>Realmente deseja gerar um autuação?</h3>",
-    confirm: function(button) {
-      $('#myModal').modal();
-      $('#myModalBody').load('/supervisions/assessments/'+ button.attr('id') +'/genrate');
-      $('#label_'+button.attr('id')).html('Fiscalizado');
-    },
-    confirmButton: "Sim",
-    cancelButton: "Não"
-  });
-
-  $( ".my_modal_visualisation" ).click(function(){
-    $('#myModal').modal();
-    $('#myModalBody').load('/infractions/'+ $(this).attr('id') );
-  });
-
-  $( ".my_modal_supervision" ).click(function(){
-    $('#myModal').modal();
-    $('#myModalBody').load('/supervisions/'+ $(this).attr('id') );
-  });
-
-  $( ".my_modal_notification" ).confirm({
-    title:"<div align='center'><i class='fa fa-exclamation'></i> Gerar Notificação</div>",
-    text:"<div align='center'><h4>Realmente deseja gerar uma notificação?</h4></div>",
-    confirm: function(button) {
-      $('#myModal').modal();
-      $('#myModalBody').load('/infraction/'+ button.attr('id') +'/generate/notification');
-      $('#label_'+button.attr('id')).html('Notificado');
-    },
-    cancelButton: "Não, voltar",
-    confirmButton: "Sim, gerar notificação!",
-    confirmButtonClass: "btn-success pull-right",
-    cancelButtonClass: "btn-default pull-left"
-  });
-
-  $( ".my_modal_canceled" ).confirm({
-    title:"<i class='fa fa-exclamation-triangle'></i> Cancelar Infração",
-    text:"<h3>Realmente cancelar esta infração?</h3>",
-    confirm: function(button) {
-      $.ajax({
-          url: '/infractions/'+ button.attr('id'),
-          type: 'DELETE',
-          success: function(result) {
-            $('#label_'+button.attr('id')).html('Cancelado');
-            $('#label_'+button.attr('id')).attr('class', "label-default");
-          }
-      });
-    },
-    confirmButton: "Sim",
-    cancelButton: "Não"
-  });
-
-  $( ".my_modal_assessments" ).confirm({
-    title:"<i class='fa fa-exclamation-triangle'></i> Gerar Autuação",
-    text:"<h3>Realmente gerar a autuação?</h3>",
-    confirm: function(button) {
-      $('#myModal').modal();
-      $('#myModalBody').load('/infraction/'+ button.attr('id') +'/generate/assessments');
-      $('#label_'+button.attr('id')).html('Notificado');
-    },
-    confirmButton: "Sim",
-    cancelButton: "Não"
-  });
-
-  var table = $('#table-notification').dataTable({ "dom": '<tp>' });
-
-} );
-</script>
