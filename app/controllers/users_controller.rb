@@ -25,7 +25,6 @@ class UsersController < ApplicationController
           @user.update_attributes(user)
         end
       else
-    pry
         user = user_params_change_password
         user.delete(:current_password)
         user.delete(:password)
@@ -42,6 +41,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    debugger
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save

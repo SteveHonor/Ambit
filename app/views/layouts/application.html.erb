@@ -21,7 +21,7 @@
       <li class="pull-right">
         <ul class="top-menu">
           <li class="navbar-text c-white m-r-10 pull-right" style="margin-top: 6px;">
-            Usuário: <strong>Administrador</strong>
+            Usuário: <strong><%= current_user.name %></strong> |  <%= current_user.user_type %>
           </li>
         </ul>
       </li>
@@ -32,8 +32,11 @@
       <div class="sidebar-inner c-overflow" tabindex="7" style="overflow: hidden; outline: none;">
         <div class="profile-menu">
                         <a href="#">
+                            <div class="profile-pic">
+                                <img src="<%=image_path('logo_assis.png') %>" alt="">
+                            </div>
                             <div class="profile-info">
-                                <b>Steve Junior</b>
+                                <b><%= current_user.name %></strong></b>
 
                                 <i class="zmdi zmdi-arrow-drop-down"></i>
                             </div>
@@ -48,20 +51,33 @@
                   <li><a href="/users">Usuários</a></li>
               </ul>
           </li>
-          <li><a href="/infractions"><i class="zmdi zmdi-search"></i> Fiscalização</a></li>
+          <li><a href="/infractions"><i class="zmdi zmdi-search"></i> Infrações</a></li>
+          <li><a href="/infractions"><i class="zmdi zmdi-nature"></i> Corte e Poda</a></li>
           <li><a href="/users/sign_out"><i class="zmdi zmdi-close"></i> Sair</a></li>
         </div>
       </aside>
 
       <section class="content">
         <div class="container-fluid">
+          <% flash.each do |key, value| %>
+            <script type="text/javascript">
+            setTimeout(function() {
+               $.bootstrapGrowl("<%= value %>", {
+                   type: "inverse",
+                   align: 'center',
+                   width: 'auto'
+               });
+            }, 2000);
+            </script>
+          <% end %>
+
           <%= yield %>
         </div>
       </div>
     </section>
   </section>
   <footer id="footer">
-    Copyright © 2015 Secretária do meio ambiente
+    Copyright © <span class="c-bluegray">Secretária do Meio Ambiente | Assis | SP | 2015</span>
   </footer>
 
 </body>

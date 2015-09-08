@@ -10271,27 +10271,27 @@ body #content {
   width: 100%;
   background: url(../images/profile-menu.png) no-repeat left top;
   background-size: 100%;
-  padding-top: 60px;
   opacity: 0.7;
 }
 
 #sidebar .profile-menu > a .profile-pic {
-  padding: 12px;
+  padding-top: 10px;
+  text-align: center;
 }
 
 #sidebar .profile-menu > a .profile-pic > img {
-  width: 47px;
-  height: 47px;
-  border-radius: 50%;
-  border: 3px solid rgba(0, 0, 0, 0.14);
-  box-sizing: content-box;
+  width: 170px;
+      /* height: 47px; */
+      /* border-radius: 50%; */
+      /* border: 3px solid rgba(0, 0, 0, 0.14); */
+      box-sizing: content-box;
 }
 
 #sidebar .profile-menu > a .profile-info {
   background: rgba(0, 0, 0, 0.37);
   padding: 7px 14px;
   color: #fff;
-  margin-top: 2px;
+  margin-top: 10px;
   position: relative;
 }
 

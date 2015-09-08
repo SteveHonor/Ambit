@@ -2,6 +2,7 @@ class InfractionsController < ApplicationController
   before_action :set_infraction, only: [:show, :edit, :update, :destroy]
 
   def index
+    @supervision  = Supervision.new
     @infractions = Infraction.all
   end
 

@@ -31,7 +31,7 @@ class SupervisionsController < ApplicationController
     respond_to do |format|
       if @supervision.save
         @infraction.supervised!
-        format.html { redirect_to supervisions_path, notice: 'Supervision was successfully created.' }
+        format.html { redirect_to infractions_path, success: 'Laudo de fiscalização cadastrado com sucesso!' }
         format.json { render :show, status: :created, location: @supervision }
       else
         format.html { render :new }
