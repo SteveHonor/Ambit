@@ -1,0 +1,15 @@
+<%=
+    display_tree_recursive(@topics, 0) do |node|
+
+        if node.parent_id.to_i == 0
+           "<b>" + node.comment + "</b>".html_safe
+        else
+
+            pos = 20 if node.parent_id.to_i == 0;
+            pos = node.parent_id.to_i+20 if node.parent_id.to_i != 0;
+             "<span> #{node.comment} </span>".html_safe
+        end
+
+    end
+
+   %>

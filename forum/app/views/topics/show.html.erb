@@ -1,0 +1,24 @@
+<%= form_for(@topic_new) do |f| %>
+  <div class="field">
+    <%= f.text_area :comment %>
+  </div>
+  <div class="field">
+    <% if(@topic.present?) %>
+    <%= f.text_field :parent_id, value: @topic.id %>
+    <% else %>
+    <%= f.number_field :parent_id %>
+    <% end %>
+  </div>
+  <div class="field">
+    <% if(@topic.present?) %>
+    <%= f.text_field :level, value: @topic.level.to_i + 1 %>
+    <% else %>
+    <%= f.text_field :level %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= render('topics') %> 
