@@ -5,6 +5,10 @@ class Infraction < ActiveRecord::Base
   belongs_to :users
 
   state_machine :state, initial: :pending do
+    event :archived do
+      transition pending: :archived
+    end
+
     event :supervised do
       transition pending: :supervised
     end

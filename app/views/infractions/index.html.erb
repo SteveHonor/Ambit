@@ -41,8 +41,10 @@
                 <span class="label label-danger" id="label_<%= infractions.id %>">
                   <% elsif  infractions.state == 'supervised' %>
                   <span class="label label-primary" id="label_<%= infractions.id %>">
-                    <% elsif  infractions.state == 'canceled' %>
+                    <% elsif  infractions.state == 'archived' %>
                     <span class="label label-default" id="label_<%= infractions.id %>">
+                      <% elsif  infractions.state == 'canceled' %>
+                      <span class="label label-default" id="label_<%= infractions.id %>">
                       <% else %>
                       <span class="label label-info" id="label_<%= infractions.id %>">
                         <% end %>
@@ -80,7 +82,12 @@
                           </ul>
                         </div>
                         <% else %>
-                        <%= link_to 'Fiscalizar', '#preventClick',  id: infractions.id, class: "report btn btn-sm bgm-lightgreen waves-effect", 'data-toggle'=>"modal" %>
+                          <% if infractions.state == 'supervised' or infractions.state == 'archived' %>
+                            <%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, "/infractions/#{infractions.id}", class: "report btn btn-sm bgm-bluegray waves-effect" %>
+
+                          <% else %>
+                            <%= link_to 'Fiscalizar', '#modal',  id: infractions.id, class: "report btn btn-sm bgm-lightgreen waves-effect", 'data-toggle'=>"modal" %>
+                          <% end %>
                         <% end %>
                         <% end %>
                       </td>
@@ -91,7 +98,7 @@
               </div>
             </div>
 
-            <div class="modal fade" id="preventClick" data-backdrop="static" data-keyboard="false" role="dialog" aria-hidden="true" style="display: none;">
+            <div class="modal fade" id="modal" data-backdrop="static" data-keyboard="false" role="dialog" aria-hidden="true" style="display: none;">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -102,8 +109,8 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Sair</button>
-                    <button type="button" class="btn btn-sm bgm-gray waves-effect">Não Procede</button>
-                    <button type="submit" class="btn btn-sm bgm-lightgreen waves-effect">Procede</button>
+                    <button type="button" id="no-proceeds" class="btn btn-sm bgm-gray waves-effect">Não Procede</button>
+                    <button type="button" id="proceeds" class="btn btn-sm bgm-lightgreen waves-effect">Procede</button>
                   </div>
                   <% end %>
                 </div>
@@ -115,5 +122,17 @@
               $( ".report" ).click(function(){
                 $('.modal-body').load('/supervisions/infractions/'+ $(this).attr('id'));
               });
+
+              $( "#proceeds" ).click(function(){
+                $('.modal-body').append('<input type="hidden" name="supervision[status]" value="proceeds">');
+                $( "#new_supervision" ).submit();
+              });
+
+              $( "#no-proceeds" ).click(function(){
+                $('.modal-body').append('<input type="text" name="supervision[status]" value="no-proceeds">');
+                $( "#new_supervision" ).submit();
+              });
+
+
             })
             </script>

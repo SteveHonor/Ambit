@@ -30,7 +30,11 @@ class SupervisionsController < ApplicationController
     @infraction = Infraction.find(supervision_params[:infraction_id])
     respond_to do |format|
       if @supervision.save
-        @infraction.supervised!
+        if supervision_params[:status] === 'proceeds'
+          @infraction.supervised!
+        else
+          @infraction.archived!
+        end
         format.html { redirect_to infractions_path, success: 'Laudo de fiscalização cadastrado com sucesso!' }
         format.json { render :show, status: :created, location: @supervision }
       else
@@ -83,6 +87,6 @@ class SupervisionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def supervision_params
-      params.require(:supervision).permit(:infraction_id, :observation)
+      params.require(:supervision).permit(:infraction_id, :observation, :status)
     end
 end

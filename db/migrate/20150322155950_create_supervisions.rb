@@ -3,6 +3,7 @@ class CreateSupervisions < ActiveRecord::Migration
     create_table :supervisions do |t|
       t.references :infraction, index: true
       t.string :observation
+      t.string :status
 
       t.timestamps
     end

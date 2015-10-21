@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20150322155950) do
   create_table "supervisions", force: :cascade do |t|
     t.integer  "infraction_id"
     t.string   "observation"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
