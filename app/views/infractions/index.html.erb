@@ -20,8 +20,8 @@
           <th width="20%">Endereço</th>
           <th width="20%">Municipio</th>
           <th width="10%">Prazo</th>
-          <th width="12%">Status</th>
-          <th width="18%"></th>
+          <th width="10%">Status</th>
+          <th width="20%"></th>
         </tr>
       </thead>
 
@@ -67,13 +67,13 @@
                             <% if infractions.state == 'supervised' %>
                             <li><%= link_to '<i class="fa fa-print"></i> Imprimir'.html_safe, '#',  id: infractions.id, class: "my_modal_generate",  'data-target' => "#myModal" %></li>
                             <li class="divider"></li>
-                            <li><%= link_to '<i class="fa  fa-legal"></i> Notificar'.html_safe, '#',  id: infractions.id, class: "my_modal_notification",  'data-target' => "#myModal" %></li>
+                            <li><%= link_to '<i class="fa  fa-legal"></i> Notificar'.html_safe, notification_path(infractions.id),  id: infractions.id, class: "my_modal_notification",  'data-target' => "#myModal" %></li>
                             <% elsif infractions.state == 'notified' %>
                             <li><%= link_to '<i class="fa fa-search"></i> Visualizar Notificação'.html_safe, "/notifications/#{infractions.id}" %></li>
                             <li class="divider"></li>
                             <li><%= link_to '<i class="fa fa-legal"></i> Autuar'.html_safe, '#',  id: infractions.id, class: "my_modal_assessments",  'data-target' => "#myModal" %></li>
                             <% else %>
-                            <li><%= link_to '<i class="fa  fa-legal"></i> Notificar'.html_safe, '#',  id: infractions.id, class: "my_modal_notification",  'data-target' => "#myModal" %></li>
+                            <li><%= link_to '<i class="fa  fa-legal"></i> Notificar'.html_safe, notification_path(infractions),  id: infractions.id, class: "my_modal_notification",  'data-target' => "#myModal" %></li>
                             <li><%= link_to '<i class="fa fa-edit"></i> Editar'.html_safe, edit_infraction_path(infractions) %></li>
                             <li><%= link_to '<i class="fa fa-trash-o"></i> Deletar'.html_safe, '#', id: infractions.id,  class: "my_modal_canceled" %></li>
                             <% end %>
@@ -129,7 +129,7 @@
               });
 
               $( "#no-proceeds" ).click(function(){
-                $('.modal-body').append('<input type="text" name="supervision[status]" value="no-proceeds">');
+                $('.modal-body').append('<input type="hidden" name="supervision[status]" value="no-proceeds">');
                 $( "#new_supervision" ).submit();
               });
 
