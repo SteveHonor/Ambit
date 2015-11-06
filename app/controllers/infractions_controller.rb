@@ -3,7 +3,7 @@ class InfractionsController < ApplicationController
 
   def index
     @supervision  = Supervision.new
-    @infractions = Infraction.all
+    @infractions = Infraction.all.order('id asc')
   end
 
   def new
@@ -85,8 +85,9 @@ class InfractionsController < ApplicationController
     @infraction = Infraction.find(params[:id])
     @infraction.notified
 
-    @fine = Fine.find_by(infraction_id: params[:id])
-    render  "/notifications/show"
+    respond_to do |format|
+      format.json { head :no_content }
+    end
   end
 
   def generate_assessment

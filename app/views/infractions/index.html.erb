@@ -65,26 +65,20 @@
                           <ul class="dropdown-menu dm-icon pull-right" role="menu">
                             <li><%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, "/infractions/#{infractions.id}" %></li>
                             <% if infractions.state == 'supervised' %>
-                            <li><%= link_to '<i class="fa fa-print"></i> Imprimir'.html_safe, '#',  id: infractions.id, class: "my_modal_generate",  'data-target' => "#myModal" %></li>
-                            <li class="divider"></li>
-                            <li><%= link_to '<i class="fa  fa-legal"></i> Notificar'.html_safe, notification_path(infractions.id),  id: infractions.id, class: "my_modal_notification",  'data-target' => "#myModal" %></li>
+                            <li><%= link_to '<i class="fa  fa-legal"></i> Notificar'.html_safe, '#',  id: infractions.id, class: "notification",  'data-target' => "#myModal" %></li>
                             <% elsif infractions.state == 'notified' %>
                             <li><%= link_to '<i class="fa fa-search"></i> Visualizar Notificação'.html_safe, "/notifications/#{infractions.id}" %></li>
                             <li class="divider"></li>
                             <li><%= link_to '<i class="fa fa-legal"></i> Autuar'.html_safe, '#',  id: infractions.id, class: "my_modal_assessments",  'data-target' => "#myModal" %></li>
-                            <% else %>
-                            <li><%= link_to '<i class="fa  fa-legal"></i> Notificar'.html_safe, notification_path(infractions),  id: infractions.id, class: "my_modal_notification",  'data-target' => "#myModal" %></li>
-                            <li><%= link_to '<i class="fa fa-edit"></i> Editar'.html_safe, edit_infraction_path(infractions) %></li>
-                            <li><%= link_to '<i class="fa fa-trash-o"></i> Deletar'.html_safe, '#', id: infractions.id,  class: "my_modal_canceled" %></li>
-                            <% end %>
+                            <% elsif infractions.state == 'pending' %>
                             <li class="divider"></li>
-                            <li><%= link_to 'Fiscalizar'.html_safe, '#',  id: infractions.id %></li>
+                            <li><%= link_to 'Fiscalizar', '#modal',  id: infractions.id, class: "report", 'data-toggle'=>"modal" %></li>
+                            <% end %>
                           </ul>
                         </div>
                         <% else %>
                           <% if infractions.state == 'supervised' or infractions.state == 'archived' %>
                             <%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, "/infractions/#{infractions.id}", class: "report btn btn-sm bgm-bluegray waves-effect" %>
-
                           <% else %>
                             <%= link_to 'Fiscalizar', '#modal',  id: infractions.id, class: "report btn btn-sm bgm-lightgreen waves-effect", 'data-toggle'=>"modal" %>
                           <% end %>
@@ -119,6 +113,32 @@
 
             <script>
             $(document).ready(function(){
+
+              $(".notification").click(function(){
+                var user_id = this.id;
+                swal({
+                  title: "Gerar Notificação?",
+                  text: "Esta ação irá mudar o status da infração para notificado",
+                  type: "info",
+                  showCancelButton: true,
+                  closeOnConfirm: false,
+                  showLoaderOnConfirm: true
+                }, function(){
+                      setTimeout(function(){
+                        swal({
+                          title: "ok, deu certo!",
+                          text: "Notificação gerada com sucesso! <BR> <span style='color:#F8BB86'>Aguarde para ver a notificação...<span> ",
+                          timer: 4000,
+                          html: true,
+                          showConfirmButton: false
+                        }, function(){
+                            $.post( "/infraction/generate/notification", { id: user_id } );
+                            window.location.replace("notifications/" + user_id);
+                        });
+                      }, 4000);
+                  });
+              })
+
               $( ".report" ).click(function(){
                 $('.modal-body').load('/supervisions/infractions/'+ $(this).attr('id'));
               });

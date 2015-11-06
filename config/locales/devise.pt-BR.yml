@@ -1,0 +1,5 @@
+pt-BR:
+  devise:
+    sessions:
+      user:
+        signed_in: "Olá, Login realizado com sucesso!"

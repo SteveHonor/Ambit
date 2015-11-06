@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   delete '/fines/:id', to: 'supervision/infractions#delete_fine'
 
-  get '/infraction/:id/generate/notification', to: 'infractions#generate_notification', as: 'generate_notification'
+  post '/infraction/generate/notification',    to: 'infractions#generate_notification', as: 'generate_notification'
   get '/infraction/:id/generate/assessments' , to: 'infractions#generate_assessment', as: 'generate_assessments'
 
   resources :supervisions
