@@ -57,13 +57,13 @@
                         <% else %>
                         <% if current_user.user_type == 'administrator' %>
                         <div class="btn-group pull-right">
-                          <button type="button" class="btn btn-sm btn-primary waves-effect" data-toggle="dropdown"><i class="fa fa-plus"></i> Ações</button>
-                          <button type="button" class="btn btn-sm btn-primary waves-effect" data-toggle="dropdown" aria-expanded="false">
+                          <button type="button" class="btn btn-xs btn-primary waves-effect" data-toggle="dropdown"><i class="fa fa-plus"></i> Ações</button>
+                          <button type="button" class="btn btn-xs btn-primary waves-effect" data-toggle="dropdown" aria-expanded="false">
                             <span class="caret"></span>
                           </button>
 
                           <ul class="dropdown-menu dm-icon pull-right" role="menu">
-                            <li><%= link_to '<i class="fa fa-search"></i> Visualizar'.html_safe, "/infractions/#{infractions.id}" %></li>
+                            <li><%= link_to '<i class="fa fa-search"></i> Visualizar Infração'.html_safe, "/infractions/#{infractions.id}" %></li>
                             <% if infractions.state == 'supervised' %>
                             <li><%= link_to '<i class="fa  fa-legal"></i> Notificar'.html_safe, '#',  id: infractions.id, class: "notification",  'data-target' => "#myModal" %></li>
                             <% elsif infractions.state == 'notified' %>
