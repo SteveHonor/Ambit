@@ -28,5 +28,6 @@ module Ambit
     config.i18n.default_locale = :'pt-BR'
 
     config.i18n.fallbacks = [:'pt-BR']
+    config.serve_static_assets = true
   end
 end
